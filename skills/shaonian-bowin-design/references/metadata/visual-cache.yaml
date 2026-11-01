@@ -1,0 +1,171 @@
+schema_version: 1
+purpose: read-only visual lookup cache for verified Shaonian Bowen Figma nodes
+authority:
+  scope: lookup_preview_only
+  live_figma_is_authoritative: true
+  forbidden_uses:
+  - source_frame_duplication
+  - component_or_variable_validation
+  - productionization_evidence
+  - definitive_not_found_in_source
+refresh_policy:
+  mode: explicit_only
+  maintenance_strategy: change_triggered_with_90_day_screen_and_component_baseline
+  decision_owner: design_skill
+  execution_owner: agent_using_available_tools
+  explicit_triggers:
+  - 刷新视觉缓存
+  - 更新本地截图缓存
+  - 重新截取缓存
+  change_triggers:
+  - source Figma node is moved replaced or renamed
+  - component family or variable modes used by a cached preview are published or materially changed
+  - a major product design revision invalidates one or more registered screenshots
+  scheduled_refresh_required: false
+  default_max_age_days:
+    screen_frame: 90
+    component_or_module: 90
+  ordinary_lookup_must_not_modify_skill: true
+  eligibility_evidence:
+  - live_node_verified
+  - screenshot_render_succeeded
+  - screenshot_visually_checked
+  - metadata_entry_ready
+  required_outcome: asset_and_metadata_replaced_with_crash_recoverable_transaction
+  failure_behavior:
+  - keep_previous_asset
+  - mark_cache_stale
+  - report_cache_refresh_failed
+  maintenance_commands:
+    audit: python3 scripts/audit_visual_cache.py
+    verified_atomic_update: python3 scripts/update_visual_cache.py
+    rebuild_runtime_index: python3 scripts/build_runtime_indexes.py
+lookup_policy:
+  resolution_order:
+  - resolve_concrete_node_from_source_frames_components_or_source_registry
+  - use an uploaded current-turn gallery reference preview when its file key node id state and appearance mode
+    exactly match the resolved target
+  - match_source_node_id_render_state_and_appearance_mode
+  - qualify_active_unexpired_cache_as_ordinary_lookup_evidence
+  - use_live_figma_for_freshness_sensitive_or_write_capable_tasks
+  live_refresh_required_when:
+  - user_requests_latest_realtime_or_current_version
+  - user_requests_modification_generation_or_productionization
+  - component_variable_token_or_design_system_validation_is_needed
+  - cache_status_is_stale_or_missing
+  - requested_render_state_or_appearance_mode_does_not_exactly_match_cache
+  - current-turn gallery reference preview does not exactly match the resolved file key node id state and appearance
+    mode
+  freshness_rule: calculate captured_at plus max_age_days at lookup time; cache_status active alone never proves
+    freshness
+  stale_fallback:
+    allowed: true
+    required_status: cache_stale
+    required_evidence:
+    - captured_at
+    - source_node_id
+    - historical_preview_not_current_proof
+  mcp_unavailable:
+    active_cache_allowed: true
+    required_status: mcp_unavailable_degraded
+    must_not_claim:
+    - latest_version_checked
+    - live_component_or_variable_checked
+    - definitive_source_absence
+  timestamp_validation: future or malformed capture timestamps and non-positive max_age_days never qualify
+    as fresh; missing assets always require live fallback
+entries:
+- cache_id: screen_profile_normal_light
+  asset_path: assets/visual-cache/screens/profile-normal.png
+  source_file_key: oULxBlEvFNkWGGVaJ0ClEz
+  source_node_id: 7317:1218
+  source_index_ref: references/metadata/source-frames.yaml#source_groups.4232:11310
+  node_role: screen_frame
+  render_state: normal_user_light
+  appearance_mode: light_default
+  captured_at: '2026-10-29T17:40:17+08:00'
+  source_verified_at: '2026-10-29T17:40:17+08:00'
+  cache_status: active
+  max_age_days: 90
+  use_for:
+  - profile
+  - profile_normal
+  - reading_history
+- cache_id: screen_profile_vip_light
+  asset_path: assets/visual-cache/screens/profile-vip.png
+  source_file_key: oULxBlEvFNkWGGVaJ0ClEz
+  source_node_id: 7317:1271
+  source_index_ref: references/metadata/source-frames.yaml#source_groups.4232:11310
+  node_role: screen_frame
+  render_state: vip_user_light
+  appearance_mode: light_default
+  captured_at: '2026-10-29T17:40:17+08:00'
+  source_verified_at: '2026-10-29T17:40:17+08:00'
+  cache_status: active
+  max_age_days: 90
+  use_for:
+  - profile
+  - profile_vip
+- cache_id: screen_article_detail_base_light
+  asset_path: assets/visual-cache/screens/article-detail-base.png
+  source_file_key: oULxBlEvFNkWGGVaJ0ClEz
+  source_node_id: 4229:9517
+  source_index_ref: references/metadata/source-frames.yaml#source_groups.4229:9516
+  node_role: screen_frame
+  render_state: base_light
+  appearance_mode: light_default
+  captured_at: '2026-10-29T17:40:17+08:00'
+  source_verified_at: '2026-10-29T17:40:17+08:00'
+  cache_status: active
+  max_age_days: 90
+  use_for:
+  - article_detail
+  - detail_bottom
+- cache_id: screen_article_detail_phase2_light
+  asset_path: assets/visual-cache/screens/article-detail-phase2.png
+  source_file_key: oULxBlEvFNkWGGVaJ0ClEz
+  source_node_id: 7469:2716
+  source_index_ref: references/metadata/source-frames.yaml#source_groups.7323:2913
+  node_role: screen_frame
+  render_state: phase2_home_light
+  appearance_mode: light_default
+  captured_at: '2026-10-29T17:40:17+08:00'
+  source_verified_at: '2026-10-29T17:40:17+08:00'
+  cache_status: active
+  max_age_days: 90
+  use_for:
+  - article_detail
+  - detail_bottom
+  - phase2
+- cache_id: screen_exam_single_choice_unanswered_light
+  asset_path: assets/visual-cache/screens/exam-single-choice-unanswered.png
+  source_file_key: oULxBlEvFNkWGGVaJ0ClEz
+  source_node_id: 7323:4914
+  source_index_ref: references/metadata/source-frames.yaml#source_groups.7323:2913
+  node_role: screen_frame
+  render_state: single_choice_unanswered_light
+  appearance_mode: light_default
+  captured_at: '2026-10-29T17:40:17+08:00'
+  source_verified_at: '2026-10-29T17:40:17+08:00'
+  cache_status: active
+  max_age_days: 90
+  use_for:
+  - article_detail
+  - exam_analysis
+  - single_choice
+- cache_id: screen_english_word_assembly_empty_light
+  asset_path: assets/visual-cache/screens/english-word-assembly-empty.png
+  source_file_key: oULxBlEvFNkWGGVaJ0ClEz
+  source_node_id: 7323:4385
+  source_index_ref: references/metadata/source-frames.yaml#source_groups.7323:2913
+  node_role: screen_frame
+  render_state: word_assembly_empty_light
+  appearance_mode: light_default
+  captured_at: '2026-10-29T17:40:17+08:00'
+  source_verified_at: '2026-10-29T17:40:17+08:00'
+  cache_status: active
+  max_age_days: 90
+  use_for:
+  - article_detail
+  - english_challenge
+  - word_assembly

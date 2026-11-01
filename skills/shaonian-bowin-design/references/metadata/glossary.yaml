@@ -1,0 +1,191 @@
+schema_version: 1
+purpose: '少年博闻设计 Skill 的术语权威表。机器可读字段（route 名、状态值、gate 名）一律使用英文 snake_case， 面向用户的说明使用中文。本表是 English snake_case 术语
+  -> 中文含义的唯一对照来源； 新增术语先登记到本表，再在 yaml / md 中使用，避免中英混排和同义异名。
+
+  '
+naming_convention:
+  machine_fields: english_snake_case
+  user_facing_text: chinese
+  trigger_phrases: chinese_kept_as_is
+  rule: 同一概念只保留一个英文规范名；出现中英混排的枚举值需回归本表规范名
+routes:
+  existing_source_or_state_lookup: 既有页面/状态/组件/素材的只读查询
+  existing_context_local_mutation: 在已有上下文内的局部修改（锁定完整源截图后只改目标区域）
+  component_or_variant_design: 组件/变体/slot 设计（在最近组件族内扩展）
+  new_context_exploration: 全新页面/流程/多方案/重新设计
+  new_top_level_channel: 与首页同级的新顶级频道/Tab
+  prototype_to_visual_design: 把原型/线框转为视觉设计稿（原型只作信息结构）
+  project_asset_lookup: 项目素材（星星人/IP/图标/组件）查询
+  contextual_overlay: 上下文浮层（气泡/Popover/短提示）
+  cold_start_age_selection: 冷启/欢迎/年龄选择
+  comment_list_modification: 评论列表局部改造
+  profile_state: 个人中心状态（普通/VIP/未登录/空态）
+  subscription_modal: 付费/订阅底部弹窗
+  settings_modification: 设置页局部改造
+modes:
+  production_mode: 生产模式，保持线上一致性、最小必要变化
+  exploration_mode: 探索模式，重新设计/发散，必须记录 divergence_contract
+speed_tiers:
+  lookup_fast_path: 查询快路径，只读查源或既有输出，不写 Figma
+  fast_visual_exploration: 快速方向稿，首轮多方案先看视觉方向，写入草稿 Frame 并标注 exploration_draft
+  continuation_iteration: 续作迭代，同一对话复用上一轮节点、截图资产和组件 key，只改增量
+  productionization: 生产化，选定方向后补齐源 Frame、组件、变量和截图验收
+runtime_index:
+  lookup_index: 从页面、组件、素材和视觉缓存权威 YAML 编译的轻量查询索引
+  execution_index: 从任务路由权威 YAML 编译的速度层、route profile 与业务 route 索引
+  runtime_digest_verified: 运行时索引携带的源文件摘要与当前权威 YAML 一致
+  first_visible_direction: 智能两阶段交付的第一阶段可见方向稿
+  production_ready_output: 智能两阶段交付的第二阶段生产级产物
+visual_delivery:
+  visual_query_delivery: 可视查询最终交付契约；最终回复必须实际嵌入经过持久化与校验的图片
+  visual_attachment_path: 最终图片附件的绝对持久路径
+  visual_attachment_format: 通过文件签名识别出的图片格式
+  visual_attachment_size_bytes: 最终图片附件的非零字节数
+  visual_attachment_validation_status: 图片路径、大小和格式签名的校验状态
+  final_attachment_markdown: 校验脚本返回、最终回复必须原样包含的绝对路径 Markdown 图片标签
+  visual_evidence_origin: 图片证据来源（精确新鲜缓存或实时 Figma 渲染）
+execution_layers:
+  readonly_fast_path: L1，只读快速路径，禁止任何 Figma 写入
+  fast_visual_exploration: L1.5，首轮多方案视觉草稿，可写入但必须标注草稿
+  continuation_iteration: L1.6，同一对话续改已有输出，先复用上下文
+  local_light_mutation: L2，已有上下文轻量写入，使用锁定源截图、任务容器和截图验证
+  production_or_exploration: L3，正式生产或探索，跑完整门禁或标注草稿身份
+route_profiles:
+  lookup_profile: 查询任务的最小字段集
+  local_mutation_profile: 局部修改任务的最小字段集
+  exploration_profile: 探索任务的最小字段集
+  continuation_profile: 同一对话续改已有输出的最小字段集
+  component_profile: 组件任务的最小字段集
+experience_profiles:
+  home_feed: 首页低压力内容浏览经验
+  article_detail: 文章连续阅读与辅助能力经验
+  article_learning_function: 速度/深度/双语/媒体等聚焦学习工具经验
+  profile_mine: 身份与个人内容优先的个人中心经验
+  settings: 分组配置与风险动作隔离的设置页经验
+  cold_start_identity: 单一身份决策与低压陪伴的冷启经验
+  commerce_and_feedback: 付费决策、充值与结果反馈经验
+  contextual_overlay: 依附当前上下文的短解释、短选择与轻反馈经验
+confidence:
+  high: 语义与上下文一致，可继续对应 route
+  medium: 只允许只读或保守 preflight，不允许写 Figma
+  low: 先问用户确认，不生成不写入
+gate_levels:
+  hard_stop: 硬阻断，不能交付
+  readonly_only: 只能只读回答
+  degrade_with_label: 降级但需标注
+  draft_allowed_with_label: 仅探索任务，可出草稿但须标注 must_not_ship_as_production
+  report_gap: 记录缺口，不得当作已验收
+evidence_status:
+  local_cache_checked: 已命中同一具体节点和呈现状态的本地视觉缓存；必须同时报告截图时间
+  source_index_only: 仅查了索引，属临时结论，非“源文件不存在”的证明
+  figma_live_checked: 已核对 live Figma 源
+  screenshot_checked: 已做截图核对
+decision_records:
+  metadata_loaded: 已成功读取的 metadata 权威源文件列表
+  missing_metadata_when_any: 未成功读取但本任务需要的 metadata 文件
+  route_decision: 路由决策记录（含 semantic_intent/task_route_type/confidence/evidence/write_allowed/fallback_route）
+  speed_tier_decision: 速度层决策记录（lookup_fast_path/fast_visual_exploration/continuation_iteration/productionization）
+  semantic_intent: 语义意图（lookup_existing/mutate_existing/design_new/component_variant）
+  task_route_type: 选中的 route 类型
+  write_allowed: 当前 route 是否允许写入
+  fallback_route: 误判时回滚到的更保守 route
+  turn_intent_contract: 当前回合需求契约，把本轮用户显式约束、排除项、必保留元素、遮挡预算和冲突裁决记录在组件/recipe 选择之前
+  explicit_user_constraints: 本轮用户明确说出的必须、只要、不要、避免、差异大、更轻等约束
+  required_fields_or_elements: 本轮明确要求必须出现的字段或元素
+  excluded_fields_or_elements: 本轮明确要求排除或不得恢复的字段或元素
+  occlusion_budget: 本轮新增 UI 允许遮挡或不得遮挡的页面区域、安全区和主内容预算
+  component_semantic_reuse_policy: 组件复用策略，优先保留语义、token、图标、状态和交互意义，再判断是否保留完整组件形态
+  source_frame_id: 最近的完整源 Frame 节点 id
+  task_id: 当前写入任务的稳定身份
+  task_container_id: 当前任务在 canonical fixed output Page 中的唯一容器 Frame id
+  source_screenshot_evidence: 既有上下文局部修改使用的完整源截图证据
+  output_page_id: '`task-routes.yaml > global_defaults.output_page_id` 定义的固定自动化产出页'
+  task_date: 当前写入任务按 Asia/Shanghai 在任务开始时归一化并固定使用的日期
+  date_divider_id: 固定产出页中与 task_date 对应的唯一日期分隔 Frame 节点 id
+  date_divider_created_or_reused: 当前原子写入创建或复用日期分隔的结果记录
+  output_frame_name_date_policy: 任务 Frame 命名中的日期策略；固定为禁止日期前缀
+  output_file_policy: 固定为 native_source_file_fixed_output_page，直接在博闻原生 Figma 文件的唯一产出页工作
+  cross_file_operation_policy: 固定为 forbidden；禁止跨文件复制、组件导入、远程 fallback 和目标切换
+  context_strategy: 写入前选择的上下文策略（screenshot_overlay/source_locked_visual_draft/direct_native_construction）
+  placement_batch_frame_ids: 同一任务本次写入并共同排布的顶层 Frame id 列表
+  placement_origin: 本任务首个顶层 Frame 的最终画布坐标
+  top_level_canvas_collision_check: 固定产出页顶层节点 bounding-box 碰撞检查结果
+  persistent_write_scope_check: 每次写入后核对所有持久 created/mutated 节点均属于 canonical fixed output Page，正式源节点未被修改
+  created_node_ids: 本次 Figma 操作创建的全部节点 id
+  mutated_node_ids: 本次 Figma 操作修改的全部既有节点 id；不得包含正式源节点
+  removed_node_ids_when_any: 本次操作删除或清理的临时节点 id
+  persistent_node_page_map: 持久变更节点 id 到所属 Page id 的核对结果
+  component_output_kind: 组件任务产物类型（默认 frame_structure_proposal；明确组件化时才可为 output_only_component）
+  output_component_authority: 产出页组件的权威等级，固定为 output_only
+  publishing_status: 产出页组件发布状态，固定为 forbidden
+  source_component_family_unchanged: 正式源组件族保持未修改的检查结果
+  context_basis: 写入前声明的真实上下文来源（locked_source_screenshot/previous_output_screenshot/component_family_canvas/direct_native_output）
+  locked_context: 本次必须保持不变的既有页面、模块、组件、状态或截图背景上下文
+  new_local_element_scope: 本次允许用本地节点表达的新增局部控件、浮层、提示、挂件或状态范围
+  minimum_token_binding_plan: 快速稿新增可见 UI 的最小变量/样式绑定计划
+  minimum_token_binding_result: 快速稿新增可见 UI 的最小变量/样式绑定结果
+  target_region: 本次允许修改的目标区域
+  locked_regions: 默认锁定、禁止改动的区域
+  allowed_mutations: 允许变更的节点/区域
+  forbidden_mutations: 禁止变更的节点/区域
+  divergence_contract: 发散契约（what_changes/what_stays_locked/why_this_is_materially_distinct/visual_difference_evidence）
+  design_system_gate_result: design-system gate 校验结果
+  design_check: 写入前的可验证短判断（user_goal/locked_context/main_visual_change/risk/visual_evidence）
+  experience_profile: 当前页面家族对应的体验与视觉扩展经验 ID
+  context_experience_profile: 浮层或临时状态下需要同时锁定的底层页面经验 ID
+  state_role: 具体 Screen Frame 在页面家族中的状态角色，仅记录相对家族的差异
+  experience_profile_loaded: 已按 profile_id 读取的页面经验小节
+  extension_heuristic_used: 本次新增模块、结构或状态实际采用的扩展判断
+  presence_role: 新增 UI 在页面中的存在方式（如主表面、内联入口、上下文状态、常驻伴随、短反馈、决策弹窗）
+  attention_budget: 新增 UI 允许占用的注意力预算（high/medium/low/minimal）
+  default_state: 新增 UI 的默认呈现状态（expanded/collapsed/inline/hidden_until_triggered）
+  component_semantic_reuse_decision: 当完整组件形态过重时，如何保留组件语义并转为同族紧凑/折叠状态的决策
+  screenshot_region_used_for_role_fit: 用于验证存在方式和注意力预算是否匹配的截图区域
+  previous_output_context: 同一对话续作可复用的上一轮节点、资产、组件 key、目标文件和已知约束
+  target_nodes_or_assets_to_reuse: 本次续作应复用的目标节点或资产
+  requested_delta: 用户要求相对上一轮输出改变的具体增量
+  cache_id: 本地视觉缓存条目的稳定标识
+  cache_status: 缓存状态（active/stale/missing）
+  cache_captured_at: 缓存截图时间；返回缓存图片时必须披露
+  render_state: 缓存对应的明暗模式、页面状态或组件变体状态
+  skill_context_bytes: 当前任务注入的 Skill 规则与命中记录字节数
+  route_ms: 路由判断耗时
+  index_lookup_ms: 运行时索引查询耗时
+  figma_ms: Figma 定点查询或写入耗时
+  first_visual_ms: 从任务开始到首个可见方向稿完成的耗时
+  validation_ms: 当前速度层要求的验收耗时
+  total_ms: 当前任务总耗时
+  live_fallback_reason: 本地缓存或索引不能直接回答而回退 live Figma 的原因
+  full_authority_loaded: 是否加载过完整大体积权威文件；普通精确缓存查询应为 false
+status_signals:
+  not_found_in_source: 源文件中未找到既有状态
+  metadata_unavailable: 必需 metadata 权威源不可用，禁止写入 Figma
+  must_not_ship_as_production: 探索草稿，不可当可交付稿
+  exploration_draft: 探索草稿标签
+  binding_gap: 非核心属性未绑定 token 的缺口
+  source_node_update_needed: 源节点已过期/需更新
+  source_node_stale: 使用了过期/fallback 源节点
+  mcp_unavailable_degraded: Figma MCP 不可用的降级状态
+  cache_stale: 本地视觉缓存已过期，只能作为带时间说明的历史预览
+  cache_refresh_failed: 显式刷新失败；保留旧图片并降级为 stale
+  historical_preview_not_current_proof: 历史缓存仅作视觉参考，不能证明当前版本
+  primitive_substitution_hard_fail: 用 primitives 替代 ready_to_force 组件，硬失败
+  source_context_reconstruction_hard_fail: 用空白画布、组件堆栈、截图描摹或 primitives 重建既有上下文，硬失败
+  task_atomic_output_check: 使用 task_id 唯一容器并在一次 use_figma 写入中完成创建、排布和碰撞复核的验收
+  source_locked_visual_draft: 既有上下文局部修改的标准输出策略；以精确源 Frame 整图作为锁定底图，只覆盖并原生重建 target_region，交付实际 Figma 节点和逐方案截图
+  persistent_write_scope_violation: 持久创建或修改节点落在固定产出页之外，或正式源节点被修改；硬阻断
+  output_page_growth_warning: 固定产出页节点数量或画布高度达到预警阈值；只提示人工整理，不自动删除、移动或建归档页
+  draft_blocked_context_unavailable: 无可用源 Frame、源截图、上一轮输出或组件族画布，快速草稿也必须停止
+  raw_visual_sketch: 用户明确要求的粗略草图/只看位置稿，可跳过最小变量绑定但不可作为设计稿交付
+  ready_to_force: 必须以实例/同族变体使用、禁止手画的核心组件状态
+  page_experience_gap: 新页面暂时没有精确 confirmed 经验档案，只能基于最近 profile 输出标注草稿
+  visual_attachment_unavailable: 可视查询截图无法持久化、校验或嵌入最终回复，必须明确报告且不得声称图片已展示
+context_basis_values:
+  locked_source_screenshot: 锁定源截图作为草稿背景，只在上方叠加新增局部元素
+  previous_output_screenshot: 锁定上一轮输出截图作为续作草稿背景
+  component_family_canvas: 组件/变体任务的组件族画布，不用于整页上下文重建
+  direct_native_output: 使用正式组件、变量、Auto Layout 与 MCP 默认文本引擎直接创建的原生输出
+context_strategy_values:
+  screenshot_overlay: 仅用于不进入原布局树的独立顶层临时方向稿；不可生产化
+  source_locked_visual_draft: 锁定完整源截图并只重建目标区域
+  direct_native_construction: 从正式组件、变量、Auto Layout 与 MCP 默认文本引擎直接构建原生输出

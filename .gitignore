@@ -1,1 +1,4 @@
 .DS_Store
+skills/**/__pycache__/
+skills/**/*.pyc
+skills/**/.build.lock

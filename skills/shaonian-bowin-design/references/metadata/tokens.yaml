@@ -1,0 +1,2498 @@
+schema_version: 1
+source:
+  source_figma_file_key: oULxBlEvFNkWGGVaJ0ClEz
+  authority: live_figma_variables_first
+  binding_policy_ref: references/metadata/validation.yaml#minimum_token_binding_check
+  component_policy_ref: references/metadata/validation.yaml#registered_component_family_gate_check
+  text_policy_ref: references/metadata/tokens.yaml#typography.runtime_text_policy
+colors:
+  text:
+    t1:
+      figma_name: Text 文本/T1 主要
+      variable_id: VariableID:180:3364
+      value: '#333333'
+      use_for:
+      - primary titles
+      - row labels
+      - active bottom tab text
+      - card titles
+      avoid_for:
+      - helper metadata
+      - disabled text
+      examples:
+      - 'Settings row label: 少年年龄'
+      - Profile list title
+    t2:
+      figma_name: Text 文本/T2 次要
+      variable_id: VariableID:180:3365
+      value: '#5C5C5C'
+      use_for:
+      - secondary labels
+      - unselected navigation text
+      - compact helper text with normal emphasis
+      examples:
+      - BottomBar unselected tab
+    t3:
+      figma_name: Text 文本/T3 辅助
+      variable_id: VariableID:180:3366
+      value: '#999999'
+      use_for:
+      - timestamp
+      - source/time metadata
+      - right-side setting helper text
+      - low-priority profile utilities
+      examples:
+      - Settings 检查更新 right helper
+      - NewsCard source and time
+    t4_pressed_image:
+      figma_name: Text 文本/T4 压图
+      variable_id: VariableID:180:3367
+      value: '#FFFFFF'
+      use_for:
+      - text on image overlays
+      - selected text on dark filled pill when source pattern exists
+      avoid_for:
+      - normal page body
+  background:
+    page_gray:
+      figma_name: Bg 背景/PageGray 灰底页面
+      variable_id: VariableID:180:3518
+      value: '#F5F5F5'
+      use_for:
+      - profile pages
+      - settings pages
+      - quiet utility screens
+      examples:
+      - Profile source 4232:11310 / ↳ tab3 个人中心
+      - source-frames.yaml use_for=settings
+    page_white:
+      figma_name: Bg 背景/PageWhite 白底页面
+      variable_id: VariableID:180:3519
+      value: '#FFFFFF'
+      use_for:
+      - article/detail base
+      - settings when source frame is white
+    block:
+      figma_name: Bg 背景/Block 内容块
+      variable_id: VariableID:180:3521
+      value: '#F7F7F7'
+      use_for:
+      - settings row fill
+      - inactive pills
+      - subtle grouped utility strip
+      - selected BottomBar pill in source pattern
+      avoid_for:
+      - page background
+    card:
+      figma_name: Bg 背景/Card 卡片
+      variable_id: VariableID:180:3523
+      value: '#FFFFFF'
+      use_for:
+      - NewsCard content surface
+      - UserCard
+      - content modules on gray background
+      border_default: false
+    placeholder:
+      figma_name: Bg 背景/Placeholder 占位
+      variable_id: VariableID:215:4999
+      use_for:
+      - temporary media placeholders only
+      avoid_for:
+      - final visual design when real/source-like image is required
+  brand:
+    primary:
+      figma_name: Brand 品牌/Primary 主色
+      variable_id: VariableID:308:36
+      value: '#75CE00'
+      use_for:
+      - brand accent
+      - progress dots
+      - selected state highlight
+      avoid_for:
+      - full page background by default
+      - every card/module
+    text:
+      figma_name: Brand 品牌/Text 品牌文字
+      variable_id: VariableID:308:37
+      use_for:
+      - selected tab text when source uses green
+      - key brand action text
+    bg_soft:
+      figma_name: Brand 品牌/BgSoft 柔和背景
+      variable_id: VariableID:308:39
+      use_for:
+      - selected profile tab background
+      - subtle brand emphasis chip
+      avoid_for:
+      - large independent feature cards unless source uses it
+  line:
+    border:
+      figma_name: Line 线条/Border 描边
+      variable_id: VariableID:180:3665
+      use_for:
+      - outline buttons
+      - IconButton outline
+      - small controls/chips if source uses stroke
+      avoid_for:
+      - normal content cards
+      - settings rows
+      - profile modules
+    divider_thin:
+      figma_name: Line 线条/DividerThin 细分割线
+      variable_id: VariableID:180:3667
+      use_for:
+      - internal separators in one grouped container
+      avoid_for:
+      - separating unrelated independent cards
+radii:
+  policy:
+    source: live_figma_variables_first
+    allowed_non_pill_values:
+    - 8
+    - 12
+    - 20
+    max_non_pill_radius: 20
+    pill_value: 999
+    raw_radius_policy: 'Non-pill rectangles must use Radius/8, Radius/12, or Radius/20 unless an existing source
+      component explicitly uses another value. Values such as 24, 28, or 32 are local-radius violations for cards,
+      blocks, sheets, and custom panels.
+
+      '
+  r8:
+    token_name: Radius/8
+    value: 8
+    use_for:
+    - dense tags only when source uses small tags
+    avoid_for:
+    - main cards
+    - buttons
+  r12:
+    token_name: Radius/12
+    value: 12
+    use_for:
+    - media thumbnails
+    - compact image slots
+    - sheet top bar details when source uses it
+    avoid_for:
+    - command buttons
+    - major content cards
+  r20:
+    token_name: Radius/20
+    variable_id: VariableID:306:2998
+    value: 20
+    use_for:
+    - main cards
+    - profile content blocks
+    - settings rows
+    - sheet top corners
+    examples:
+    - source-frames.yaml use_for=settings
+    - NewsCard and UserCard surfaces
+    figma_name: 20 大圆角
+  pill:
+    token_name: Radius/999
+    value: 999
+    use_for:
+    - buttons
+    - filter pills
+    - chips
+    - tab pills
+    - icon buttons
+    avoid_for:
+    - large rectangular content cards
+spacing:
+  s4:
+    value: 4
+    use_for:
+    - micro icon-label gaps
+  s6:
+    value: 6
+    use_for:
+    - tiny chip inner gaps
+  s8:
+    value: 8
+    use_for:
+    - title-subtitle gaps
+    - compact row gaps
+  s12:
+    variable_id: VariableID:306:2975
+    value: 12
+    use_for:
+    - settings row gap
+    - chip group gap
+    - related inline controls
+    examples:
+    - Settings list vertical itemSpacing
+    figma_name: '12'
+  s16:
+    value: 16
+    use_for:
+    - repeated feed card gap
+    - compact list item internal gap
+    examples:
+    - Home NewsCard list gap
+  s20:
+    variable_id: VariableID:306:2981
+    value: 20
+    use_for:
+    - page horizontal padding
+    - card padding
+    - settings row horizontal/vertical padding
+    examples:
+    - 390 screen uses 20 side padding and 350 content width
+    figma_name: '20'
+  s24:
+    value: 24
+    use_for:
+    - separation between large page regions
+    - bottom safe spacing before fixed bars
+typography:
+  runtime_text_policy:
+    text_engine: mcp_default
+    new_or_modified_text: create_with_mcp_default
+    existing_untouched_text: do_not_mutate
+  title_page:
+    size: 22
+    line_height: 22
+    use_for:
+    - page title
+    - major header title
+  title_card:
+    size: 18
+    line_height: 26
+    use_for:
+    - feed card title
+    - profile reading item title
+  row_label:
+    derived_from: source-frames.yaml use_for=settings
+    size: 18
+    line_height: 18
+    color: text.t1
+    use_for:
+    - settings row left label
+  row_helper:
+    derived_from: Settings 检查更新 helper
+    size: 18
+    line_height: 30
+    color: text.t3
+    use_for:
+    - settings row right helper
+  secondary:
+    size: 14
+    line_height: 14
+    color: text.t2
+  caption:
+    size: 12
+    line_height: 12
+    color: text.t3
+effects:
+  bottom_bar:
+    style_name: BottomBar 底部栏
+    type: DROP_SHADOW
+    color: '#0000000A'
+    offset:
+    - 0
+    - -4
+    radius: 4
+    use_for:
+    - BottomBar only
+  button_shadow:
+    type: DROP_SHADOW
+    color: '#0000000A'
+    offset:
+    - 0
+    - 4
+    radius: 4
+    use_for:
+    - source IconButton or Button component when already present
+    - floating controls
+    avoid_for:
+    - normal feed cards
+    - settings rows
+    - profile utility modules
+surfaces:
+  normal_content_card:
+    fill: background.card
+    radius: radii.r20
+    stroke: none
+    shadow: none
+    examples:
+    - NewsCard
+    - UserCard
+    - profile content block
+  settings_row:
+    layout_usage: legacy geometry example only; new rows use the selected live components.SettingsRow variant
+    fill: background.block
+    radius: radii.r20
+    stroke: none
+    shadow: none
+    layout:
+      mode: HORIZONTAL
+      height: 70
+      gap: 10
+      padding: 20
+      align: SPACE_BETWEEN
+    right_helper: typography.row_helper
+  profile_weak_utility:
+    fill: background.card_or_block
+    radius: radii.r20
+    stroke: none
+    shadow: none
+    emphasis: low
+    use_for:
+    - secondary functions such as 换肤 and 福利中心
+live_snapshot:
+  verified_at: '2026-10-29'
+  collections:
+  - id: VariableCollectionId:96:642
+    name: Base Color 基础色
+    modes:
+    - name: Mode 1
+      modeId: '96:0'
+    variableIds:
+    - VariableID:180:3371
+    - VariableID:574:3590
+    - VariableID:308:2
+    - VariableID:308:3
+    - VariableID:308:4
+    - VariableID:308:5
+    - VariableID:308:6
+    - VariableID:308:7
+    - VariableID:308:8
+    - VariableID:308:9
+    - VariableID:308:10
+    - VariableID:308:11
+    - VariableID:454:2678
+    - VariableID:308:12
+    - VariableID:308:13
+    - VariableID:308:14
+    - VariableID:308:15
+    - VariableID:308:16
+    - VariableID:308:17
+    - VariableID:454:2677
+    - VariableID:308:18
+    - VariableID:308:19
+    - VariableID:308:20
+    - VariableID:308:22
+    - VariableID:308:23
+    - VariableID:308:24
+    - VariableID:308:25
+    - VariableID:308:26
+    - VariableID:308:27
+    - VariableID:308:28
+    - VariableID:308:29
+    - VariableID:308:30
+    - VariableID:308:31
+    - VariableID:312:7
+    - VariableID:308:32
+    - VariableID:308:33
+    - VariableID:458:3338
+    - VariableID:458:3527
+    - VariableID:308:34
+    - VariableID:308:35
+    - VariableID:312:2
+    - VariableID:312:3
+    - VariableID:312:4
+    - VariableID:312:5
+    - VariableID:312:6
+    - VariableID:498:3195
+    - VariableID:498:3196
+    - VariableID:498:3197
+    - VariableID:498:3198
+    - VariableID:498:3199
+    - VariableID:498:3200
+    - VariableID:498:3201
+    - VariableID:498:3202
+    - VariableID:498:3203
+    - VariableID:498:3204
+    - VariableID:574:3591
+    - VariableID:574:3592
+    - VariableID:574:3593
+    - VariableID:574:3594
+    - VariableID:574:3595
+    - VariableID:574:3596
+    - VariableID:574:3597
+    - VariableID:574:3598
+    - VariableID:574:3599
+    - VariableID:574:3600
+    - VariableID:574:3601
+    - VariableID:574:3602
+  - id: VariableCollectionId:180:3363
+    name: Color Token 语义色
+    modes:
+    - name: light
+      modeId: '180:1'
+    - name: dark
+      modeId: '180:2'
+    variableIds:
+    - VariableID:180:3364
+    - VariableID:180:3365
+    - VariableID:180:3366
+    - VariableID:180:3367
+    - VariableID:180:3372
+    - VariableID:180:3519
+    - VariableID:180:3518
+    - VariableID:180:3521
+    - VariableID:180:3523
+    - VariableID:200:2350
+    - VariableID:215:4999
+    - VariableID:458:3532
+    - VariableID:458:3533
+    - VariableID:180:3665
+    - VariableID:180:3667
+    - VariableID:180:3670
+    - VariableID:180:3672
+    - VariableID:180:3773
+    - VariableID:180:3775
+    - VariableID:308:36
+    - VariableID:308:37
+    - VariableID:308:38
+    - VariableID:308:39
+    - VariableID:308:40
+    - VariableID:308:41
+    - VariableID:308:43
+    - VariableID:308:44
+    - VariableID:308:49
+    - VariableID:308:50
+    - VariableID:308:52
+    - VariableID:308:53
+    - VariableID:308:55
+    - VariableID:433:2676
+    - VariableID:445:2656
+    - VariableID:445:2657
+    - VariableID:445:2658
+    - VariableID:445:2659
+    - VariableID:495:3195
+    - VariableID:570:8112
+    - VariableID:495:3196
+    - VariableID:570:8113
+    - VariableID:495:3197
+    - VariableID:570:8114
+    - VariableID:495:3198
+    - VariableID:570:8115
+    - VariableID:498:3205
+    - VariableID:498:3206
+    - VariableID:570:8116
+    - VariableID:498:3207
+    - VariableID:498:3208
+    - VariableID:570:8117
+    - VariableID:498:3209
+    - VariableID:498:3210
+    - VariableID:570:8118
+    - VariableID:498:3211
+    - VariableID:498:3212
+    - VariableID:570:8119
+  - id: VariableCollectionId:306:2964
+    name: Space 间距
+    modes:
+    - name: Mode 1
+      modeId: '306:0'
+    variableIds:
+    - VariableID:306:2965
+    - VariableID:306:2969
+    - VariableID:306:2972
+    - VariableID:306:2975
+    - VariableID:306:2978
+    - VariableID:306:2981
+    - VariableID:306:2985
+    - VariableID:306:2990
+    - VariableID:458:4956
+  - id: VariableCollectionId:306:2991
+    name: Radius 圆角
+    modes:
+    - name: Mode 1
+      modeId: '306:1'
+    variableIds:
+    - VariableID:306:2992
+    - VariableID:306:2993
+    - VariableID:306:2998
+    - VariableID:306:3000
+  - id: VariableCollectionId:318:27
+    name: Size 尺寸
+    modes:
+    - name: Mode 1
+      modeId: '318:1'
+    variableIds:
+    - VariableID:318:28
+    - VariableID:318:29
+    - VariableID:318:30
+    - VariableID:318:31
+    - VariableID:318:32
+    - VariableID:318:33
+    - VariableID:318:34
+    - VariableID:318:35
+    - VariableID:318:36
+    - VariableID:318:37
+    - VariableID:318:38
+    - VariableID:318:39
+    - VariableID:318:40
+    - VariableID:318:41
+    - VariableID:318:42
+    - VariableID:458:2688
+    - VariableID:318:43
+    - VariableID:318:44
+    - VariableID:318:45
+    - VariableID:318:46
+    - VariableID:318:47
+    - VariableID:318:48
+    - VariableID:318:49
+  - id: VariableCollectionId:318:50
+    name: Stroke 描边
+    modes:
+    - name: Mode 1
+      modeId: '318:2'
+    variableIds:
+    - VariableID:318:52
+    - VariableID:318:53
+    - VariableID:318:54
+    - VariableID:318:55
+  - id: VariableCollectionId:318:56
+    name: Opacity 透明度
+    modes:
+    - name: Mode 1
+      modeId: '318:3'
+    variableIds:
+    - VariableID:318:57
+    - VariableID:318:58
+    - VariableID:318:59
+    - VariableID:318:60
+    - VariableID:318:61
+    - VariableID:318:62
+    - VariableID:318:63
+  variables:
+  - id: VariableID:180:3371
+    name: Alpha 透明色/White 80
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 1
+        g: 1
+        b: 1
+        a: 0.800000011920929
+    scopes: []
+  - id: VariableID:574:3590
+    name: Green 绿色/10
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9803921580314636
+        g: 1
+        b: 0.9490196108818054
+        a: 1
+    scopes: []
+  - id: VariableID:308:2
+    name: Green 绿色/50
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9764705896377563
+        g: 0.9921568632125854
+        b: 0.9411764740943909
+        a: 1
+    scopes: []
+  - id: VariableID:308:3
+    name: Green 绿色/75
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9137254953384399
+        g: 0.9764705896377563
+        b: 0.8980392217636108
+        a: 1
+    scopes: []
+  - id: VariableID:308:4
+    name: Green 绿色/100
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.95686274766922
+        g: 0.9686274528503418
+        b: 0.9411764740943909
+        a: 1
+    scopes: []
+  - id: VariableID:308:5
+    name: Green 绿色/200
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9058823585510254
+        g: 0.9764705896377563
+        b: 0.7607843279838562
+        a: 1
+    scopes: []
+  - id: VariableID:308:6
+    name: Green 绿色/500
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.6039215922355652
+        g: 0.9019607901573181
+        b: 0
+        a: 1
+    scopes: []
+  - id: VariableID:308:7
+    name: Green 绿色/600
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.4588235318660736
+        g: 0.8078431487083435
+        b: 0
+        a: 1
+    scopes: []
+  - id: VariableID:308:8
+    name: Green 绿色/700
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.4117647111415863
+        g: 0.7254902124404907
+        b: 0
+        a: 1
+    scopes: []
+  - id: VariableID:308:9
+    name: Blue 蓝色/50
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.953782320022583
+        g: 0.9757907390594482
+        b: 1
+        a: 1
+    scopes: []
+  - id: VariableID:308:10
+    name: Blue 蓝色/100
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9333333373069763
+        g: 0.9607843160629272
+        b: 1
+        a: 1
+    scopes: []
+  - id: VariableID:308:11
+    name: Blue 蓝色/300
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.6196078658103943
+        g: 0.8078431487083435
+        b: 1
+        a: 1
+    scopes: []
+  - id: VariableID:454:2678
+    name: Yellow 黄色/10
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9882352948188782
+        g: 0.9882352948188782
+        b: 0.9450980424880981
+        a: 1
+    scopes: []
+  - id: VariableID:308:12
+    name: Blue 蓝色/500
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.29019609093666077
+        g: 0.5921568870544434
+        b: 1
+        a: 1
+    scopes: []
+  - id: VariableID:308:13
+    name: Yellow 黄色/50
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 1
+        g: 0.9647058844566345
+        b: 0.7843137383460999
+        a: 1
+    scopes: []
+  - id: VariableID:308:14
+    name: Yellow 黄色/500
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9960784316062927
+        g: 0.7882353067398071
+        b: 0.14509804546833038
+        a: 1
+    scopes: []
+  - id: VariableID:308:15
+    name: Yellow 黄色/600
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9960784316062927
+        g: 0.729411780834198
+        b: 0.054901961237192154
+        a: 1
+    scopes: []
+  - id: VariableID:308:16
+    name: Orange 橙色/50
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 1
+        g: 0.9686274528503418
+        b: 0.9411764740943909
+        a: 1
+    scopes: []
+  - id: VariableID:308:17
+    name: Orange 橙色/500
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9921568632125854
+        g: 0.6705882549285889
+        b: 0.0313725508749485
+        a: 1
+    scopes: []
+  - id: VariableID:454:2677
+    name: Red 红色/10
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 1
+        g: 0.9803921580314636
+        b: 0.9725490212440491
+        a: 1
+    scopes: []
+  - id: VariableID:308:18
+    name: Orange 橙色/600
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.929411768913269
+        g: 0.3019607961177826
+        b: 0.125490203499794
+        a: 1
+    scopes: []
+  - id: VariableID:308:19
+    name: Red 红色/50
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 1
+        g: 0.9254902005195618
+        b: 0.9411764740943909
+        a: 1
+    scopes: []
+  - id: VariableID:308:20
+    name: Red 红色/500
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 1
+        g: 0.29019609093666077
+        b: 0.4431372582912445
+        a: 1
+    scopes: []
+  - id: VariableID:308:22
+    name: Red 红色/700
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9058823585510254
+        g: 0.24705882370471954
+        b: 0.10588235408067703
+        a: 1
+    scopes: []
+  - id: VariableID:308:23
+    name: Gray 灰色/0
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 1
+        g: 1
+        b: 1
+        a: 1
+    scopes: []
+  - id: VariableID:308:24
+    name: Gray 灰色/50
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9686274528503418
+        g: 0.9686274528503418
+        b: 0.9686274528503418
+        a: 1
+    scopes: []
+  - id: VariableID:308:25
+    name: Gray 灰色/100
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9607843160629272
+        g: 0.9607843160629272
+        b: 0.9607843160629272
+        a: 1
+    scopes: []
+  - id: VariableID:308:26
+    name: Gray 灰色/150
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9411764740943909
+        g: 0.9411764740943909
+        b: 0.9411764740943909
+        a: 1
+    scopes: []
+  - id: VariableID:308:27
+    name: Gray 灰色/200
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9333333373069763
+        g: 0.9333333373069763
+        b: 0.9333333373069763
+        a: 1
+    scopes: []
+  - id: VariableID:308:28
+    name: Gray 灰色/300
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9019607901573181
+        g: 0.9019607901573181
+        b: 0.9019607901573181
+        a: 1
+    scopes: []
+  - id: VariableID:308:29
+    name: Gray 灰色/400
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.8509804010391235
+        g: 0.8509804010391235
+        b: 0.8509804010391235
+        a: 1
+    scopes: []
+  - id: VariableID:308:30
+    name: Gray 灰色/500
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.6627451181411743
+        g: 0.6627451181411743
+        b: 0.6627451181411743
+        a: 1
+    scopes: []
+  - id: VariableID:308:31
+    name: Gray 灰色/600
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.6000000238418579
+        g: 0.6000000238418579
+        b: 0.6000000238418579
+        a: 1
+    scopes: []
+  - id: VariableID:312:7
+    name: Gray 灰色/650
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.4117647111415863
+        g: 0.4117647111415863
+        b: 0.4117647111415863
+        a: 1
+    scopes: []
+  - id: VariableID:308:32
+    name: Gray 灰色/700
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.3607843220233917
+        g: 0.3607843220233917
+        b: 0.3607843220233917
+        a: 1
+    scopes: []
+  - id: VariableID:308:33
+    name: Gray 灰色/800
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.20000000298023224
+        g: 0.20000000298023224
+        b: 0.20000000298023224
+        a: 1
+    scopes: []
+  - id: VariableID:458:3338
+    name: Gray 灰色/850
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.16078431904315948
+        g: 0.16078431904315948
+        b: 0.16078431904315948
+        a: 1
+    scopes: []
+  - id: VariableID:458:3527
+    name: Gray 灰色/900
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.12156862765550613
+        g: 0.12156862765550613
+        b: 0.12156862765550613
+        a: 1
+    scopes: []
+  - id: VariableID:308:34
+    name: Gray 灰色/950
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.09019608050584793
+        g: 0.09019608050584793
+        b: 0.09019608050584793
+        a: 1
+    scopes: []
+  - id: VariableID:308:35
+    name: Gray 灰色/1000
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.07058823853731155
+        g: 0.07058823853731155
+        b: 0.07058823853731155
+        a: 1
+    scopes: []
+  - id: VariableID:312:2
+    name: Green 绿色/900
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.0941176488995552
+        g: 0.1411764770746231
+        b: 0.05098039284348488
+        a: 1
+    scopes: []
+  - id: VariableID:312:3
+    name: Green 绿色/950
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.0784313753247261
+        g: 0.12156862765550613
+        b: 0.03529411926865578
+        a: 1
+    scopes: []
+  - id: VariableID:312:4
+    name: Blue 蓝色/900
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.062745101749897
+        g: 0.125490203499794
+        b: 0.20000000298023224
+        a: 1
+    scopes: []
+  - id: VariableID:312:5
+    name: Yellow 黄色/900
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.16862745583057404
+        g: 0.13333334028720856
+        b: 0.0313725508749485
+        a: 1
+    scopes: []
+  - id: VariableID:312:6
+    name: Red 红色/900
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.16470588743686676
+        g: 0.07058823853731155
+        b: 0.0941176488995552
+        a: 1
+    scopes: []
+  - id: VariableID:498:3195
+    name: Orange 橙色/900
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.16862745583057404
+        g: 0.08627451211214066
+        b: 0.0313725508749485
+        a: 1
+    scopes: []
+  - id: VariableID:498:3196
+    name: Cyan 青色/50
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9254902005195618
+        g: 0.9843137264251709
+        b: 1
+        a: 1
+    scopes: []
+  - id: VariableID:498:3197
+    name: Cyan 青色/500
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.10980392247438431
+        g: 0.7803921699523926
+        b: 0.9098039269447327
+        a: 1
+    scopes: []
+  - id: VariableID:498:3198
+    name: Cyan 青色/900
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.0313725508749485
+        g: 0.1568627506494522
+        b: 0.20000000298023224
+        a: 1
+    scopes: []
+  - id: VariableID:498:3199
+    name: Purple 紫色/50
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.95686274766922
+        g: 0.9411764740943909
+        b: 1
+        a: 1
+    scopes: []
+  - id: VariableID:498:3200
+    name: Purple 紫色/500
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.545098066329956
+        g: 0.3607843220233917
+        b: 0.9647058844566345
+        a: 1
+    scopes: []
+  - id: VariableID:498:3201
+    name: Purple 紫色/900
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.12941177189350128
+        g: 0.0784313753247261
+        b: 0.239215686917305
+        a: 1
+    scopes: []
+  - id: VariableID:498:3202
+    name: Pink 粉色/50
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 1
+        g: 0.9411764740943909
+        b: 0.9686274528503418
+        a: 1
+    scopes: []
+  - id: VariableID:498:3203
+    name: Pink 粉色/500
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.95686274766922
+        g: 0.35686275362968445
+        b: 0.6039215922355652
+        a: 1
+    scopes: []
+  - id: VariableID:498:3204
+    name: Pink 粉色/900
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.2078431397676468
+        g: 0.07450980693101883
+        b: 0.13725490868091583
+        a: 1
+    scopes: []
+  - id: VariableID:574:3591
+    name: Blue 蓝色/10
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9725490212440491
+        g: 0.9843137264251709
+        b: 1
+        a: 1
+    scopes: []
+  - id: VariableID:574:3592
+    name: Blue 蓝色/950
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.027450980618596077
+        g: 0.0784313753247261
+        b: 0.12941177189350128
+        a: 1
+    scopes: []
+  - id: VariableID:574:3593
+    name: Yellow 黄色/950
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.12156862765550613
+        g: 0.09019608050584793
+        b: 0.0117647061124444
+        a: 1
+    scopes: []
+  - id: VariableID:574:3594
+    name: Red 红色/950
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.13333334028720856
+        g: 0.027450980618596077
+        b: 0.05098039284348488
+        a: 1
+    scopes: []
+  - id: VariableID:574:3595
+    name: Orange 橙色/10
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 1
+        g: 0.9803921580314636
+        b: 0.9647058844566345
+        a: 1
+    scopes: []
+  - id: VariableID:574:3596
+    name: Orange 橙色/950
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.12156862765550613
+        g: 0.0470588244497776
+        b: 0.0117647061124444
+        a: 1
+    scopes: []
+  - id: VariableID:574:3597
+    name: Cyan 青色/10
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9686274528503418
+        g: 0.9921568632125854
+        b: 1
+        a: 1
+    scopes: []
+  - id: VariableID:574:3598
+    name: Cyan 青色/950
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.0117647061124444
+        g: 0.07058823853731155
+        b: 0.10196078568696976
+        a: 1
+    scopes: []
+  - id: VariableID:574:3599
+    name: Purple 紫色/10
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.9803921580314636
+        g: 0.9725490212440491
+        b: 1
+        a: 1
+    scopes: []
+  - id: VariableID:574:3600
+    name: Purple 紫色/950
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.08627451211214066
+        g: 0.04313725605607033
+        b: 0.16078431904315948
+        a: 1
+    scopes: []
+  - id: VariableID:574:3601
+    name: Pink 粉色/10
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 1
+        g: 0.9725490212440491
+        b: 0.9843137264251709
+        a: 1
+    scopes: []
+  - id: VariableID:574:3602
+    name: Pink 粉色/950
+    type: COLOR
+    collection_id: VariableCollectionId:96:642
+    values_by_mode:
+      '96:0':
+        r: 0.14901961386203766
+        g: 0.027450980618596077
+        b: 0.08627451211214066
+        a: 1
+    scopes: []
+  - id: VariableID:180:3364
+    name: Text 文本/T1 主要
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:33
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:23
+    scopes:
+    - ALL_FILLS
+    - STROKE_COLOR
+  - id: VariableID:180:3365
+    name: Text 文本/T2 次要
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:32
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:30
+    scopes:
+    - ALL_FILLS
+    - STROKE_COLOR
+  - id: VariableID:180:3366
+    name: Text 文本/T3 辅助
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:31
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:312:7
+    scopes:
+    - ALL_FILLS
+    - STROKE_COLOR
+  - id: VariableID:180:3367
+    name: Text 文本/T4 压图
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:23
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:23
+    scopes:
+    - ALL_FILLS
+    - STROKE_COLOR
+  - id: VariableID:180:3372
+    name: Text 文本/T5 压图辅助
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:180:3371
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:180:3371
+    scopes:
+    - ALL_FILLS
+    - STROKE_COLOR
+  - id: VariableID:180:3519
+    name: Bg 背景/PageWhite 白底页面
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:23
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:34
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:180:3518
+    name: Bg 背景/PageGray 灰底页面
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:25
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:34
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:180:3521
+    name: Bg 背景/Block 内容块
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:24
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:458:3338
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:180:3523
+    name: Bg 背景/Card 卡片
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:23
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:458:3527
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:200:2350
+    name: Bg 背景/Audio 音频播放
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:34
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:33
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:215:4999
+    name: Bg 背景/Placeholder 占位
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:25
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:34
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:458:3532
+    name: Bg 背景/Tag_default 标签
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:24
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:32
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:458:3533
+    name: Bg 背景/Tag_img 压图标签
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        r: 0.6518742442131042
+        g: 0.6518742442131042
+        b: 0.6518742442131042
+        a: 0.4000000059604645
+      '180:2':
+        r: 0
+        g: 0
+        b: 0
+        a: 0.4000000059604645
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:180:3665
+    name: Line 线条/Border 描边
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:28
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:33
+    scopes:
+    - SHAPE_FILL
+    - STROKE_COLOR
+  - id: VariableID:180:3667
+    name: Line 线条/DividerThin 细分割线
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:26
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:458:3338
+    scopes:
+    - SHAPE_FILL
+    - STROKE_COLOR
+  - id: VariableID:180:3670
+    name: Line 线条/DividerStrong 强分割线
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:25
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:35
+    scopes:
+    - SHAPE_FILL
+    - STROKE_COLOR
+  - id: VariableID:180:3672
+    name: Line 线条/DividerVertical 竖线
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:30
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:32
+    scopes:
+    - SHAPE_FILL
+    - STROKE_COLOR
+  - id: VariableID:180:3773
+    name: Neutral 中性色/White 白色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:23
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:23
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+    - TEXT_FILL
+    - STROKE_COLOR
+  - id: VariableID:180:3775
+    name: Neutral 中性色/Black 黑色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:35
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:35
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+    - TEXT_FILL
+    - STROKE_COLOR
+  - id: VariableID:308:36
+    name: Brand 品牌/Primary 主色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:7
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:7
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+    - STROKE_COLOR
+  - id: VariableID:308:37
+    name: Brand 品牌/Text 品牌文字
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:7
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:7
+    scopes:
+    - TEXT_FILL
+  - id: VariableID:308:38
+    name: Brand 品牌/Bg 品牌背景
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:4
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:312:3
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:308:39
+    name: Brand 品牌/BgSoft 柔和背景
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:5
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:312:2
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:308:40
+    name: Status 状态/Text 成功
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:7
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:7
+    scopes:
+    - TEXT_FILL
+  - id: VariableID:308:41
+    name: Status 状态/Bg 成功
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:3
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:312:2
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:308:43
+    name: Status 状态/Text 信息
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:12
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:11
+    scopes:
+    - TEXT_FILL
+  - id: VariableID:308:44
+    name: Status 状态/Bg 信息
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:9
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:312:4
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:308:49
+    name: Status 状态/Text 警告
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:20
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:20
+    scopes:
+    - TEXT_FILL
+  - id: VariableID:308:50
+    name: Status 状态/Bg 警告
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:19
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:312:6
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:308:52
+    name: Status 状态/Text 置灰
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:30
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:31
+    scopes:
+    - TEXT_FILL
+  - id: VariableID:308:53
+    name: Status 状态/Bg 置灰
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:25
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:34
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:308:55
+    name: Status 状态/Bg 占位
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:25
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:34
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:433:2676
+    name: Overlay 遮罩/Black40 黑色40
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        r: 0
+        g: 0
+        b: 0
+        a: 0.4000000059604645
+      '180:2':
+        r: 0
+        g: 0
+        b: 0
+        a: 0.4000000059604645
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:445:2656
+    name: Accent 彩色/Green 绿色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:6
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:6
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+    - TEXT_FILL
+    - STROKE_COLOR
+  - id: VariableID:445:2657
+    name: Accent 彩色/Blue 蓝色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:12
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:12
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+    - TEXT_FILL
+    - STROKE_COLOR
+  - id: VariableID:445:2658
+    name: Accent 彩色/Yellow 黄色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:14
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:14
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+    - TEXT_FILL
+    - STROKE_COLOR
+  - id: VariableID:445:2659
+    name: Accent 彩色/Red 红色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:20
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:20
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+    - TEXT_FILL
+    - STROKE_COLOR
+  - id: VariableID:495:3195
+    name: Accent 彩色/GreenSoft 浅绿色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:3
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:312:2
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:570:8112
+    name: Accent 彩色/GreenTint 超浅绿色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3590
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:312:3
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:495:3196
+    name: Accent 彩色/BlueSoft 浅蓝色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:9
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:312:4
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:570:8113
+    name: Accent 彩色/BlueTint 超浅蓝色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3591
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3592
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:495:3197
+    name: Accent 彩色/YellowSoft 浅黄色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:13
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:312:5
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:570:8114
+    name: Accent 彩色/YellowTint 超浅黄色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:454:2678
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3593
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:495:3198
+    name: Accent 彩色/RedSoft 浅红色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:19
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:312:6
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:570:8115
+    name: Accent 彩色/RedSoftTint 超浅红色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:454:2677
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3594
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:498:3205
+    name: Accent 彩色/Orange 橙色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:17
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:17
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+    - TEXT_FILL
+    - STROKE_COLOR
+  - id: VariableID:498:3206
+    name: Accent 彩色/OrangeSoft 浅橙色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:308:16
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3195
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:570:8116
+    name: Accent 彩色/OrangeTint 超浅橙色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3595
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3596
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:498:3207
+    name: Accent 彩色/Cyan 青色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3197
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3197
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+    - TEXT_FILL
+    - STROKE_COLOR
+  - id: VariableID:498:3208
+    name: Accent 彩色/CyanSoft 浅青色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3196
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3198
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:570:8117
+    name: Accent 彩色/CyanTint 超浅青色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3597
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3598
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:498:3209
+    name: Accent 彩色/Purple 紫色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3200
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3200
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+    - TEXT_FILL
+    - STROKE_COLOR
+  - id: VariableID:498:3210
+    name: Accent 彩色/PurpleSoft 浅紫色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3199
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3201
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:570:8118
+    name: Accent 彩色/PurpleTint 超浅紫色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3599
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3600
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:498:3211
+    name: Accent 彩色/Pink 粉色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3203
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3203
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+    - TEXT_FILL
+    - STROKE_COLOR
+  - id: VariableID:498:3212
+    name: Accent 彩色/PinkSoft 浅粉色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3202
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:498:3204
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:570:8119
+    name: Accent 彩色/PinkTint 超浅粉色
+    type: COLOR
+    collection_id: VariableCollectionId:180:3363
+    values_by_mode:
+      '180:1':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3601
+      '180:2':
+        type: VARIABLE_ALIAS
+        id: VariableID:574:3602
+    scopes:
+    - FRAME_FILL
+    - SHAPE_FILL
+  - id: VariableID:306:2965
+    name: '4'
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2964
+    values_by_mode:
+      '306:0': 4
+    scopes:
+    - GAP
+  - id: VariableID:306:2969
+    name: '6'
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2964
+    values_by_mode:
+      '306:0': 6
+    scopes:
+    - GAP
+  - id: VariableID:306:2972
+    name: '8'
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2964
+    values_by_mode:
+      '306:0': 8
+    scopes:
+    - GAP
+  - id: VariableID:306:2975
+    name: '12'
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2964
+    values_by_mode:
+      '306:0': 12
+    scopes:
+    - GAP
+  - id: VariableID:306:2978
+    name: '16'
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2964
+    values_by_mode:
+      '306:0': 16
+    scopes:
+    - GAP
+  - id: VariableID:306:2981
+    name: '20'
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2964
+    values_by_mode:
+      '306:0': 20
+    scopes:
+    - GAP
+  - id: VariableID:306:2985
+    name: '24'
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2964
+    values_by_mode:
+      '306:0': 24
+    scopes:
+    - GAP
+  - id: VariableID:306:2990
+    name: '28'
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2964
+    values_by_mode:
+      '306:0': 28
+    scopes:
+    - GAP
+  - id: VariableID:458:4956
+    name: '40'
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2964
+    values_by_mode:
+      '306:0': 40
+    scopes:
+    - ALL_SCOPES
+  - id: VariableID:306:2992
+    name: 8 小圆角
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2991
+    values_by_mode:
+      '306:1': 8
+    scopes:
+    - CORNER_RADIUS
+  - id: VariableID:306:2993
+    name: 12 中圆角
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2991
+    values_by_mode:
+      '306:1': 12
+    scopes:
+    - CORNER_RADIUS
+  - id: VariableID:306:2998
+    name: 20 大圆角
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2991
+    values_by_mode:
+      '306:1': 20
+    scopes:
+    - CORNER_RADIUS
+  - id: VariableID:306:3000
+    name: 999 胶囊圆角
+    type: FLOAT
+    collection_id: VariableCollectionId:306:2991
+    values_by_mode:
+      '306:1': 999
+    scopes:
+    - CORNER_RADIUS
+  - id: VariableID:318:28
+    name: Global 全局/PageWidth 移动画板宽
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 390
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:29
+    name: Global 全局/PagePaddingX 页面左右边距
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 20
+    scopes:
+    - GAP
+  - id: VariableID:318:30
+    name: Global 全局/ContentWidth 主内容宽
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 350
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:31
+    name: Component 组件/StatusBar 状态栏/Height 高度
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 44
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:32
+    name: Component 组件/BottomTab 底部导航/Height 高度
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 80
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:33
+    name: Component 组件/AudioPlayer 音频条/Height 高度
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 52
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:34
+    name: Component 组件/IconButton 图标按钮/Size 尺寸
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 36
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:35
+    name: Global 全局/TouchTargetMin 最小点击热区
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 44
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:36
+    name: Icon 图标/16 小图标
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 16
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:37
+    name: Icon 图标/20 默认图标
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 20
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:38
+    name: Icon 图标/24 大图标
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 24
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:39
+    name: Icon 图标/32 插画图标
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 32
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:40
+    name: Avatar 头像/10 极小头像
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 10
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:41
+    name: Avatar 头像/14 小头像
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 14
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:42
+    name: Avatar 头像/26 中头像
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 26
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:458:2688
+    name: Avatar 头像/32 大头像
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 32
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:43
+    name: Avatar 头像/56 个人中心头像
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 56
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:44
+    name: Component 组件/Button 按钮/HeightSmall 小按钮高
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 32
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:45
+    name: Component 组件/Button 按钮/HeightDefault 默认按钮高
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 36
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:46
+    name: Component 组件/Button 按钮/HeightLarge 大按钮高
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 44
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:47
+    name: Component 组件/Button 按钮/HeightPrimary 主操作高
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 52
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:48
+    name: Component 组件/NewsCard 新闻卡片/Width 宽度
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 350
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:49
+    name: Component 组件/AudioPlayer 音频条/PlayButton 播放按钮
+    type: FLOAT
+    collection_id: VariableCollectionId:318:27
+    values_by_mode:
+      '318:1': 36
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:52
+    name: Border 边框/Hairline 极细 0_5
+    type: FLOAT
+    collection_id: VariableCollectionId:318:50
+    values_by_mode:
+      '318:2': 0.5
+    scopes:
+    - STROKE_FLOAT
+  - id: VariableID:318:53
+    name: Border 边框/Default 默认 1
+    type: FLOAT
+    collection_id: VariableCollectionId:318:50
+    values_by_mode:
+      '318:2': 1
+    scopes:
+    - STROKE_FLOAT
+  - id: VariableID:318:54
+    name: Divider 分割线/Thin 细
+    type: FLOAT
+    collection_id: VariableCollectionId:318:50
+    values_by_mode:
+      '318:2': 0.5
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:55
+    name: Divider 分割线/Strong 粗
+    type: FLOAT
+    collection_id: VariableCollectionId:318:50
+    values_by_mode:
+      '318:2': 8
+    scopes:
+    - WIDTH_HEIGHT
+  - id: VariableID:318:57
+    name: Disabled 禁用
+    type: FLOAT
+    collection_id: VariableCollectionId:318:56
+    values_by_mode:
+      '318:3': 40
+    scopes:
+    - OPACITY
+  - id: VariableID:318:58
+    name: Read 已读
+    type: FLOAT
+    collection_id: VariableCollectionId:318:56
+    values_by_mode:
+      '318:3': 64
+    scopes:
+    - OPACITY
+  - id: VariableID:318:59
+    name: Pressed 按下
+    type: FLOAT
+    collection_id: VariableCollectionId:318:56
+    values_by_mode:
+      '318:3': 72
+    scopes:
+    - OPACITY
+  - id: VariableID:318:60
+    name: Overlay 遮罩
+    type: FLOAT
+    collection_id: VariableCollectionId:318:56
+    values_by_mode:
+      '318:3': 60
+    scopes:
+    - OPACITY
+  - id: VariableID:318:61
+    name: ImageMask 图片蒙层
+    type: FLOAT
+    collection_id: VariableCollectionId:318:56
+    values_by_mode:
+      '318:3': 40
+    scopes:
+    - OPACITY
+  - id: VariableID:318:62
+    name: SkeletonLow 骨架浅
+    type: FLOAT
+    collection_id: VariableCollectionId:318:56
+    values_by_mode:
+      '318:3': 8
+    scopes:
+    - OPACITY
+  - id: VariableID:318:63
+    name: SkeletonHigh 骨架深
+    type: FLOAT
+    collection_id: VariableCollectionId:318:56
+    values_by_mode:
+      '318:3': 16
+    scopes:
+    - OPACITY
+  completeness: all local variables; all modes preserved; no Figma variable mutation

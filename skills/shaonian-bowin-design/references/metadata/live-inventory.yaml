@@ -1,0 +1,3110 @@
+verified_at: '2026-10-29'
+file_key: oULxBlEvFNkWGGVaJ0ClEz
+pages:
+- id: 66:4169
+  name: 一期  首页&个人中心
+- id: 4229:9258
+  name: '        ↳  tab1 少年报首页'
+- id: 4229:9516
+  name: '        ↳  tab1 少年报底层 一期'
+- id: 7323:2913
+  name: '               二期'
+- id: 4232:11310
+  name: '        ↳  tab3 个人中心'
+- id: 3649:6678
+  name: '        ↳  付费交互示意'
+- id: 2506:8128
+  name: '---'
+- id: 7620:14622
+  name: 00 场景索引
+  role: scene_navigation_only
+- id: 521:3674
+  name: 01 Foundations - Dividers
+- id: 521:3322
+  name: 02 Icons - SF Symbols
+- id: 521:3359
+  name: 03 Actions - Buttons
+- id: 570:8126
+  name: 04 Inputs - Comment
+- id: 554:4020
+  name: 05 Navigation - Headers
+- id: 521:3524
+  name: 06 Navigation - Bars
+- id: 554:4540
+  name: 07 Navigation - Tabs
+- id: 521:3299
+  name: 08 Data Display - Cards
+- id: 521:3377
+  name: 09 Data Display - Cells
+- id: 570:6196
+  name: 10 Data Display - Covers
+- id: 521:3670
+  name: 11 Data Display - Avatars
+- id: 554:4194
+  name: 12 Feedback - Empty States
+- id: 570:7229
+  name: 13 Overlays - Sheets & Pickers
+- id: 521:3672
+  name: 14 Media - Audio
+- id: 4531:8578
+  name: 15 Ip - Starbaby
+- id: 2506:7677
+  name: '---'
+- id: 411:2676
+  name: 16 Foundations - UI Kit
+- id: 401:2676
+  name: 17 References - Icon Candidates
+- id: 97:2582
+  name: 18 Assets - Image Source
+- id: 2570:6728
+  name: 19 motion
+- id: 4647:4381
+  name: '---'
+- id: 4608:4097
+  name: 界面生成方案
+- id: 5376:7923
+  name: 星星人生成方案
+- id: 5376:7924
+  name: 插图生成方案
+component_pages:
+- id: 521:3674
+  name: 01 Foundations - Dividers
+  components:
+  - id: 458:3953
+    name: Divider
+    type: COMPONENT_SET
+    parent_id: 521:3674
+    parent_name: 01 Foundations - Dividers
+  - id: 458:3950
+    name: Weight=Thin
+    type: COMPONENT
+    parent_id: 458:3953
+    parent_name: Divider
+  - id: 458:3954
+    name: Weight=Thick
+    type: COMPONENT
+    parent_id: 458:3953
+    parent_name: Divider
+- id: 521:3322
+  name: 02 Icons - SF Symbols
+  components:
+  - id: 557:5100
+    name: Icon 24
+    type: COMPONENT_SET
+    parent_id: 521:3322
+    parent_name: 02 Icons - SF Symbols
+  - id: 325:4731
+    name: Name=quote.opening.fill
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4733
+    name: Name=quote.closing.fill
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4770
+    name: Name=bubble
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4757
+    name: Name=paperplane
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 458:4919
+    name: Name=mappin
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4791
+    name: Name=mappin.fill
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4735
+    name: Name=chevron.left
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 2244:5859
+    name: Name=chevron.right
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4738
+    name: Name=chevron.down
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4762
+    name: Name=arrowshape.turn.up.right
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4753
+    name: Name=arrow.turn.up.left
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4760
+    name: Name=xmark
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4783
+    name: Name=ellipsis
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 458:2755
+    name: Name=play.fill
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 6319:3957
+    name: Name=Next
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 6319:3961
+    name: Name=previous
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 458:5076
+    name: Name=pause.fill
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4774
+    name: Name=speaker
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 458:4940
+    name: Name=speaker.fill
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4778
+    name: Name=speaker.wave.2
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4780
+    name: Name=speaker.wave.2.fill
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4764
+    name: Name=star
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4742
+    name: Name=star.fill.multicolor
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4767
+    name: Name=heart
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 458:3339
+    name: Name=heart.fill
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4740
+    name: Name=heart.fill.multicolor
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4785
+    name: Name=lightbulb
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 2073:5633
+    name: Name=Link
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: '5954:43'
+    name: Name=copy
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 2378:6640
+    name: Name=List
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 458:5070
+    name: Name=translate
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4744
+    name: Name=gearshape
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4789
+    name: Name=printer
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 325:4748
+    name: Name=tray.and.arrow.down
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 458:5086
+    name: Name=doc.arrow.down
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 458:5093
+    name: Name=doc.arrow.down.fill
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 570:7477
+    name: Name=check
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 5892:3916
+    name: Name=Uncheck
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 570:7476
+    name: Name=check.fill
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 2572:8771
+    name: Name=Mic
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 2572:8856
+    name: Name=Mic.fill
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 2607:9984
+    name: Name=Verified
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 5625:13875
+    name: Name=Edit
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: '7227:35'
+    name: Name=Flash-Linear
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: '7227:37'
+    name: Name=Refresh-Linear
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: '7227:39'
+    name: Name=Maximize
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: '7386:35'
+    name: Name=image
+    type: COMPONENT
+    parent_id: 557:5100
+    parent_name: Icon 24
+  - id: 557:5248
+    name: Icon 20
+    type: COMPONENT_SET
+    parent_id: 521:3322
+    parent_name: 02 Icons - SF Symbols
+  - id: 557:5249
+    name: Name=quote.opening.fill
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5251
+    name: Name=quote.closing.fill
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5253
+    name: Name=bubble
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5255
+    name: Name=paperplane
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5257
+    name: Name=mappin
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5259
+    name: Name=mappin.fill
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5262
+    name: Name=chevron.left
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5264
+    name: Name=chevron.down
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5266
+    name: Name=arrowshape.turn.up.right
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5268
+    name: Name=arrow.turn.up.left
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5270
+    name: Name=xmark
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5272
+    name: Name=ellipsis
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5274
+    name: Name=play.fill
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5277
+    name: Name=pause.fill
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5279
+    name: Name=speaker
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5281
+    name: Name=speaker.fill
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5283
+    name: Name=speaker.wave.2
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5285
+    name: Name=speaker.wave.2.fill
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5287
+    name: Name=star
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5289
+    name: Name=star.fill.multicolor
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5291
+    name: Name=heart
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5293
+    name: Name=heart.fill
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5295
+    name: Name=heart.fill.multicolor
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5297
+    name: Name=lightbulb
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5299
+    name: Name=translate
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5301
+    name: Name=gearshape
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5303
+    name: Name=printer
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5305
+    name: Name=tray.and.arrow.down
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5307
+    name: Name=doc.arrow.down
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5309
+    name: Name=doc.arrow.down.fill
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 570:7480
+    name: Name=check
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 5625:14137
+    name: Name=check.2
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 570:7491
+    name: Name=check.fill
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 2073:5696
+    name: Name=LInk
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 2244:6102
+    name: Name=chevron.right
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 2378:6888
+    name: Name=List
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 2572:9309
+    name: Name=mic
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 2572:9317
+    name: Name=mic.fill
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 2607:10152
+    name: Name=Verified
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 5625:14048
+    name: Name=Edit
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: '7386:37'
+    name: Name=copy
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: '7386:40'
+    name: Name=Next
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: '7386:42'
+    name: Name=previous
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: '7386:44'
+    name: Name=Flash-Linear
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: '7386:46'
+    name: Name=Refresh-Linear
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: '7386:48'
+    name: Name=Maximize
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: '7386:50'
+    name: Name=image
+    type: COMPONENT
+    parent_id: 557:5248
+    parent_name: Icon 20
+  - id: 557:5322
+    name: Icon 16
+    type: COMPONENT_SET
+    parent_id: 521:3322
+    parent_name: 02 Icons - SF Symbols
+  - id: 557:5323
+    name: Name=quote.opening.fill
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5325
+    name: Name=quote.closing.fill
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5327
+    name: Name=bubble
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5329
+    name: Name=paperplane
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5331
+    name: Name=mappin
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5333
+    name: Name=mappin.fill
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5336
+    name: Name=chevron.left
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 2244:6105
+    name: Name=chevron.right
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5338
+    name: Name=chevron.down
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5340
+    name: Name=arrowshape.turn.up.right
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5342
+    name: Name=arrow.turn.up.left
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5344
+    name: Name=xmark
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5346
+    name: Name=ellipsis
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5348
+    name: Name=play.fill
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5351
+    name: Name=pause.fill
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5353
+    name: Name=speaker
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5355
+    name: Name=speaker.fill
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5357
+    name: Name=speaker.wave.2
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5359
+    name: Name=speaker.wave.2.fill
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5361
+    name: Name=star
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5363
+    name: Name=star.fill.multicolor
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5365
+    name: Name=heart
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5367
+    name: Name=heart.fill
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5369
+    name: Name=heart.fill.multicolor
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5371
+    name: Name=lightbulb
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5373
+    name: Name=translate
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5375
+    name: Name=gearshape
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5377
+    name: Name=printer
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5379
+    name: Name=tray.and.arrow.down
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5381
+    name: Name=doc.arrow.down
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 557:5383
+    name: Name=doc.arrow.down.fill
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 570:7495
+    name: Name=check
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 570:7498
+    name: Name=check.fill
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 2073:5699
+    name: Name=Link
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 2378:6922
+    name: Name=List
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 2572:9313
+    name: Name=mic
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 2572:9320
+    name: Name=mic.fill
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 2607:10155
+    name: Name=Verified
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 5625:14056
+    name: Name=Edit
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: '7386:52'
+    name: Name=copy
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: '7386:55'
+    name: Name=Next
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: '7386:57'
+    name: Name=previous
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: '7386:59'
+    name: Name=Flash-Linear
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 7386:61
+    name: Name=Refresh-Linear
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 7386:63
+    name: Name=Maximize
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 7386:65
+    name: Name=image
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+  - id: 7386:67
+    name: Name=Uncheck
+    type: COMPONENT
+    parent_id: 557:5322
+    parent_name: Icon 16
+- id: 521:3359
+  name: 03 Actions - Buttons
+  components:
+  - id: 96:1115
+    name: Button
+    type: COMPONENT_SET
+    parent_id: 521:3359
+    parent_name: 03 Actions - Buttons
+  - id: 96:898
+    name: Tone=Primary, Size=M, Content=Text
+    type: COMPONENT
+    parent_id: 96:1115
+    parent_name: Button
+  - id: 97:1973
+    name: Tone=Primary, Size=L, Content=Text
+    type: COMPONENT
+    parent_id: 96:1115
+    parent_name: Button
+  - id: 96:912
+    name: Tone=Primary, Size=M, Content=IconText
+    type: COMPONENT
+    parent_id: 96:1115
+    parent_name: Button
+  - id: 97:1978
+    name: Tone=Primary, Size=L, Content=IconText
+    type: COMPONENT
+    parent_id: 96:1115
+    parent_name: Button
+  - id: 96:1095
+    name: Tone=Secondary, Size=M, Content=Text
+    type: COMPONENT
+    parent_id: 96:1115
+    parent_name: Button
+  - id: 97:1981
+    name: Tone=Secondary, Size=L, Content=Text
+    type: COMPONENT
+    parent_id: 96:1115
+    parent_name: Button
+  - id: 96:1097
+    name: Tone=Secondary, Size=M, Content=IconText
+    type: COMPONENT
+    parent_id: 96:1115
+    parent_name: Button
+  - id: 97:1975
+    name: Tone=Secondary, Size=L, Content=IconText
+    type: COMPONENT
+    parent_id: 96:1115
+    parent_name: Button
+  - id: 557:4982
+    name: Icon Button
+    type: COMPONENT_SET
+    parent_id: 521:3359
+    parent_name: 03 Actions - Buttons
+  - id: 557:4981
+    name: Style=SolidIconButton
+    type: COMPONENT
+    parent_id: 557:4982
+    parent_name: Icon Button
+  - id: 557:4986
+    name: Style=OutlinedIconButton
+    type: COMPONENT
+    parent_id: 557:4982
+    parent_name: Icon Button
+  - id: 557:5235
+    name: Style=SendButton
+    type: COMPONENT
+    parent_id: 557:4982
+    parent_name: Icon Button
+  - id: 557:4983
+    name: Style=FloatingIconButton
+    type: COMPONENT
+    parent_id: 557:4982
+    parent_name: Icon Button
+  - id: 629:5486
+    name: Count Button
+    type: COMPONENT_SET
+    parent_id: 521:3359
+    parent_name: 03 Actions - Buttons
+  - id: 629:5358
+    name: Progress=1
+    type: COMPONENT
+    parent_id: 629:5486
+    parent_name: Count Button
+  - id: 629:5485
+    name: Progress=2
+    type: COMPONENT
+    parent_id: 629:5486
+    parent_name: Count Button
+  - id: 629:5484
+    name: Progress=3
+    type: COMPONENT
+    parent_id: 629:5486
+    parent_name: Count Button
+  - id: 629:5483
+    name: Progress=4
+    type: COMPONENT
+    parent_id: 629:5486
+    parent_name: Count Button
+  - id: 629:5481
+    name: Progress=5
+    type: COMPONENT
+    parent_id: 629:5486
+    parent_name: Count Button
+  - id: 629:5480
+    name: Progress=6
+    type: COMPONENT
+    parent_id: 629:5486
+    parent_name: Count Button
+  - id: 629:5482
+    name: Progress=7
+    type: COMPONENT
+    parent_id: 629:5486
+    parent_name: Count Button
+  - id: 629:5479
+    name: Progress=8
+    type: COMPONENT
+    parent_id: 629:5486
+    parent_name: Count Button
+  - id: 629:5477
+    name: Progress=9
+    type: COMPONENT
+    parent_id: 629:5486
+    parent_name: Count Button
+  - id: 629:5478
+    name: Progress=10
+    type: COMPONENT
+    parent_id: 629:5486
+    parent_name: Count Button
+  - id: 2055:106
+    name: App Button
+    type: COMPONENT_SET
+    parent_id: 521:3359
+    parent_name: 03 Actions - Buttons
+  - id: 2028:4758
+    name: Tone=Primary, Size=S, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4763
+    name: Tone=Primary, Size=S, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4768
+    name: Tone=Primary, Size=S, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4773
+    name: Tone=Primary, Size=S, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4778
+    name: Tone=Primary, Size=S, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4783
+    name: Tone=Primary, Size=S, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4788
+    name: Tone=Primary, Size=S, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4793
+    name: Tone=Primary, Size=S, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4798
+    name: Tone=Primary, Size=S, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4803
+    name: Tone=Primary, Size=L, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4808
+    name: Tone=Primary, Size=L, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4813
+    name: Tone=Primary, Size=L, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4818
+    name: Tone=Primary, Size=L, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4823
+    name: Tone=Primary, Size=L, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4828
+    name: Tone=Primary, Size=L, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4833
+    name: Tone=Primary, Size=L, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4838
+    name: Tone=Primary, Size=L, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4843
+    name: Tone=Primary, Size=L, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4846
+    name: Tone=Primary, Size=XL, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4849
+    name: Tone=Primary, Size=XL, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4852
+    name: Tone=Primary, Size=XL, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4857
+    name: Tone=Primary, Size=XL, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4862
+    name: Tone=Primary, Size=XL, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4867
+    name: Tone=Primary, Size=XL, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4872
+    name: Tone=Primary, Size=XL, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4877
+    name: Tone=Primary, Size=XL, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4882
+    name: Tone=Primary, Size=XL, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4887
+    name: Tone=Secondary, Size=S, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4892
+    name: Tone=Secondary, Size=S, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4897
+    name: Tone=Secondary, Size=S, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4902
+    name: Tone=Secondary, Size=S, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4907
+    name: Tone=Secondary, Size=S, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4912
+    name: Tone=Secondary, Size=S, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4917
+    name: Tone=Secondary, Size=S, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4922
+    name: Tone=Secondary, Size=S, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4927
+    name: Tone=Secondary, Size=S, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4932
+    name: Tone=Secondary, Size=L, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4937
+    name: Tone=Secondary, Size=L, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4942
+    name: Tone=Secondary, Size=L, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4947
+    name: Tone=Secondary, Size=L, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4952
+    name: Tone=Secondary, Size=L, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4957
+    name: Tone=Secondary, Size=L, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4962
+    name: Tone=Secondary, Size=L, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4967
+    name: Tone=Secondary, Size=L, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4972
+    name: Tone=Secondary, Size=L, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4975
+    name: Tone=Secondary, Size=XL, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4978
+    name: Tone=Secondary, Size=XL, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4981
+    name: Tone=Secondary, Size=XL, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4986
+    name: Tone=Secondary, Size=XL, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4991
+    name: Tone=Secondary, Size=XL, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:4996
+    name: Tone=Secondary, Size=XL, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5001
+    name: Tone=Secondary, Size=XL, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5006
+    name: Tone=Secondary, Size=XL, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5011
+    name: Tone=Secondary, Size=XL, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5016
+    name: Tone=Neutral, Size=S, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5021
+    name: Tone=Neutral, Size=S, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5026
+    name: Tone=Neutral, Size=S, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5031
+    name: Tone=Neutral, Size=S, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5036
+    name: Tone=Neutral, Size=S, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5041
+    name: Tone=Neutral, Size=S, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5046
+    name: Tone=Neutral, Size=S, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5051
+    name: Tone=Neutral, Size=S, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5056
+    name: Tone=Neutral, Size=S, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5061
+    name: Tone=Neutral, Size=L, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5066
+    name: Tone=Neutral, Size=L, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5071
+    name: Tone=Neutral, Size=L, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5076
+    name: Tone=Neutral, Size=L, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5081
+    name: Tone=Neutral, Size=L, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5086
+    name: Tone=Neutral, Size=L, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5091
+    name: Tone=Neutral, Size=L, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5096
+    name: Tone=Neutral, Size=L, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5101
+    name: Tone=Neutral, Size=L, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5104
+    name: Tone=Neutral, Size=XL, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5107
+    name: Tone=Neutral, Size=XL, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5110
+    name: Tone=Neutral, Size=XL, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5115
+    name: Tone=Neutral, Size=XL, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5120
+    name: Tone=Neutral, Size=XL, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5125
+    name: Tone=Neutral, Size=XL, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5130
+    name: Tone=Neutral, Size=XL, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5135
+    name: Tone=Neutral, Size=XL, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5140
+    name: Tone=Neutral, Size=XL, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5145
+    name: Tone=Danger, Size=S, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5150
+    name: Tone=Danger, Size=S, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5155
+    name: Tone=Danger, Size=S, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5160
+    name: Tone=Danger, Size=S, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5165
+    name: Tone=Danger, Size=S, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5170
+    name: Tone=Danger, Size=S, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5175
+    name: Tone=Danger, Size=S, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5180
+    name: Tone=Danger, Size=S, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5185
+    name: Tone=Danger, Size=S, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5190
+    name: Tone=Danger, Size=L, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5195
+    name: Tone=Danger, Size=L, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5200
+    name: Tone=Danger, Size=L, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5205
+    name: Tone=Danger, Size=L, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5210
+    name: Tone=Danger, Size=L, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5215
+    name: Tone=Danger, Size=L, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5220
+    name: Tone=Danger, Size=L, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5225
+    name: Tone=Danger, Size=L, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5230
+    name: Tone=Danger, Size=L, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5233
+    name: Tone=Danger, Size=XL, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5236
+    name: Tone=Danger, Size=XL, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5239
+    name: Tone=Danger, Size=XL, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5244
+    name: Tone=Danger, Size=XL, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5249
+    name: Tone=Danger, Size=XL, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5254
+    name: Tone=Danger, Size=XL, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5259
+    name: Tone=Danger, Size=XL, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5264
+    name: Tone=Danger, Size=XL, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2028:5269
+    name: Tone=Danger, Size=XL, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:82
+    name: Tone=Primary, Size=M, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:84
+    name: Tone=Primary, Size=M, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:86
+    name: Tone=Primary, Size=M, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:88
+    name: Tone=Primary, Size=M, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:91
+    name: Tone=Primary, Size=M, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:94
+    name: Tone=Primary, Size=M, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:97
+    name: Tone=Primary, Size=M, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:99
+    name: Tone=Primary, Size=M, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:101
+    name: Tone=Primary, Size=M, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:103
+    name: Tone=Secondary, Size=M, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:105
+    name: Tone=Secondary, Size=M, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:107
+    name: Tone=Secondary, Size=M, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:109
+    name: Tone=Secondary, Size=M, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:112
+    name: Tone=Secondary, Size=M, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:115
+    name: Tone=Secondary, Size=M, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:118
+    name: Tone=Secondary, Size=M, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:120
+    name: Tone=Secondary, Size=M, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:122
+    name: Tone=Secondary, Size=M, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:124
+    name: Tone=Neutral, Size=M, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:126
+    name: Tone=Neutral, Size=M, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:128
+    name: Tone=Neutral, Size=M, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:130
+    name: Tone=Neutral, Size=M, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:133
+    name: Tone=Neutral, Size=M, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:136
+    name: Tone=Neutral, Size=M, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:139
+    name: Tone=Neutral, Size=M, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:141
+    name: Tone=Neutral, Size=M, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:143
+    name: Tone=Neutral, Size=M, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:145
+    name: Tone=Danger, Size=M, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:147
+    name: Tone=Danger, Size=M, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:149
+    name: Tone=Danger, Size=M, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:151
+    name: Tone=Danger, Size=M, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:154
+    name: Tone=Danger, Size=M, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:157
+    name: Tone=Danger, Size=M, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:160
+    name: Tone=Danger, Size=M, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:162
+    name: Tone=Danger, Size=M, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2051:164
+    name: Tone=Danger, Size=M, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2422:5430
+    name: Tone=AccentOutline, Size=M, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4628
+    name: Tone=AccentOutline, Size=S, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4667
+    name: Tone=AccentOutline, Size=S, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4692
+    name: Tone=AccentOutline, Size=S, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4706
+    name: Tone=AccentOutline, Size=S, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4711
+    name: Tone=AccentOutline, Size=S, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4717
+    name: Tone=AccentOutline, Size=S, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4723
+    name: Tone=AccentOutline, Size=S, Content=IconRight, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4729
+    name: Tone=AccentOutline, Size=S, Content=IconRight, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4735
+    name: Tone=AccentOutline, Size=S, Content=IconRight, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4741
+    name: Tone=AccentOutline, Size=S, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4746
+    name: Tone=AccentOutline, Size=S, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4751
+    name: Tone=AccentOutline, Size=S, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4756
+    name: Tone=AccentOutline, Size=M, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4759
+    name: Tone=AccentOutline, Size=M, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4761
+    name: Tone=AccentOutline, Size=M, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4763
+    name: Tone=AccentOutline, Size=M, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4768
+    name: Tone=AccentOutline, Size=M, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4774
+    name: Tone=AccentOutline, Size=M, Content=IconRight, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4780
+    name: Tone=AccentOutline, Size=M, Content=IconRight, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4786
+    name: Tone=AccentOutline, Size=M, Content=IconRight, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4792
+    name: Tone=AccentOutline, Size=M, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4797
+    name: Tone=AccentOutline, Size=M, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4802
+    name: Tone=AccentOutline, Size=M, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4807
+    name: Tone=AccentOutline, Size=L, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4810
+    name: Tone=AccentOutline, Size=L, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4812
+    name: Tone=AccentOutline, Size=L, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4814
+    name: Tone=AccentOutline, Size=L, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4819
+    name: Tone=AccentOutline, Size=L, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4825
+    name: Tone=AccentOutline, Size=L, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4831
+    name: Tone=AccentOutline, Size=L, Content=IconRight, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4837
+    name: Tone=AccentOutline, Size=L, Content=IconRight, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4843
+    name: Tone=AccentOutline, Size=L, Content=IconRight, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4849
+    name: Tone=AccentOutline, Size=L, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4854
+    name: Tone=AccentOutline, Size=L, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4859
+    name: Tone=AccentOutline, Size=L, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4864
+    name: Tone=AccentOutline, Size=XL, Content=Text, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4867
+    name: Tone=AccentOutline, Size=XL, Content=Text, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4869
+    name: Tone=AccentOutline, Size=XL, Content=Text, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4871
+    name: Tone=AccentOutline, Size=XL, Content=IconText, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4876
+    name: Tone=AccentOutline, Size=XL, Content=IconText, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4882
+    name: Tone=AccentOutline, Size=XL, Content=IconText, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4888
+    name: Tone=AccentOutline, Size=XL, Content=IconRight, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4894
+    name: Tone=AccentOutline, Size=XL, Content=IconRight, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4900
+    name: Tone=AccentOutline, Size=XL, Content=IconRight, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4906
+    name: Tone=AccentOutline, Size=XL, Content=IconOnly, State=Default
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4911
+    name: Tone=AccentOutline, Size=XL, Content=IconOnly, State=Pressed
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2439:4916
+    name: Tone=AccentOutline, Size=XL, Content=IconOnly, State=Disabled
+    type: COMPONENT
+    parent_id: 2055:106
+    parent_name: App Button
+  - id: 2387:4731
+    name: Plus Badge
+    type: COMPONENT_SET
+    parent_id: 521:3359
+    parent_name: 03 Actions - Buttons
+  - id: 2387:4725
+    name: Context=Corner, Size=XS
+    type: COMPONENT
+    parent_id: 2387:4731
+    parent_name: Plus Badge
+  - id: 2387:4727
+    name: Context=Inline, Size=S
+    type: COMPONENT
+    parent_id: 2387:4731
+    parent_name: Plus Badge
+  - id: 2387:4729
+    name: Context=Inline, Size=XS
+    type: COMPONENT
+    parent_id: 2387:4731
+    parent_name: Plus Badge
+  - id: 7560:3385
+    name: Word Token Button
+    type: COMPONENT_SET
+    parent_id: 521:3359
+    parent_name: 03 Actions - Buttons
+  - id: 7560:3379
+    name: State=Neutral
+    type: COMPONENT
+    parent_id: 7560:3385
+    parent_name: Word Token Button
+  - id: 7560:3381
+    name: State=Correct
+    type: COMPONENT
+    parent_id: 7560:3385
+    parent_name: Word Token Button
+  - id: 7560:3383
+    name: State=Incorrect
+    type: COMPONENT
+    parent_id: 7560:3385
+    parent_name: Word Token Button
+- id: 570:8126
+  name: 04 Inputs - Comment
+  components:
+  - id: 570:8154
+    name: Comment Input
+    type: COMPONENT_SET
+    parent_id: 570:8126
+    parent_name: 04 Inputs - Comment
+  - id: 570:8153
+    name: State=Expanded
+    type: COMPONENT
+    parent_id: 570:8154
+    parent_name: Comment Input
+  - id: 570:8152
+    name: State=Default
+    type: COMPONENT
+    parent_id: 570:8154
+    parent_name: Comment Input
+  - id: 570:8215
+    name: Comment Input Trigger
+    type: COMPONENT
+    parent_id: 570:8126
+    parent_name: 04 Inputs - Comment
+  - id: 7596:9994
+    name: Profile Text Input
+    type: COMPONENT_SET
+    parent_id: 570:8126
+    parent_name: 04 Inputs - Comment
+  - id: 7596:9986
+    name: Type=Phone, State=Empty
+    type: COMPONENT
+    parent_id: 7596:9994
+    parent_name: Profile Text Input
+  - id: 7596:9989
+    name: Type=Phone, State=Filled
+    type: COMPONENT
+    parent_id: 7596:9994
+    parent_name: Profile Text Input
+  - id: 7596:9993
+    name: Type=Nickname, State=Filled
+    type: COMPONENT
+    parent_id: 7596:9994
+    parent_name: Profile Text Input
+  - id: 7596:10011
+    name: Verification Digit
+    type: COMPONENT_SET
+    parent_id: 570:8126
+    parent_name: 04 Inputs - Comment
+  - id: 7596:10004
+    name: State=Filled
+    type: COMPONENT
+    parent_id: 7596:10011
+    parent_name: Verification Digit
+  - id: 7596:10006
+    name: State=Empty
+    type: COMPONENT
+    parent_id: 7596:10011
+    parent_name: Verification Digit
+  - id: 7596:10010
+    name: State=Error
+    type: COMPONENT
+    parent_id: 7596:10011
+    parent_name: Verification Digit
+  - id: 7596:10129
+    name: Verification Code Input
+    type: COMPONENT_SET
+    parent_id: 570:8126
+    parent_name: 04 Inputs - Comment
+  - id: 7596:10061
+    name: State=Partial
+    type: COMPONENT
+    parent_id: 7596:10129
+    parent_name: Verification Code Input
+  - id: 7596:10088
+    name: State=Complete
+    type: COMPONENT
+    parent_id: 7596:10129
+    parent_name: Verification Code Input
+  - id: 7596:10115
+    name: State=Error
+    type: COMPONENT
+    parent_id: 7596:10129
+    parent_name: Verification Code Input
+- id: 554:4020
+  name: 05 Navigation - Headers
+  components:
+  - id: 94:1226
+    name: Section Title
+    type: COMPONENT
+    parent_id: 554:4020
+    parent_name: 05 Navigation - Headers
+  - id: 557:5165
+    name: Navigation Bar
+    type: COMPONENT_SET
+    parent_id: 554:4020
+    parent_name: 05 Navigation - Headers
+  - id: 557:4896
+    name: Type=Type1
+    type: COMPONENT
+    parent_id: 557:5165
+    parent_name: Navigation Bar
+  - id: 557:5166
+    name: Type=Type2
+    type: COMPONENT
+    parent_id: 557:5165
+    parent_name: Navigation Bar
+  - id: 7061:6532
+    name: Type=Type3
+    type: COMPONENT
+    parent_id: 557:5165
+    parent_name: Navigation Bar
+  - id: 7061:6553
+    name: Type=Type4
+    type: COMPONENT
+    parent_id: 557:5165
+    parent_name: Navigation Bar
+  - id: 570:6879
+    name: Home Header Bar
+    type: COMPONENT_SET
+    parent_id: 554:4020
+    parent_name: 05 Navigation - Headers
+  - id: 554:4019
+    name: State=Default
+    type: COMPONENT
+    parent_id: 570:6879
+    parent_name: Home Header Bar
+  - id: 4857:24122
+    name: State=State3
+    type: COMPONENT
+    parent_id: 570:6879
+    parent_name: Home Header Bar
+  - id: 570:6880
+    name: State=backtoday
+    type: COMPONENT
+    parent_id: 570:6879
+    parent_name: Home Header Bar
+  - id: 7593:8302
+    name: Profile Identity Header
+    type: COMPONENT_SET
+    parent_id: 554:4020
+    parent_name: 05 Navigation - Headers
+  - id: 7593:8271
+    name: Type=Regular
+    type: COMPONENT
+    parent_id: 7593:8302
+    parent_name: Profile Identity Header
+  - id: 7593:8291
+    name: Type=VIP
+    type: COMPONENT
+    parent_id: 7593:8302
+    parent_name: Profile Identity Header
+  - id: 7593:8301
+    name: Type=Editable
+    type: COMPONENT
+    parent_id: 7593:8302
+    parent_name: Profile Identity Header
+  - id: 7598:13702
+    name: Type=Compact
+    type: COMPONENT
+    parent_id: 7593:8302
+    parent_name: Profile Identity Header
+  - id: 7598:13640
+    name: Profile Login Prompt
+    type: COMPONENT_SET
+    parent_id: 554:4020
+    parent_name: 05 Navigation - Headers
+  - id: 7598:13631
+    name: Type=Social
+    type: COMPONENT
+    parent_id: 7598:13640
+    parent_name: Profile Login Prompt
+  - id: 7598:13639
+    name: Type=Action
+    type: COMPONENT
+    parent_id: 7598:13640
+    parent_name: Profile Login Prompt
+- id: 521:3524
+  name: 06 Navigation - Bars
+  components:
+  - id: 96:543
+    name: Tab Bar
+    type: COMPONENT_SET
+    parent_id: 521:3524
+    parent_name: 06 Navigation - Bars
+  - id: 66:4630
+    name: Active=Brief
+    type: COMPONENT
+    parent_id: 96:543
+    parent_name: Tab Bar
+  - id: 458:2764
+    name: Active=Mine
+    type: COMPONENT
+    parent_id: 96:543
+    parent_name: Tab Bar
+  - id: 4389:11236
+    name: Detail Action Bar
+    type: COMPONENT_SET
+    parent_id: 521:3524
+    parent_name: 06 Navigation - Bars
+  - id: 96:541
+    name: 喜欢=False, 收藏=False
+    type: COMPONENT
+    parent_id: 4389:11236
+    parent_name: Detail Action Bar
+  - id: 505:3211
+    name: 喜欢=True, 收藏=False
+    type: COMPONENT
+    parent_id: 4389:11236
+    parent_name: Detail Action Bar
+  - id: 505:3229
+    name: 喜欢=False, 收藏=True
+    type: COMPONENT
+    parent_id: 4389:11236
+    parent_name: Detail Action Bar
+  - id: 505:3248
+    name: 喜欢=True, 收藏=True
+    type: COMPONENT
+    parent_id: 4389:11236
+    parent_name: Detail Action Bar
+  - id: 516:3258
+    name: Bottom Bar
+    type: COMPONENT
+    parent_id: 521:3524
+    parent_name: 06 Navigation - Bars
+- id: 554:4540
+  name: 07 Navigation - Tabs
+  components:
+  - id: 66:6081
+    name: Function Tab
+    type: COMPONENT_SET
+    parent_id: 554:4540
+    parent_name: 07 Navigation - Tabs
+  - id: 66:3149
+    name: Layout=竖向
+    type: COMPONENT
+    parent_id: 66:6081
+    parent_name: Function Tab
+  - id: 66:6080
+    name: Layout=横向
+    type: COMPONENT
+    parent_id: 66:6081
+    parent_name: Function Tab
+  - id: 94:828
+    name: Layout=横向2
+    type: COMPONENT
+    parent_id: 66:6081
+    parent_name: Function Tab
+  - id: 94:839
+    name: Layout=横向3
+    type: COMPONENT
+    parent_id: 66:6081
+    parent_name: Function Tab
+  - id: 7495:3884
+    name: Layout=Illustrated
+    type: COMPONENT
+    parent_id: 66:6081
+    parent_name: Function Tab
+  - id: 7593:8005
+    name: Layout=Profile, State=Default
+    type: COMPONENT
+    parent_id: 66:6081
+    parent_name: Function Tab
+  - id: 7593:8023
+    name: Layout=Profile, State=Selected
+    type: COMPONENT
+    parent_id: 66:6081
+    parent_name: Function Tab
+  - id: 7593:8064
+    name: Profile Content Tabs
+    type: COMPONENT_SET
+    parent_id: 554:4540
+    parent_name: 07 Navigation - Tabs
+  - id: 7593:8033
+    name: Active=History
+    type: COMPONENT
+    parent_id: 7593:8064
+    parent_name: Profile Content Tabs
+  - id: 7593:8043
+    name: Active=Comments
+    type: COMPONENT
+    parent_id: 7593:8064
+    parent_name: Profile Content Tabs
+  - id: 7593:8053
+    name: Active=Likes
+    type: COMPONENT
+    parent_id: 7593:8064
+    parent_name: Profile Content Tabs
+  - id: 7593:8063
+    name: Active=Favorites
+    type: COMPONENT
+    parent_id: 7593:8064
+    parent_name: Profile Content Tabs
+- id: 521:3299
+  name: 08 Data Display - Cards
+  components:
+  - id: 557:4875
+    name: Impact Card
+    type: COMPONENT
+    parent_id: 521:3299
+    parent_name: 08 Data Display - Cards
+  - id: '4384:9'
+    name: News Card
+    type: COMPONENT_SET
+    parent_id: 521:3299
+    parent_name: 08 Data Display - Cards
+  - id: 272:2723
+    name: Property 1=News, Property 2=Loading
+    type: COMPONENT
+    parent_id: '4384:9'
+    parent_name: News Card
+  - id: 2518:8436
+    name: Property 1=News, Property 2=Default
+    type: COMPONENT
+    parent_id: '4384:9'
+    parent_name: News Card
+  - id: 5074:5802
+    name: Learning Module Card
+    type: COMPONENT_SET
+    parent_id: 521:3299
+    parent_name: 08 Data Display - Cards
+  - id: 4898:15483
+    name: Type=Question
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 4941:5701
+    name: Type=Summary
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7504:3081
+    name: Type=SingleChoice, State=Unanswered
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7504:3110
+    name: Type=SingleChoice, State=Correct
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7504:3139
+    name: Type=SingleChoice, State=Incorrect
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7560:3386
+    name: Type=WordAssembly, State=Empty
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7560:3435
+    name: Type=WordAssembly, State=Composing
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7560:3482
+    name: Type=WordAssembly, State=Correct
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7560:3533
+    name: Type=WordAssembly, State=Incorrect
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7568:4249
+    name: Type=VocabularyChoice, State=Unanswered
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7568:4295
+    name: Type=VocabularyChoice, State=Correct
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7568:4341
+    name: Type=VocabularyChoice, State=Incorrect
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7585:144
+    name: Type=ReadingChoice, State=Unanswered
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7585:159
+    name: Type=ReadingChoice, State=Correct
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7585:177
+    name: Type=ReadingChoice, State=Incorrect
+    type: COMPONENT
+    parent_id: 5074:5802
+    parent_name: Learning Module Card
+  - id: 7512:4215
+    name: Opinion Vote Panel
+    type: COMPONENT_SET
+    parent_id: 521:3299
+    parent_name: 08 Data Display - Cards
+  - id: 7512:4161
+    name: State=Unvoted
+    type: COMPONENT
+    parent_id: 7512:4215
+    parent_name: Opinion Vote Panel
+  - id: 7512:4177
+    name: State=VotedFor
+    type: COMPONENT
+    parent_id: 7512:4215
+    parent_name: Opinion Vote Panel
+  - id: 7512:4195
+    name: State=VotedAgainst
+    type: COMPONENT
+    parent_id: 7512:4215
+    parent_name: Opinion Vote Panel
+  - id: 7579:4721
+    name: Learning Guide Card
+    type: COMPONENT_SET
+    parent_id: 521:3299
+    parent_name: 08 Data Display - Cards
+  - id: 7579:4673
+    name: Tone=Guide, Layout=Expanded
+    type: COMPONENT
+    parent_id: 7579:4721
+    parent_name: Learning Guide Card
+  - id: 7579:4681
+    name: Tone=Success, Layout=Compact
+    type: COMPONENT
+    parent_id: 7579:4721
+    parent_name: Learning Guide Card
+  - id: 7579:4691
+    name: Tone=Error, Layout=Compact
+    type: COMPONENT
+    parent_id: 7579:4721
+    parent_name: Learning Guide Card
+  - id: 7579:4701
+    name: Tone=Success, Layout=Expanded
+    type: COMPONENT
+    parent_id: 7579:4721
+    parent_name: Learning Guide Card
+  - id: 7579:4711
+    name: Tone=Error, Layout=Expanded
+    type: COMPONENT
+    parent_id: 7579:4721
+    parent_name: Learning Guide Card
+  - id: 7593:8094
+    name: Profile Stats Card
+    type: COMPONENT_SET
+    parent_id: 521:3299
+    parent_name: 08 Data Display - Cards
+  - id: 7593:8078
+    name: Divider=Hidden
+    type: COMPONENT
+    parent_id: 7593:8094
+    parent_name: Profile Stats Card
+  - id: 7593:8092
+    name: Divider=Visible
+    type: COMPONENT
+    parent_id: 7593:8094
+    parent_name: Profile Stats Card
+  - id: 7593:8202
+    name: Profile Membership Card
+    type: COMPONENT_SET
+    parent_id: 521:3299
+    parent_name: 08 Data Display - Cards
+  - id: 7593:8195
+    name: Membership=Regular
+    type: COMPONENT
+    parent_id: 7593:8202
+    parent_name: Profile Membership Card
+  - id: 7593:8201
+    name: Membership=VIP
+    type: COMPONENT
+    parent_id: 7593:8202
+    parent_name: Profile Membership Card
+  - id: 7596:9836
+    name: Settings List Card
+    type: COMPONENT_SET
+    parent_id: 521:3299
+    parent_name: 08 Data Display - Cards
+  - id: 7596:9806
+    name: Type=Preferences
+    type: COMPONENT
+    parent_id: 7596:9836
+    parent_name: Settings List Card
+  - id: 7596:9835
+    name: Type=General
+    type: COMPONENT
+    parent_id: 7596:9836
+    parent_name: Settings List Card
+- id: 521:3377
+  name: 09 Data Display - Cells
+  components:
+  - id: 97:2581
+    name: Comment Cell
+    type: COMPONENT_SET
+    parent_id: 521:3377
+    parent_name: 09 Data Display - Cells
+  - id: 458:4611
+    name: Level=Root
+    type: COMPONENT
+    parent_id: 97:2581
+    parent_name: Comment Cell
+  - id: 2519:10051
+    name: Level=Reply
+    type: COMPONENT
+    parent_id: 97:2581
+    parent_name: Comment Cell
+  - id: 570:10302
+    name: Message Cell
+    type: COMPONENT_SET
+    parent_id: 521:3377
+    parent_name: 09 Data Display - Cells
+  - id: 570:10153
+    name: Type=MyComment
+    type: COMPONENT
+    parent_id: 570:10302
+    parent_name: Message Cell
+  - id: 570:10301
+    name: Type=ReplyToMe
+    type: COMPONENT
+    parent_id: 570:10302
+    parent_name: Message Cell
+  - id: 2212:4643
+    name: Voice Comment Cell
+    type: COMPONENT
+    parent_id: 521:3377
+    parent_name: 09 Data Display - Cells
+  - id: 2430:4641
+    name: Link Entry Cell
+    type: COMPONENT
+    parent_id: 521:3377
+    parent_name: 09 Data Display - Cells
+  - id: 2440:4673
+    name: Article Preview Cell
+    type: COMPONENT_SET
+    parent_id: 521:3377
+    parent_name: 09 Data Display - Cells
+  - id: 530:3391
+    name: Size=Large, Meta=SourceTime, Cover=1:1
+    type: COMPONENT
+    parent_id: 2440:4673
+    parent_name: Article Preview Cell
+  - id: 2379:7633
+    name: Size=Compact, Meta=ReadCount, Cover=4:3
+    type: COMPONENT
+    parent_id: 2440:4673
+    parent_name: Article Preview Cell
+  - id: 3384:4846
+    name: Attitude
+    type: COMPONENT_SET
+    parent_id: 521:3377
+    parent_name: 09 Data Display - Cells
+  - id: 3384:4845
+    name: Property 1=LMAO
+    type: COMPONENT
+    parent_id: 3384:4846
+    parent_name: Attitude
+  - id: 3384:4843
+    name: Property 1=Adore
+    type: COMPONENT
+    parent_id: 3384:4846
+    parent_name: Attitude
+  - id: 3384:4842
+    name: Property 1=Cool
+    type: COMPONENT
+    parent_id: 3384:4846
+    parent_name: Attitude
+  - id: 3384:4841
+    name: Property 1=Like
+    type: COMPONENT
+    parent_id: 3384:4846
+    parent_name: Attitude
+  - id: 3384:4844
+    name: Property 1=Disgust
+    type: COMPONENT
+    parent_id: 3384:4846
+    parent_name: Attitude
+  - id: 3384:5522
+    name: Property 1=Default
+    type: COMPONENT
+    parent_id: 3384:4846
+    parent_name: Attitude
+  - id: 4938:5681
+    name: Recommendation Ticker
+    type: COMPONENT
+    parent_id: 521:3377
+    parent_name: 09 Data Display - Cells
+  - id: 5084:4109
+    name: Expert Opinion Cell
+    type: COMPONENT_SET
+    parent_id: 521:3377
+    parent_name: 09 Data Display - Cells
+  - id: 4942:5704
+    name: Size=Compact
+    type: COMPONENT
+    parent_id: 5084:4109
+    parent_name: Expert Opinion Cell
+  - id: 2422:5401
+    name: Size=Long
+    type: COMPONENT
+    parent_id: 5084:4109
+    parent_name: Expert Opinion Cell
+  - id: 2422:5410
+    name: Size=Default
+    type: COMPONENT
+    parent_id: 5084:4109
+    parent_name: Expert Opinion Cell
+  - id: 7504:3064
+    name: Choice Option Cell
+    type: COMPONENT_SET
+    parent_id: 521:3377
+    parent_name: 09 Data Display - Cells
+  - id: 7504:3053
+    name: Layout=List, State=Default
+    type: COMPONENT
+    parent_id: 7504:3064
+    parent_name: Choice Option Cell
+  - id: 7504:3058
+    name: Layout=List, State=Correct
+    type: COMPONENT
+    parent_id: 7504:3064
+    parent_name: Choice Option Cell
+  - id: 7504:3063
+    name: Layout=List, State=Incorrect
+    type: COMPONENT
+    parent_id: 7504:3064
+    parent_name: Choice Option Cell
+  - id: 7568:4096
+    name: Layout=Tile, State=Default
+    type: COMPONENT
+    parent_id: 7504:3064
+    parent_name: Choice Option Cell
+  - id: 7568:4098
+    name: Layout=Tile, State=Correct
+    type: COMPONENT
+    parent_id: 7504:3064
+    parent_name: Choice Option Cell
+  - id: 7568:4100
+    name: Layout=Tile, State=Incorrect
+    type: COMPONENT
+    parent_id: 7504:3064
+    parent_name: Choice Option Cell
+  - id: 7585:75
+    name: Layout=Reading, State=Default
+    type: COMPONENT
+    parent_id: 7504:3064
+    parent_name: Choice Option Cell
+  - id: 7585:78
+    name: Layout=Reading, State=Correct
+    type: COMPONENT
+    parent_id: 7504:3064
+    parent_name: Choice Option Cell
+  - id: 7585:81
+    name: Layout=Reading, State=Incorrect
+    type: COMPONENT
+    parent_id: 7504:3064
+    parent_name: Choice Option Cell
+  - id: 7596:9566
+    name: Settings Row
+    type: COMPONENT_SET
+    parent_id: 521:3377
+    parent_name: 09 Data Display - Cells
+  - id: 7596:9512
+    name: Type=Value, Surface=Standalone, Divider=Hidden, Height=70
+    type: COMPONENT
+    parent_id: 7596:9566
+    parent_name: Settings Row
+  - id: 7596:9515
+    name: Type=Label, Surface=Standalone, Divider=Hidden, Height=58
+    type: COMPONENT
+    parent_id: 7596:9566
+    parent_name: Settings Row
+  - id: 7596:9523
+    name: Type=ValueChevron, Surface=Grouped, Divider=Visible, Height=70
+    type: COMPONENT
+    parent_id: 7596:9566
+    parent_name: Settings Row
+  - id: 7596:9530
+    name: Type=ValueChevron, Surface=Grouped, Divider=Hidden, Height=70
+    type: COMPONENT
+    parent_id: 7596:9566
+    parent_name: Settings Row
+  - id: 7596:9540
+    name: Type=PermissionValue, Surface=Grouped, Divider=Visible, Height=80
+    type: COMPONENT
+    parent_id: 7596:9566
+    parent_name: Settings Row
+  - id: 7596:9547
+    name: Type=Disclosure, Surface=Grouped, Divider=Visible, Height=70
+    type: COMPONENT
+    parent_id: 7596:9566
+    parent_name: Settings Row
+  - id: 7596:9552
+    name: Type=Value, Surface=Grouped, Divider=Visible, Height=70
+    type: COMPONENT
+    parent_id: 7596:9566
+    parent_name: Settings Row
+  - id: 7596:9557
+    name: Type=Disclosure, Surface=Grouped, Divider=Hidden, Height=70
+    type: COMPONENT
+    parent_id: 7596:9566
+    parent_name: Settings Row
+  - id: 7596:9565
+    name: Type=PermissionSwitch, Surface=Grouped, Divider=Visible, Height=80
+    type: COMPONENT
+    parent_id: 7596:9566
+    parent_name: Settings Row
+- id: 570:6196
+  name: 10 Data Display - Covers
+  components:
+  - id: 570:6200
+    name: Landscape Cover
+    type: COMPONENT
+    parent_id: 570:6196
+    parent_name: 10 Data Display - Covers
+  - id: 570:6201
+    name: Square Cover
+    type: COMPONENT
+    parent_id: 570:6196
+    parent_name: 10 Data Display - Covers
+  - id: 4939:5696
+    name: Feature Cover
+    type: COMPONENT
+    parent_id: 570:6196
+    parent_name: 10 Data Display - Covers
+- id: 521:3670
+  name: 11 Data Display - Avatars
+  components:
+  - id: 170:1927
+    name: IP - Others
+    type: COMPONENT_SET
+    parent_id: 521:3670
+    parent_name: 11 Data Display - Avatars
+  - id: 170:1926
+    name: Avatar=Character01
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 170:1924
+    name: Avatar=Character02
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 170:1925
+    name: Avatar=Character03
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 170:1923
+    name: Avatar=Character04
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 170:1922
+    name: Avatar=Character05
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 170:1921
+    name: Avatar=Character06
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:2671
+    name: Avatar=Character07
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:2675
+    name: Avatar=Character08
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:2677
+    name: Avatar=Character09
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:2679
+    name: Avatar=Character10
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:2681
+    name: Avatar=Character11
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3196
+    name: Avatar=Character12
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3216
+    name: Avatar=Character13
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3237
+    name: Avatar=Character14
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3257
+    name: Avatar=Character15
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3280
+    name: Avatar=Character16
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3292
+    name: Avatar=Character17
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3304
+    name: Avatar=Character18
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3316
+    name: Avatar=Character19
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3328
+    name: Avatar=Character20
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3340
+    name: Avatar=Character21
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3352
+    name: Avatar=Character22
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3364
+    name: Avatar=Character23
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3376
+    name: Avatar=Character24
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3388
+    name: Avatar=Character25
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3400
+    name: Avatar=Character26
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 200:3412
+    name: Avatar=Character27
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 213:3107
+    name: Avatar=Character28
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 213:3143
+    name: Avatar=Character29
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 218:6769
+    name: Avatar=Character30
+    type: COMPONENT
+    parent_id: 170:1927
+    parent_name: IP - Others
+  - id: 224:12087
+    name: IP - Star Baby 2D
+    type: COMPONENT_SET
+    parent_id: 521:3670
+    parent_name: 11 Data Display - Avatars
+  - id: 217:6363
+    name: Pose=01
+    type: COMPONENT
+    parent_id: 224:12087
+    parent_name: IP - Star Baby 2D
+  - id: 218:7608
+    name: Pose=02
+    type: COMPONENT
+    parent_id: 224:12087
+    parent_name: IP - Star Baby 2D
+  - id: 221:8500
+    name: Pose=03
+    type: COMPONENT
+    parent_id: 224:12087
+    parent_name: IP - Star Baby 2D
+  - id: 224:11200
+    name: Pose=04
+    type: COMPONENT
+    parent_id: 224:12087
+    parent_name: IP - Star Baby 2D
+  - id: 224:12086
+    name: Pose=05
+    type: COMPONENT
+    parent_id: 224:12087
+    parent_name: IP - Star Baby 2D
+  - id: 274:3112
+    name: Pose=06
+    type: COMPONENT
+    parent_id: 224:12087
+    parent_name: IP - Star Baby 2D
+  - id: 2065:4709
+    name: Pose=07
+    type: COMPONENT
+    parent_id: 224:12087
+    parent_name: IP - Star Baby 2D
+  - id: 2720:22145
+    name: Pose=08
+    type: COMPONENT
+    parent_id: 224:12087
+    parent_name: IP - Star Baby 2D
+  - id: 2373:5101
+    name: IP  - Star Baby 3D
+    type: COMPONENT_SET
+    parent_id: 521:3670
+    parent_name: 11 Data Display - Avatars
+  - id: 2373:4943
+    name: Pose=01, Property 2=StarBaby, Property 3=Property 38
+    type: COMPONENT
+    parent_id: 2373:5101
+    parent_name: IP  - Star Baby 3D
+  - id: 2645:15242
+    name: Pose=01, Property 2=StarBaby, Property 3=pen
+    type: COMPONENT
+    parent_id: 2373:5101
+    parent_name: IP  - Star Baby 3D
+  - id: 7579:4665
+    name: Pose=Teaching, Property 2=StarBaby, Property 3=Report
+    type: COMPONENT
+    parent_id: 2373:5101
+    parent_name: IP  - Star Baby 3D
+  - id: 7579:4667
+    name: Pose=Celebrating, Property 2=StarBaby, Property 3=Report
+    type: COMPONENT
+    parent_id: 2373:5101
+    parent_name: IP  - Star Baby 3D
+  - id: 7579:4669
+    name: Pose=Thinking, Property 2=StarBaby, Property 3=Report
+    type: COMPONENT
+    parent_id: 2373:5101
+    parent_name: IP  - Star Baby 3D
+  - id: 7579:4671
+    name: Pose=ThinkingMirrored, Property 2=StarBaby, Property 3=Report
+    type: COMPONENT
+    parent_id: 2373:5101
+    parent_name: IP  - Star Baby 3D
+  - id: 2068:5393
+    name: IP  - Share
+    type: COMPONENT_SET
+    parent_id: 521:3670
+    parent_name: 11 Data Display - Avatars
+  - id: 2068:5394
+    name: Pose=WeChat
+    type: COMPONENT
+    parent_id: 2068:5393
+    parent_name: IP  - Share
+  - id: 2068:5435
+    name: Pose=QQ
+    type: COMPONENT
+    parent_id: 2068:5393
+    parent_name: IP  - Share
+  - id: 2068:5454
+    name: Pose=WeiBo
+    type: COMPONENT
+    parent_id: 2068:5393
+    parent_name: IP  - Share
+  - id: 2068:5464
+    name: Pose=RedNote
+    type: COMPONENT
+    parent_id: 2068:5393
+    parent_name: IP  - Share
+  - id: 2068:5488
+    name: Pose=QZone
+    type: COMPONENT
+    parent_id: 2068:5393
+    parent_name: IP  - Share
+  - id: 7596:10138
+    name: Avatar Choice
+    type: COMPONENT_SET
+    parent_id: 521:3670
+    parent_name: 11 Data Display - Avatars
+  - id: 7596:10134
+    name: State=Selected
+    type: COMPONENT
+    parent_id: 7596:10138
+    parent_name: Avatar Choice
+  - id: 7596:10137
+    name: State=Default
+    type: COMPONENT
+    parent_id: 7596:10138
+    parent_name: Avatar Choice
+  - id: 7596:10234
+    name: Avatar Choice Grid
+    type: COMPONENT
+    parent_id: 521:3670
+    parent_name: 11 Data Display - Avatars
+- id: 554:4194
+  name: 12 Feedback - Empty States
+  components:
+  - id: 218:6895
+    name: Empty Placeholder
+    type: COMPONENT
+    parent_id: 554:4194
+    parent_name: 12 Feedback - Empty States
+  - id: 97:4869
+    name: Footer
+    type: COMPONENT
+    parent_id: 554:4194
+    parent_name: 12 Feedback - Empty States
+- id: 570:7229
+  name: 13 Overlays - Sheets & Pickers
+  components:
+  - id: 570:7520
+    name: Sheet & Picker
+    type: COMPONENT_SET
+    parent_id: 570:7229
+    parent_name: 13 Overlays - Sheets & Pickers
+  - id: 570:7326
+    name: Type=CalendarPickerSheet
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 2379:7061
+    name: Type=Type5
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 2063:4322
+    name: Type=ShareSheet
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 3153:6141
+    name: Type=Login
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 570:7433
+    name: Type=OptionPickerSheet
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 570:7519
+    name: Type=FontPickerSheet
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7596:10302
+    name: Type=PhoneLogin, State=Empty
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7596:10483
+    name: Type=PhoneLogin, State=Filled
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7596:10529
+    name: Type=Verification, State=Partial
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7596:10588
+    name: Type=Verification, State=Complete
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7596:10647
+    name: Type=Verification, State=Error
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7596:10694
+    name: Type=ProfileEdit, State=Default
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7596:10752
+    name: Type=GreetingEdit, State=Random
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7596:10831
+    name: Type=GreetingEdit, State=Suggested
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7598:13410
+    name: Type=ProfileLogin, State=Social3
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7598:13467
+    name: Type=ProfileLogin, State=Social2
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7598:13507
+    name: Type=ProfileLogin, State=Action
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7598:13555
+    name: Type=ProfileLogin, State=Skippable
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+  - id: 7598:13598
+    name: Type=CustomerService, State=Default
+    type: COMPONENT
+    parent_id: 570:7520
+    parent_name: Sheet & Picker
+- id: 521:3672
+  name: 14 Media - Audio
+  components:
+  - id: 97:1502
+    name: Audio Player Bar
+    type: COMPONENT_SET
+    parent_id: 521:3672
+    parent_name: 14 Media - Audio
+  - id: 97:1501
+    name: State=Home, 播放中=False
+    type: COMPONENT
+    parent_id: 97:1502
+    parent_name: Audio Player Bar
+  - id: 97:1500
+    name: State=Home, 播放中=True
+    type: COMPONENT
+    parent_id: 97:1502
+    parent_name: Audio Player Bar
+  - id: 4898:15147
+    name: State=PrimaryAction, 播放中=False
+    type: COMPONENT
+    parent_id: 97:1502
+    parent_name: Audio Player Bar
+  - id: 4898:15343
+    name: State=PrimaryAction, 播放中=True
+    type: COMPONENT
+    parent_id: 97:1502
+    parent_name: Audio Player Bar
+  - id: 2422:5424
+    name: Audio Progress Control
+    type: COMPONENT
+    parent_id: 521:3672
+    parent_name: 14 Media - Audio
+- id: 4531:8578
+  name: 15 Ip - Starbaby
+  components: []
+scope: Skill indexed subset; Figma document unchanged. Not a complete document Page or component count.

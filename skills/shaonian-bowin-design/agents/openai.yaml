@@ -1,0 +1,5 @@
+interface:
+  display_name: "少年博闻设计"
+  short_description: "基于博闻原生源 Frame 复用组件与变量产出设计"
+  brand_color: "#75CE00"
+  default_prompt: "Use $shaonian-bowin-design. Start with compact scene/profile routing, verify the live component master before writing, follow the authorized write scope, and deliver actual Figma nodes with screenshots."

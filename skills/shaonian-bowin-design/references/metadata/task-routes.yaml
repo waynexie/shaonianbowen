@@ -1,0 +1,2653 @@
+schema_version: 1
+purpose: route common Shaonian Bowen design requests to source nodes, page patterns, component families, and
+  validation gates
+authority: 'Single source of truth for routing, execution layers, route profiles, gate levels, global defaults
+  and mode routing. SKILL.md and references/*.md only reference these rules; if md and this file disagree,
+  this file wins. Term glossary (English snake_case -> Chinese): references/metadata/glossary.yaml.
+
+  '
+usage:
+- Use the compiled runtime query scripts first; load only the smallest matching authority section before write,
+  on ambiguity, or when the runtime index is stale or unsupported.
+- Pick every route that matches the user request; if multiple routes match, preserve the narrower locked region.
+- A route chooses source and components; page-recipes.md controls production assembly and screen-patterns.md
+  controls page experience, visual rhythm, state deltas, and extension boundaries.
+- If a listed source node or component is unavailable through Figma MCP, stop and report the missing dependency
+  unless fallback_allowed is true.
+global_defaults:
+  source_figma_file_key: oULxBlEvFNkWGGVaJ0ClEz
+  source_file_policy: source_pages_read_only_output_page_write_only_except_explicit_formal_component_or_scene_index_maintenance
+  output_file_policy: native_source_file_fixed_output_page
+  output_figma_file_key_ref: global_defaults.source_figma_file_key
+  output_figma_file_name: 少年博闻 Component Architecture v2
+  output_page: 界面生成方案
+  output_page_id: 4608:4097
+  output_page_role: output_only
+  cross_file_operation_policy: forbidden
+  output_frame_naming: <页面或模块> / <需求短名>
+  output_frame_name_date_policy: forbidden_date_prefix
+  output_frame_name_collision_policy: append_short_sequence_within_same_day
+  source_product_and_component_pages_writable: explicit_formal_component_maintenance_only
+  output_page_writable: true
+  create_new_page_per_task: false
+  viewport: 390x844
+  live_figma_source_first: true
+  appearance_mode_routing:
+    purpose: make the visual color mode for every visual lookup and Figma write explicit and prevent source
+      state previews or prior turns from leaking into the requested result
+    applies_to:
+    - every ordinary visual lookup
+    - screenshot or cached visual delivery
+    - every Figma generation or mutation
+    default_mode: light_default
+    precedence:
+      explicit_dark_visual_lookup: higher_than_existing_state_lookup_cache_selection_and_parent_fallback
+    dark_mode_allowed_only_when:
+    - the current user turn explicitly requests 夜间模式 暗色模式 深色模式 dark mode or dark output
+    - the current user turn explicitly says to preserve or continue the current dark or night mode
+    rules:
+    - when the current turn does not explicitly select a visual mode set requested_appearance_mode to light_default
+      before any lookup cache decision render mutation or creation
+    - a dark reference screenshot dark source node prior dark-mode lookup previous conversation state workspace
+      state or current Figma variable state is context only and must not imply dark output
+    - read-only variable-mode lookup state must never carry into a later write task
+    - current-turn explicit mode wording outranks reference image appearance and historical conversation context
+    - explicit night or dark visual lookup enters routes.existing_source_or_state_lookup.variable_mode_visual_lookup
+      before ordinary source-state fallback
+    - an active unexpired exact same-node same-mode cache completes the lookup directly
+    - every other explicit night or dark lookup requires live Figma variable collection inspection and transient
+      rendering on the same resolved target
+    - parent not_found_in_source and generation invitation apply only to ordinary lookups outside variable_mode_visual_lookup
+    - set the intended variable mode explicitly on the output frame and validate the full-frame screenshot
+      in that same mode
+    - before delivering any visual record both requested_appearance_mode and actual_rendered_appearance_mode
+      and require an exact match
+    - an unknown unverified or mismatched actual_rendered_appearance_mode is never deliverable
+    - when live rendering cannot produce the requested mode use only an active unexpired cache whose source_node_id
+      and appearance_mode exactly match the resolved target and requested mode
+    - if neither verified live rendering nor an exact same-node same-mode cache is available return requested_appearance_unavailable
+      without substituting another mode
+    - restore any temporary source-node variable mode after lookup or inspection and never persist the temporary
+      mode to source nodes
+    - do not add dark night or 夜间 to the output frame name unless dark output was explicitly requested in the
+      current turn
+    required_record: appearance_mode
+    default_record_value: light_default
+    forbidden:
+    - infer_dark_from_reference_image_only
+    - inherit_dark_from_previous_lookup_or_conversation
+    - inherit_dark_from_workspace_or_current_figma_state
+    - leave_appearance_mode_implicit_before_write
+    - leave_appearance_mode_implicit_before_visual_lookup
+    - deliver_unknown_or_unverified_appearance_mode
+    - deliver_live_or_cached_visual_with_mismatched_appearance_mode
+    - substitute_dark_for_default_light_lookup
+  structured_annotation_routing:
+    purpose: execute task-bound canvas annotations against the exact Figma target and coordinate space selected
+      by the user
+    applies_when:
+    - the request contains one or more structured annotations
+    - the user submits a canvas box or arrow feedback round
+    authority_order:
+    - annotation.target file_key and node_id
+    - annotation.surface_id and target_scope
+    - annotation.normalized_start and normalized_end
+    - annotation.local_start and local_end with surface_bounds
+    - attached annotated screenshot as corroborating visual evidence
+    - annotation text as requested delta
+    rules:
+    - treat every annotation as a task-bound delta on its exact target node rather than a new standalone design
+      request
+    - resolve annotation target.file_key and target.node_id before mutating Figma
+    - use normalized coordinates for target-region mapping when source dimensions differ from the preview surface
+    - use local coordinates only together with surface_bounds and coordinate_space
+    - use the annotated screenshot to verify region identity but never replace structured coordinates with
+      a guessed screenshot location
+    - preserve everything outside the union of annotated target regions unless annotation text explicitly requests
+      a wider dependent change
+    - if target identity scope or coordinate evidence conflicts stop before write and return structured_annotation_scope_mismatch
+    forbidden:
+    - infer_target_from_annotation_text_only
+    - use_global_start_end_without_surface_bounds
+    - treat_preview_css_pixels_as_source_node_pixels
+    - modify_outside_annotated_region_without_explicit_dependency
+    - ignore_normalized_coordinates_when_preview_and_source_dimensions_differ
+    unavailable_status: structured_annotation_evidence_unavailable
+  semantic_ambiguity_routing:
+    purpose: resolve words that have both a product meaning and a Figma technical meaning without silently
+      changing authority
+    resolution_order:
+    - current product or business context
+    - explicit noun qualifiers in the current turn
+    - Figma technical meaning only when explicitly requested or when no product meaning is applicable
+    rules:
+    - preserve the current business question as the primary answer when both meanings are valid
+    - disclose each materially different technical count or definition as a separately labeled alternate scope
+    - state the authority source used for every reported scope
+    - never switch from source-frames product authority to live Figma Page Canvas node counts without disclosure
+    - a current Page selection node subtree or viewport result never proves the file-wide Figma Page count
+    - report a Figma technical Page count only after enumerating every direct Page or Canvas child from the
+      target file Document root
+    - when reporting a Figma technical Page count include the enumerated Page names and node IDs so the count
+      is auditable
+    - derive counts from the current authority data at execution time and never copy a regression snapshot
+      into an answer rule
+    technical_page_count_contract:
+      applies_when:
+      - the user explicitly asks for Figma Page Canvas or top-level page count
+      - a product page-count answer also reports the materially different Figma technical scope
+      authority: live Figma target-file Document root
+      required_evidence:
+      - queried_file_key matches the configured source_file_key
+      - queried_scope is document_root rather than current_page selection viewport or descendant subtree
+      - page_inventory contains every direct child whose node type is PAGE or CANVAS
+      - every page_inventory item includes node_id and name
+      - reported_page_count equals the length of page_inventory
+      rejected_evidence:
+      - current Page metadata only
+      - selected node or selected Frame ancestry
+      - viewport-visible nodes
+      - a single Page or Canvas subtree
+      - an unlabeled count without page_inventory
+      fallback_status: figma_document_page_inventory_unavailable
+    regression_examples:
+    - query: 目前共有多少页面
+      primary_scope: product_display_screens
+      primary_authority: references/metadata/source-frames.yaml
+      dynamic_calculation: count frames where node_role is screen_frame and exportable is true and status is
+        not stale or missing
+      alternate_scope_when_relevant: Figma technical Page or Canvas count from explicitly labeled live Figma
+        evidence
+      forbidden:
+      - hardcode_expected_count
+      - add_page_count_service
+      - silently_answer_only_figma_page_count
+    - query: 这个 Figma 文件有几个顶层 Page
+      primary_scope: figma_technical_pages
+      primary_authority: live Figma target-file Document root
+      dynamic_calculation: enumerate direct PAGE or CANVAS children and return their node_id and name before
+        reporting the list length
+      forbidden:
+      - count_current_page_as_document
+      - count_selected_subtree_as_document
+      - report_count_without_page_inventory
+    unavailable_status: authority_scope_unavailable
+  visual_query_delivery:
+    purpose: require an actually visible final image for requests such as 长啥样 给我看 看一下 夜间效果 or other visual-preview
+      wording
+    applies_when:
+    - lookup response depends on an uploaded current-turn gallery reference preview whose file key and node
+      id match the resolved target
+    - lookup response depends on a cached screenshot
+    - lookup response depends on a live Figma screenshot or transient variable-mode render
+    - user explicitly asks to see a page component asset state or visual effect
+    completion_contract:
+    - an exact uploaded current-turn gallery reference preview is reusable evidence and must not trigger another
+      Figma screenshot unless the user asks for latest realtime current version or a different state or appearance
+      mode
+    - temporary tool preview or commentary image is not final delivery
+    - persist the selected image under an explicitly allowed durable root before final response
+    - upload or register the image through the platform and obtain a user-accessible delivery URL or attachment
+      reference
+    - run python3 scripts/validate_visual_attachment.py with allowed-root and delivery-url
+    - include the validator returned markdown_image in the final response
+    - verify the local path still exists is nonempty has a recognized image signature and resolves inside the
+      allowed root immediately before response
+    - disclose whether evidence came from an exact current-turn gallery reference exact fresh cache or live
+      Figma rendering
+    durable_path_policy:
+      required: absolute_path_with_allowed_root
+      allowed: workspace_or_persistent_skill_asset_path
+      forbidden:
+      - short_lived_remote_url
+      - tool_only_image_payload
+      - commentary_only_preview
+      - temporary_directory_path
+      - path_outside_allowed_root
+      - local_path_used_as_user_delivery_url
+    failure_status: visual_attachment_unavailable
+    failure_behavior:
+    - explicitly report visual_attachment_unavailable and the failed persistence or validation step
+    - do not claim that the image is shown
+    - do not say 见上图 上图如下 or refer to a tool preview
+    required_delivery_evidence:
+    - visual_evidence_origin
+    - visual_attachment_path
+    - visual_attachment_format
+    - visual_attachment_size_bytes
+    - visual_attachment_validation_status
+    - platform_delivery_url_or_attachment_reference
+    - final_attachment_markdown
+  generated_output_delivery:
+    purpose: make every top-level output Frame delivered by the current turn independently visible on the Sol
+      canvas
+    applies_when:
+    - a Figma write creates one or more top-level output Frames
+    - a continuation or annotation turn delivers multiple visual states such as base page plus popup expanded
+      selected loading or empty state
+    - the current turn creates or mutates more than one top-level Frame as part of the accepted result
+    completion_contract:
+    - determine delivery_frame_ids from every top-level output Frame that constitutes the current-turn result
+      whether newly created mutated or intentionally reused
+    - capture and persist one full-frame screenshot for every delivery_frame_id after validation
+    - return generated_figmas as an ordered array with exactly one item per unique delivery_frame_id
+    - every generated_figmas item includes file_key node_id name url image_url width and height
+    - keep generatedFigma or generated_figma only as an optional first-item compatibility alias and never use
+      it to replace or truncate generated_figmas
+    - preserve the intended visual order such as base state before popup state or option A before option B
+    - verify generated_figmas length equals the unique delivery_frame_ids length before final response
+    forbidden:
+    - return_only_one_representative_when_multiple_frames_were_delivered
+    - return_a_parent_group_or_page_instead_of_each_delivery_frame
+    - omit_a_frame_because_another_frame_has_a_similar_base_layout
+    - return_node_without_its_corresponding_persisted_screenshot
+    - make_the_platform_scan_figma_or_guess_sibling_frames
+    required_records:
+    - delivery_frame_ids
+    - generated_figmas
+    - generated_figmas_count
+    - generated_output_screenshot_count
+    - generated_output_delivery_count_match
+    failure_status: generated_output_delivery_incomplete
+  preserve_existing_page_when_modifying: true
+  context_strategy_routing:
+    purpose: use one direct output strategy for each task class and preserve existing source pages as readonly
+      authorities
+    values:
+      screenshot_overlay:
+        allowed_only_when:
+        - fast_visual_exploration
+        - new element is a topmost independent overlay or decoration
+        - existing layout tree content size order component state text and variable mode remain untouched
+        - user does not require editable production output or dark-mode preview
+        required_labels:
+        - exploration_draft
+        - must_not_ship_as_production
+      direct_native_construction:
+        required_when:
+        - the user requests a new page or a production-ready output built from verified components and variables
+        - productionization or componentization requires fully editable native layers
+        construction:
+        - create a new task-scoped output Frame directly on the fixed output Page
+        - build with verified local components variables Auto Layout and the MCP default text engine
+        - validate the full frame and every changed region before delivery
+      source_locked_visual_draft:
+        allowed_only_when:
+        - the user requests a visible draft exploration or multiple options rather than production-ready native
+          output
+        - the exact source Frame and target_region were resolved before construction
+        - the official source Frame remains unchanged
+        construction:
+        - place a full-frame screenshot of the exact source Frame as a locked immutable background inside a
+          new output-only Frame
+        - cover only target_region with a source-matched local background and rebuild only the requested target
+          region as editable native layers
+        - preserve every region outside target_region pixel-for-pixel through the locked source screenshot
+        - create every requested option as a separate top-level Frame and screenshot-validate each option
+        required_labels:
+        - source_locked_visual_draft
+        - exploration_draft
+        - must_not_ship_as_production
+        forbidden:
+        - claim_production_ready
+        - use_the_draft_as_a_future_production_base
+        - redraw_or_reconstruct_regions_outside_target_region
+    default_by_delivery:
+      visible_draft_or_multi_option: source_locked_visual_draft
+      new_page_or_production_native_output: direct_native_construction
+    default_when_uncertain: source_locked_visual_draft
+    forbidden:
+    - use_screenshot_overlay_for_structural_mutation
+    - continue_screenshot_draft_as_production_base
+    - unbounded_full_page_reconstruction_for_existing_context
+    existing_context_rule: visible drafts lock the exact source screenshot outside target_region; production/native-editable
+      output uses verified native components and compares all locked regions against the exact source; no screenshot
+      production base or unverified approximate reconstruction
+  registered_component_family_gate:
+    purpose: preserve the product design system whenever the route or component catalog resolves an existing
+      component family
+    precedence: higher_than_speed_tier_quality_tier_context_strategy_and_production_gaps
+    applies_to: every_generation_or_figma_write_request
+    required_when:
+    - route declares must_use_components or primary_components
+    - components.yaml marks a component ready_to_force or required_instance
+    - source-index or live Figma resolves a nearest same-semantic component family or source instance
+    required_evidence:
+    - resolved_component_family
+    - source_component_or_instance_node_id
+    - delivered_instance_or_same_family_extension_node_id
+    - component_property_or_variant_changes
+    - target_region_screenshot_check
+    pass_when:
+    - registered component is delivered as an instance existing variant or documented same-family extension
+    - recipe-governed component starts from the registered instance or nearest matching source instance
+    blocking_failures:
+    - registered_component_replaced_by_local_frames_groups_vectors_or_flattened_image
+    - required_instance_or_source_extension_unresolved
+    - parallel_component_family_created_while_registered_family_exists
+    - component_source_or_delivery_evidence_missing
+    production_gaps_scope:
+    - token_binding_incomplete
+    - style_binding_incomplete
+    - auto_layout_or_component_properties_not_production_ready
+    - dark_mode_not_verified
+    - unregistered_new_componentization_gap
+  task_atomic_output:
+    applies_when: ordinary_generated_output_or_output_page_audit_preview
+    excludes:
+    - direct_formal_component_maintenance_on_authorized_source_nodes
+    - explicit_scene_index_maintenance_on_authorized_index_page
+    source_file_key_ref: global_defaults.source_figma_file_key
+    target_page_id_ref: global_defaults.output_page_id
+    task_identity: task_id
+    task_container_name: task/{task_id}
+    execution:
+    - resolve source evidence before the write call
+    - perform task container creation option creation date placement and collision recheck in one use_figma
+      call
+    - read the latest output Page children at the beginning of that atomic call
+    - use task_id as the idempotency key and return the existing matching task container only when its requested
+      delta and screenshot evidence match
+    - return every created and mutated node id before the call completes
+    concurrency_result: concurrent tasks use independent task containers and fresh in-call placement state
+    text_runtime:
+      policy_ref: references/metadata/tokens.yaml#typography.runtime_text_policy
+      rule: create or modify text with the MCP default text engine
+  canvas_placement_policy:
+    target_page_id_ref: global_defaults.output_page_id
+    target_page_name_ref: global_defaults.output_page
+    top_level_node_type: FRAME
+    create_outer_section_or_wrapper: false
+    create_new_page_per_task: false
+    task_batch_layout: rows
+    batch_start_x: 0
+    option_horizontal_gap: 120
+    task_vertical_gap: 240
+    task_atomic_output_ref: global_defaults.task_atomic_output
+    task_date_policy:
+      timezone: Asia/Shanghai
+      format: YYYY-MM-DD
+      source: agent_execution_clock
+      platform_task_date: optional_timestamp_input_only
+      rule: normalize once at task start and use the same task_date for the whole atomic write
+    date_divider:
+      enabled: true
+      pattern_ref: references/metadata/source-registry.yaml#output_only_pages.0.layout_utilities.date_divider
+      one_per_task_date: true
+      canonical_frame_name: Date / <YYYY-MM-DD>
+      visible_text: <YYYY-MM-DD>
+      node_type: FRAME
+      x: 0
+      height: 120
+      min_width: 1974
+      width_rule: max(min_width_current_day_batch_right_edge)
+      text_alignment: center
+      day_section_gap: 240
+      divider_to_first_task_gap: 120
+      shared_plugin_data:
+        namespace: shaonian_bowen_design
+        node_role_key: node_role
+        node_role_value: date_divider
+        task_date_key: task_date
+      legacy_match:
+      - top-level Frame named date with an exact descendant date text
+      - top-level Frame whose visible text exactly equals task_date and whose height matches the registered
+        pattern
+      deduplication:
+      - scan shared plugin data first then canonical name and legacy match
+      - immediately recheck the task_date divider before creating one
+      - if a duplicate appears remove only the divider created by the current atomic operation and reuse the
+        pre-existing canonical divider
+      - never delete or merge a divider created by another completed task
+    placement_algorithm:
+    - inspect all existing top-level scene-node absolute bounding boxes on the output page
+    - resolve task_date in Asia/Shanghai once for the current task
+    - find the unique divider for task_date through shared plugin data canonical name or legacy match
+    - if no divider exists place it at y=existing_max_bottom+date_divider.day_section_gap and register its
+      shared plugin data
+    - tag every new task Frame with the same task_date and node_role=output_frame
+    - calculate current_day_max_bottom from the divider and task Frames tagged with task_date
+    - place the first task of a new day at divider.bottom+date_divider.divider_to_first_task_gap
+    - place later tasks on the same day at current_day_max_bottom+task_vertical_gap
+    - place additional options to the right using previous_x+previous_width+option_horizontal_gap and the same
+      row y
+    - use each frame's real width and height; never assume 390x844 for collision math
+    - do not move or normalize existing frames automatically
+    - run pairwise top-level collision detection after placement
+    - if the new batch collides move the whole batch below the maximum conflicting bottom plus task_vertical_gap
+      and recheck
+    - expand only the current date divider when the current day batch exceeds its width
+    required_records:
+    - output_page_id
+    - task_date
+    - date_divider_id
+    - date_divider_created_or_reused
+    - placement_batch_frame_ids
+    - placement_origin
+    - top_level_canvas_collision_check
+    blocking_failures:
+    - output_page_not_exact_match
+    - new_page_created_for_task
+    - outer_section_or_wrapper_created
+    - task_date_missing_or_wrong_timezone
+    - date_divider_missing_for_task_date
+    - duplicate_date_divider_left_by_current_operation
+    - output_frame_name_contains_date_prefix
+    - task_frame_not_grouped_under_task_date_divider
+    - top_level_frames_overlap
+    - placement_not_validated_after_write
+    growth_monitor:
+      warning_only: true
+      warn_when_top_level_node_count_reaches: 80
+      warn_when_max_bottom_reaches: 100000
+      warning_status: output_page_growth_warning
+      continuation_rule: refine or duplicate the selected prior option instead of creating a new task row for
+        every minor iteration
+      forbidden_automatic_actions:
+      - delete_existing_output
+      - move_existing_output
+      - create_archive_page
+      - create_archive_section
+  persistent_write_scope:
+    purpose: enforce the fixed output-page boundary by default and exact allowlists for explicit formal component
+      or scene-index maintenance
+    enforcement_timing: inside the same atomic use_figma call before return
+    applies_to:
+    - fast_visual_exploration
+    - continuation_iteration
+    - existing_context_local_mutation
+    - new_context_exploration
+    - component_or_variant_design
+    - productionization
+    target_file_key_ref: global_defaults.source_figma_file_key
+    default_target_page_id_ref: global_defaults.output_page_id
+    formal_component_maintenance_scope:
+      enabled_only_when:
+      - user explicitly asks to maintain or promote the formal component library
+      - component_or_variant_design route confidence is high
+      - exact authorized_formal_page_ids and authorized_source_frame_ids are recorded before write
+      allowed_persistent_targets:
+      - nodes descending from authorized_formal_page_ids
+      - explicitly authorized source frames when replacing local modules with the newly promoted instances
+      - canonical output Page for audit previews
+      forbidden:
+      - broad page-level authorization
+      - mutate unrelated siblings on an authorized Page
+      - publish components automatically
+      - change tokens icons assets navigation or product content outside the approved componentization scope
+    scene_index_maintenance_scope:
+      enabled_only_when:
+      - user explicitly asks to maintain the scene index or its variant gallery
+      - exact authorized_scene_index_page_id matches references/metadata/scene-index.yaml#variant_gallery.page_id
+      allowed_persistent_targets:
+      - the authorized scene index Page and its descendants only
+      forbidden:
+      - create a new Page for the index
+      - mutate official product screens component masters variables or assets
+      - treat index examples as formal component masters
+    required_return_fields:
+    - created_node_ids
+    - mutated_node_ids
+    - removed_node_ids_when_any
+    post_write_algorithm:
+    - resolve every returned persistent created or mutated node ID after the operation
+    - for ordinary tasks allow only the canonical output Page node itself or its descendants
+    - for explicit formal component maintenance allow only the exact authorized targets above and require all
+      other official source nodes to be absent from mutated_node_ids
+    - for explicit scene index maintenance allow only the recorded index Page and its descendants, with official
+      product screens and component masters absent from mutated_node_ids
+    - require temporary nodes to be removed and listed separately
+    - fail closed when an existing returned node cannot be resolved to the current explicitly authorized scope
+    - throw persistent_write_scope_violation before return so the atomic Figma operation rolls back
+    pass_record:
+    - persistent_write_scope_check
+    - persistent_node_page_map
+    - write_scope_mode
+    - authorized_formal_page_ids
+    - authorized_source_frame_ids
+    - authorized_scene_index_page_id when write_scope_mode_is_scene_index_maintenance
+    - unrelated_official_source_nodes_unchanged
+    failure_status: persistent_write_scope_violation
+    failure_policy:
+    - hard_stop
+    - do_not_deliver
+    - do_not_retry_with_redraw
+  component_draft_policy:
+    target_page_id_ref: global_defaults.output_page_id
+    formal_component_pages_writable: explicit_formal_component_maintenance_only
+    source_component_authority: registered_component_pages_only
+    default_output_kind: frame_structure_proposal
+    real_component_nodes_allowed_only_when:
+    - user explicitly requests componentization component variant or reusable component construction
+    - component_or_variant_design route is high confidence
+    real_component_node_requirements:
+    - nest inside the current task Frame under the task_date divider
+    - name with Draft prefix
+    - call setSharedPluginData with namespace shaonian_bowen_design key authority value output_only
+    - never publish from the output Page
+    - never use as component style or source authority in later lookup
+    formal_promotion_policy:
+      intent_required: explicit_formal_component_maintenance
+      required_records:
+      - authorized_formal_page_ids
+      - authorized_source_frame_ids
+      - nearest_component_family
+      - component_name_and_category
+      - property_and_slot_contract
+      - resizing_test
+      - source_instance_replacement_scope
+      - before_after_screenshot_check
+      - metadata_updates
+      allowed_actions:
+      - create_or_extend_component_on_authorized_formal_page
+      - replace_authorized_source_frame_local_module_with_promoted_instance
+      - create_output_page_audit_preview
+      authority_after_validation: formal_source
+      publish_status: manual_only
+    forbidden:
+    - mutate_formal_source_component_or_component_set_without_explicit_maintenance_intent
+    - mutate_unrelated_nodes_on_authorized_formal_page
+    - create_real_component_for_non_component_task
+    - publish_component_automatically
+    - resolve_output_page_component_as_ready_to_force_source
+    - create_parallel_family_without_nearest_family_check
+  context_integrity_gate:
+    purpose: preserve real source context for any write inside an existing page module component or state
+    applies_to:
+    - existing_context_local_mutation
+    - local_interaction_modification
+    - local_state_change_on_existing_context
+    - multi_option_exploration_inside_existing_context
+    - continuation_iteration_inside_existing_context
+    required_before_write:
+    - context_basis
+    - target_region
+    - locked_context
+    - new_local_element_scope
+    allowed_context_basis:
+    - locked_source_screenshot
+    - previous_output_screenshot
+    - component_family_canvas
+    - direct_native_output
+    context_basis_rules:
+      locked_source_screenshot: draft-only visual context allowed under context_strategy=screenshot_overlay
+        or source_locked_visual_draft
+      previous_output_screenshot: draft-only continuation context; lock it as background unless the previous
+        output itself is a valid source-preserving frame
+      component_family_canvas: only for component or variant tasks, not for reconstructing a full page
+      direct_native_output: fully editable output built directly from verified components variables Auto Layout
+        and the MCP default text engine
+    local_one_off_overlay_scope:
+      allowed:
+      - new local widget control hint badge popover toast overlay or state marker requested in the current
+        turn
+      - local visual exploration for a not-yet-reusable element before productionization
+      forbidden:
+      - existing page skeleton
+      - page background
+      - status bar
+      - navigation or header
+      - existing list or feed content
+      - existing card or cell family
+      - bottom bar or tab bar
+      - existing copy outside target_region
+    forbidden:
+    - context_basis_missing_before_write
+    - source_context_reconstruction_from_primitives
+    - unverified_source_context_reconstruction_from_component_stack
+    - source_context_reconstruction_from_screenshot_tracing
+    - screenshot_overlay_used_for_structural_mutation
+    - local_one_off_overlay_used_for_existing_context
+    hard_fail_status:
+    - source_context_reconstruction_hard_fail
+    - draft_blocked_context_unavailable
+  minimum_token_binding:
+    purpose: select source token roles for the touched region; applicability and enforcement are defined by validation
+    enforcement_ref: references/metadata/validation.yaml#minimum_token_binding_check
+    applies_to:
+    - fast_visual_exploration
+    - continuation_iteration_when_new_visible_element_is_added
+    - local_one_off_overlay
+    - new_local_element_scope
+    required_for:
+    - visible_new_local_nodes
+    - visible_exploration_substitute_nodes
+    - visible_component_family_extension_draft_nodes
+    core_properties_ref: references/metadata/validation.yaml#minimum_token_binding_check.core_properties
+    preferred_token_roles:
+      fill:
+      - Bg 背景/Card 卡片
+      - Bg 背景/Block 内容块
+      - Brand 品牌/Primary 主色
+      - Brand 品牌/BgSoft 柔和背景
+      text_fill:
+      - Text 文本/T1 主要
+      - Text 文本/T2 次要
+      - Text 文本/T3 辅助
+      - Text 文本/T4 压图
+      stroke:
+      - Line 线条/Border 描边
+      - Line 线条/DividerThin 细分割线
+      radius:
+      - Radius 圆角/8 小圆角
+      - Radius 圆角/12 中圆角
+      - Radius 圆角/20 大圆角
+      - Radius 圆角/999 胶囊圆角
+      spacing_size:
+      - Space 间距
+      - Size 尺寸
+    allowed_defer:
+    - full_design_system_gate_for_untouched_regions
+    - full_component_instance_audit_until_direction_selected
+    - complete_zoom_crop_until_direction_selected
+    allowed_gap_ref: references/metadata/validation.yaml#minimum_token_binding_check.allowed_degraded
+    explicit_raw_visual_sketch_escape_hatch:
+      allowed_only_when_user_explicitly_says:
+      - 粗略草图
+      - 不用管规范
+      - 先看位置
+      - 30 秒草图
+      required_label:
+      - raw_visual_sketch
+      - must_not_ship_as_production
+      still_required:
+      - context_integrity_gate
+  runtime_indexing:
+    purpose: answer routing and lookup requests from small compiled slices without loading the complete authority
+      files into model context
+    compiled_outputs:
+      lookup_index: references/runtime/lookup-index.json
+      execution_index: references/runtime/execution-index.json
+    commands:
+      lookup: python3 scripts/query_runtime_index.py
+      execution_profile: python3 scripts/read_execution_profile.py
+      authority_section: python3 scripts/read_metadata_section.py
+      rebuild: python3 scripts/build_runtime_indexes.py
+      verify: python3 scripts/build_runtime_indexes.py --check
+      benchmark: python3 scripts/benchmark_runtime_indexes.py
+    authority_policy:
+    - compiled indexes are derived artifacts and never override metadata YAML
+    - each compiled index stores source SHA-256 digests
+    - query commands rebuild an index when its digest is stale
+    - read_metadata_section output counts as loading the named authority section for metadata_authority_gate
+    - a digest-verified runtime execution profile satisfies task-route authority for readonly lookup only
+    - fall back to the smallest matching authority section when index generation or lookup fails
+    context_budget:
+      exact_cached_lookup_max_bytes: 10240
+      rule: return only matched records and one selected execution profile; never inject the complete runtime
+        index into model context
+    forbidden:
+    - treat_compiled_index_as_second_authority
+    - read_complete_task_routes_or_validation_for_ordinary_lookup
+    - read_complete_runtime_index_into_model_context
+  speed_tier_routing:
+    purpose: choose the lightest workflow that can answer the user's current decision without hiding production
+      gaps
+    tiers:
+      lookup_fast_path:
+        use_when:
+        - user asks to see inspect locate compare or confirm existing source output component state asset or
+          material
+        default_route_profile: lookup_profile
+        write_allowed: false
+        read_policy_ref: route_profiles.lookup_profile
+        read_rule: reuse an exact uploaded current-turn gallery reference first, otherwise query the compiled
+          runtime index and return only matches; load the smallest authority section only on ambiguity, staleness,
+          unsupported state or write transition
+        figma_work:
+        - resolve a concrete source node before checking local visual cache
+        - when an uploaded current-turn gallery reference has the same file key node id state and appearance
+          mode, persist and deliver that preview without another Figma call
+        - return an exact active unexpired cache match for ordinary lookup
+        - bypass cache for latest realtime state mismatch writes or productionization
+        - take a live screenshot only when freshness or evidence requires it
+        forbidden:
+        - repeat Figma screenshot for an exact uploaded current-turn gallery reference without latest realtime
+          state or mode requirements
+        - full_design_system_gate
+        - design_language_read
+        - production_validation
+        - new_frame_creation
+      fast_visual_exploration:
+        use_when:
+        - user asks for 多方案 试几版 看效果 形式不限 发散 快速看看
+        - user has not selected a direction for productionization
+        - user asks to design or generate a new page state module or component without explicit production
+          language and a first visible direction can answer the current decision
+        default_route_profile: exploration_profile
+        default_quality_tier: inspiration_draft
+        write_allowed: true_with_draft_label
+        output_label: exploration_draft
+        required_reads:
+        - selected route and execution profile from references/runtime/execution-index.json through python3
+          scripts/read_execution_profile.py
+        - only the matching authority sections required before Figma write through python3 scripts/read_metadata_section.py
+        - target record from references/runtime/lookup-index.json through python3 scripts/query_runtime_index.py
+        - nearest source screenshot or existing output context
+        - only the component or icon family touched by the new local element
+        required_before_write:
+        - quality_tier_decision
+        - context_strategy
+        - context_basis
+        - target_region
+        - locked_context
+        - new_local_element_scope
+        - production_gap_plan
+        allowed_shortcuts:
+        - use locked source screenshot only for an independent topmost overlay or decoration that does not
+          enter the existing layout tree
+        - use compact local one-off overlay concepts only for the new requested element when it is not yet
+          a reusable production component
+        - defer full component audit and zoom crops until a direction is selected
+        must_report:
+        - exploration_draft
+        - not_production_ready_when_source_frame_is_screenshot_or_core_instances_are_not_audited
+        - what was reused from previous context
+        - context_basis
+        - basic_visual_gate
+        - design_thesis
+        - option_difference_result when multiple options are requested
+        - production_gaps
+        - first_stage_delivery
+        forbidden:
+        - claim production_ready
+        - replace production delivery when user asks for 定稿 上线 沉淀组件 or 生产化
+        - rebuild_existing_context_from_primitives
+        - rebuild_existing_context_from_component_stack
+        - trace_source_screenshot_into_local_text_rectangles_or_vectors
+        - use_screenshot_overlay_for_structural_mutation
+        - continue_screenshot_draft_as_production_base
+        - use_local_one_off_overlay_for_status_bar_header_cards_lists_or_bottom_bar
+      continuation_iteration:
+        use_when:
+        - user continues in the same conversation and asks to adjust compare combine weaken strengthen expand
+          or refine existing options
+        - previous output nodes screenshots assets component keys or route decisions are available in conversation
+        default_route_profile: continuation_profile
+        default_quality_tier: inherit_previous_quality_tier
+        write_allowed: true_when_previous_output_context_is_valid
+        required_first_step: read_previous_output_context_before_any_source_or_component_scan
+        reuse_before_rerun:
+        - previous_output_node_ids
+        - uploaded_source_screenshot_asset_id
+        - fixed_output_page_id_4608_4097
+        - resolved_local_component_node_ids
+        - known_mcp_constraints
+        forbidden:
+        - reread_full_skill_reference_stack
+        - rerun_full_component_search_when_touched_component_family_is_unchanged
+        - reexport_source_screenshot_when_existing_asset_is_valid
+      productionization:
+        use_when:
+        - user selects a direction or asks for 定稿 生产化 沉淀组件 组件化 可上线 正式稿
+        - user asks for 帮我做完 直接产出 完整生成 一次完成 最终交付 or equivalent one-pass completion
+        - an automation or batch workflow requires a complete artifact without an interactive direction-selection
+          turn
+        default_route_profile: select_by_task_route
+        default_quality_tier: production
+        route_profile_selection:
+          existing_context_local_mutation: local_mutation_profile
+          new_context_exploration: exploration_profile
+          component_or_variant_design: component_profile
+          same_thread_refinement: continuation_profile
+        write_allowed: true_after_full_gate
+        required:
+        - direct_native_output_or_explicit_component_family_extension
+        - full_design_system_gate
+        - component_instance_or_variant_audit
+        - token_and_style_binding_check
+        - full_frame_and_zoom_screenshot_validation
+    smart_two_stage_delivery:
+      enabled: true
+      stage_1:
+        result: first_visible_direction
+        default_for: design or generation requests without selected direction or explicit production language
+        tier: fast_visual_exploration
+        required_label: exploration_draft
+        quality_tier: inspiration_draft
+        acceptance: a full-frame screenshot clearly communicates the requested direction while context integrity
+          universal basic visual QA and registered_component_family_gate pass; token Auto Layout dark-mode
+          and unregistered new componentization gaps are recorded as production_gaps
+      stage_2:
+        result: production_ready_output
+        enter_when:
+        - user selects a direction
+        - user explicitly asks for 定稿 上线 生产化 正式稿 可上线 沉淀组件 or 组件化
+        - user asks for 帮我做完 直接产出 完整生成 一次完成 or 最终交付
+        - automation or batch execution cannot wait for interactive direction selection
+        tier: productionization
+      direct_to_stage_2_when:
+      - production language is explicit in the initial request
+      - user explicitly asks for one-pass production-ready delivery
+      must_not:
+      - describe stage_1 as production ready
+      - force an extra confirmation when the request already selects a direction or asks for production
+      - weaken context integrity source protection or persistent write scope in stage_1
+    default_rule: prefer lookup_fast_path for queries, fast_visual_exploration for first-visible-direction
+      delivery when design intent is not yet production-specific, continuation_iteration for same-thread refinements,
+      and productionization only after direction selection or explicit production language
+  quality_tier_routing:
+    purpose: select QA strictness independently from semantic task route speed tier and source-preservation
+      mode
+    applies_to: every_generation_or_figma_write_request
+    values:
+    - inspiration_draft
+    - precision_draft
+    - production
+    selection_precedence:
+    - explicit_production_or_final_delivery
+    - explicit_redesign_multi_option_or_visual_exploration
+    - existing_context_local_change_without_exploration
+    - new_design_without_existing_target_or_production_language
+    - ambiguous_lookup_or_generation_stays_readonly_until_resolved
+    tiers:
+      inspiration_draft:
+        use_when:
+        - user asks for 重新设计 发散 多方案 试几版 换一种思路 看看效果
+        - user asks for 高级一点 有设计感 提升美感 or other visual-direction language without production wording
+        - user requests a new page or module without an existing target or production wording
+        required:
+        - universal_basic_visual_check
+        - full_frame_screenshot_check
+        - design_thesis_per_option
+        - option_difference_result_when_multiple_options
+        - production_gaps
+        always_blocking:
+        - registered_component_family_gate_failed
+        protected_even_in_exploration:
+        - existing_source_shell
+        - locked_context
+        - status_bar_navigation_background_and_bottom_bar
+        non_blocking_production_gaps_ref: validation.yaml#production_gaps_check.allowed_values
+      precision_draft:
+        use_when:
+        - user modifies adds adjusts optimizes or fixes a target region in an existing page without exploration
+          or production wording
+        - user provides an existing screen annotation or explicit target region
+        - user asks for high fidelity without final delivery language
+        required:
+        - source_locked_visual_draft
+        - target_region
+        - locked_regions
+        - mutation_scope_check
+        - universal_basic_visual_check
+        - full_frame_screenshot_check
+        - production_gaps
+        always_blocking:
+        - source_shell_or_locked_region_changed
+        - target_scope_exceeded
+        - registered_component_family_gate_failed
+        non_blocking_production_gaps_ref: validation.yaml#production_gaps_check.allowed_values
+      production:
+        use_when:
+        - user asks for 定稿 最终稿 开发交付 可上线 正式稿 严格按规范
+        - user asks for 完整适配DarkMode 组件化 沉淀组件 生产化 做完 or equivalent finalization
+        - user selects an option and asks to finish or productionize it
+        - automation or batch execution requires a complete deliverable
+        required:
+        - universal_basic_visual_check
+        - full_design_system_gate
+        - component_instance_or_variant_audit
+        - token_and_style_binding_check
+        - auto_layout_and_component_property_check
+        - dark_mode_check_when_applicable
+        - full_frame_and_zoom_screenshot_validation
+    continuation_rule:
+    - inherit the previous quality_tier by default
+    - explicit production language upgrades the continuation to production
+    - never silently downgrade production to a draft tier
+    ambiguity_policy:
+    - lookup wording without a generation verb remains readonly
+    - ask only when semantic evidence cannot distinguish lookup from generation
+    required_record:
+      fields:
+      - quality_tier
+      - evidence
+      - explicit_production_signal
+      - explicit_exploration_signal
+      - existing_target_signal
+      - inherited_from_previous_when_any
+    output_contract:
+      required_for_all_generation:
+      - quality_tier
+      - basic_visual_gate
+      - production_gaps
+      required_for_multi_option:
+      - design_thesis
+      - option_difference_result
+      required_when_external_reference_is_considered:
+      - reference_evidence_level
+    keyword_assistance:
+      purpose: advisory only; semantic intent and route confidence remain required before any Figma write
+      signals:
+        production:
+        - 定稿
+        - 最终稿
+        - 正式稿
+        - 可上线
+        - 上线
+        - 开发交付
+        - 生产化
+        - 严格按规范
+        - 完整适配dark
+        - 适配dark mode
+        - 适配 dark mode
+        - 组件化
+        - 沉淀组件
+        - 做完
+        - 最终交付
+        - 一次完成
+        - 自动化
+        - 批处理
+        exploration:
+        - 重新设计
+        - 发散
+        - 多方案
+        - 三版
+        - 几版
+        - 试几版
+        - 换一种思路
+        - 换一版
+        - 看看效果
+        - 高级一点
+        - 有设计感
+        - 提升美感
+        - 不要太像原版
+        local_change:
+        - 新增
+        - 增加
+        - 修改
+        - 调整
+        - 优化
+        - 修复
+        - 加一个
+        - 改一下
+        - 改这里
+        - 这个区域
+        - 高保真
+        existing_target:
+        - 现有
+        - 已有
+        - 原页面
+        - 当前页面
+        - 这个页面
+        - 这里
+        - 设置页
+        - 个人中心
+        - 详情页
+        - 首页
+        - 弹窗
+        - 底栏
+        - 导航
+        - 标注区域
+        generation:
+        - 设计
+        - 生成
+        - 做一个
+        - 出一版
+        - 新建
+        - 改成
+        - 画一个
+        - 落到figma
+        - 落到 figma
+        - 做成
+        - 出三版
+        - 试几版
+        - 换一版
+        - 定稿
+        - 生产化
+        - 完成
+        - 改为
+        lookup:
+        - 长什么样
+        - 长啥样
+        - 看一下
+        - 看看现在
+        - 给我看
+        - 有没有
+        - 在哪
+        - 查一下
+        - 查询
+        - 是否
+        - 找一下
+        - 是什么
+        - 怎么
+        - 如何
+        - 说说
+        - 介绍
+        - 解释
+        negated_generation_patterns:
+        - (?:不要|别|不需要|不必|无需|禁止|先不|不想|不打算|不要求)(?:再|先|帮我|给我)?(?:生成|设计|新建|创建|修改|调整|优化|重做|画|写入|做成|制作|生产化|定稿|发散|做)
+        - (?:只|仅)(?:查询|查看|查|看|解释|介绍)
+      semantic_intents:
+      - lookup_existing
+      - mutate_existing
+      - design_new
+      - component_variant
+      ambiguity_rule: lookup plus generation hints or negated generation stays readonly unless the caller provides
+        resolved semantic intent
+      write_authorization: false
+  figma_mcp_known_facts:
+    local_component_resolution: treat indexed node_id as a locator, verify its live type, and resolve a concrete
+      local COMPONENT or variant child inside the same Figma file; catalog Frames are never instance sources
+      and no non-local fallback exists
+    plugin_fetch: use_figma plugin runtime may not provide fetch; download and upload image assets outside
+      the plugin, then reuse the uploaded node or image fill
+    task_scoped_atomic_output: source frames and the fixed output page share one file; keep source frames readonly
+      and create each task result inside a task_id-scoped output container in one use_figma write call
+    text_runtime_policy_ref: references/metadata/tokens.yaml#typography.runtime_text_policy
+  task_route_layer:
+    priority_order:
+    - existing_source_or_state_lookup
+    - existing_context_local_mutation
+    - component_or_variant_design
+    - new_context_exploration
+    matching_method: semantic_first_keyword_second
+    existing_source_or_state_lookup_rule: resolve local scene/runtime index first; read only matched authority
+      sections; live source/master reads are conditional on visual freshness, explicit latest request, write
+      use or missing/stale/ambiguous index; generated-output page only for explicit output lookup
+    existing_context_local_mutation_rule: lock the closest complete source screenshot inside a task-scoped
+      output Frame; rebuild only target_region and preserve all non-target regions pixel-for-pixel
+    component_or_variant_design_rule: extend nearest component family; structure and slot changes are allowed
+      only inside the component family
+    new_context_exploration_rule: create new screen or flow; reuse tokens components navigation and Shaonian
+      Bowen design language
+  canonical_reference_policy:
+    project_file_authority: global_defaults.source_figma_file_key
+    output_page_authority: global_defaults.output_page_id
+    node_owners:
+      source_group_and_pattern: references/metadata/source-registry.yaml
+      exportable_screen_frame: references/metadata/source-frames.yaml
+      component_or_component_set: references/metadata/components.yaml
+      visual_cache_entry: references/metadata/visual-cache.yaml
+    route_reference_format:
+    - source_frames.use_for=<semantic_key>
+    - source_registry.use_for=<semantic_key>
+    - components.<component_name>
+    narrative_reference_rule: md files use semantic refs or component names; concrete node IDs stay in canonical
+      metadata and source-index.md only
+    stale_reference_rule: stale or missing IDs may appear only in canonical stale lists, cache history, or
+      source-index.md; never in active route source refs
+    live_health_rule: resolve logical refs to concrete nodes, then verify live type, role, name/context and
+      status before write
+  prefer_component_instance_or_variant: true
+  design_language_reference: references/design-language.md
+  decision_matrix_reference: references/design-decision-matrix.md
+  figma_design_judgment_reference: references/design-decision-matrix.md
+  page_recipe_reference: references/page-recipes.md
+  screen_patterns_reference: references/screen-patterns.md
+  page_experience_routing:
+    authority: references/screen-patterns.md
+    frame_mapping_authority: references/metadata/source-frames.yaml
+    profile_selector: source_frame.experience_profile first; route.experience_profile only when no concrete
+      source frame is resolved
+    context_selector: source_frame.context_experience_profile when present
+    load_scope: matching_profile_id_heading_only
+    maximum_profiles_per_task: one_primary_plus_one_context_or_overlay
+    required_when:
+    - new_module_insertion
+    - page_structure_change
+    - new_page_state
+    - page_generation
+    - explicit_redesign_or_exploration
+    - component_validation_in_real_page_context
+    skip_when:
+    - existing_source_or_state_lookup
+    - pure_copy_change
+    - pure_icon_replacement
+    - pure_token_lookup
+    - pure_component_lookup_without_page_context
+    required_internal_evidence_when_loaded:
+    - experience_profile_loaded
+    - extension_heuristic_used
+    design_check_integration:
+      locked_context: inherit_profile_must_keep
+      main_visual_change: must_match_profile_can_vary_or_extension_heuristics
+      visual_evidence: verify_focus_curve_surface_grammar_and_module_placement
+    missing_profile_policy:
+      known_active_page: hard_stop_for_structural_or_visual_generation
+      new_context_exploration: choose_nearest_profile_and_report_page_experience_gap
+      production_delivery: do_not_claim_profile_coverage_until_confirmed
+      provisional_profile: exploration_reference_only
+  visual_failures_reference: references/visual-failures.md
+  feedback_intake_reference: references/feedback-intake.md
+  external_reference_policy:
+    use_when:
+    - local_component_state_missing_but_parent_component_exists
+    - user_provides_reference_screenshot
+    - user_requests_mature_product_reference
+    - user_requests_visual_quality_improvement_without_source_pattern
+    source_reference: references/external-reference-patterns.md
+    product_breadth: 3-5 products across 2-4 task-relevant categories
+    allowed_use: pattern_extraction_only
+    forbidden_use:
+    - replace_ready_to_force_component
+    - copy_external_chrome
+    - copy_external_navigation_or_icon_style
+    - mix_unrelated_product_languages
+  presence_role_taxonomy:
+    purpose: classify how a new UI element exists in the current page before choosing size color placement
+      or component form
+    roles:
+      primary_surface:
+        meaning: main surface or main object for the current user task
+        default_attention_budget: high
+        default_state: expanded
+      inline_entry:
+        meaning: an entry or affordance embedded in existing content or a list item
+        default_attention_budget: medium
+        default_state: inline
+      contextual_state:
+        meaning: a local state marker inside an existing component such as media duration selected read or
+          loading
+        default_attention_budget: low
+        default_state: inline
+      persistent_companion:
+        meaning: a cross-page or long-lived companion control for an ongoing task that must remain reachable
+          without becoming the page focus
+        default_attention_budget: low
+        default_state: collapsed
+      transient_feedback:
+        meaning: short-lived feedback after an action such as toast or lightweight success error state
+        default_attention_budget: minimal
+        default_state: hidden_until_triggered
+      modal_decision:
+        meaning: a blocking or focused decision surface such as purchase confirmation selection or unlock
+        default_attention_budget: high
+        default_state: expanded
+    attention_budget_values:
+      high: may own the viewport focus when it is the current task
+      medium: visible and easy to find but secondary to the main content
+      low: reachable and legible without pulling focus from the main task
+      minimal: background or brief signal only
+    default_state_values:
+    - expanded
+    - collapsed
+    - inline
+    - hidden_until_triggered
+    component_semantic_reuse_rule: 'Reuse component semantics, tokens, icon language, states and interaction
+      meaning before reusing the full visual form. If an existing component''s full form exceeds the selected
+      presence_role attention budget, extend the nearest family with a compact/collapsed/local state variant
+      instead of mechanically placing the full component or drawing an unrelated substitute.
+
+      '
+  mode_routing:
+    purpose: preserve or explore layout posture; this axis is independent from quality_tier and never means
+      production-ready delivery
+    production_mode_triggers:
+    - 新增
+    - 增加
+    - 修改
+    - 修复
+    - 调整现有
+    - 设置页
+    - 局部
+    exploration_mode_triggers:
+    - 重新设计
+    - 发散
+    - 换一版
+    - 多方案
+    - 不像原版
+    - 样式不好看
+    - 只改版式
+    compatibility_note:
+    - production_mode means source-preserving mutation posture, not quality_tier=production
+    - exploration_mode still inherits existing-shell protection when a redesign starts from an existing page
+  preflight_required_fields:
+    route_profile_based: true
+    source: route_profiles
+    legacy_full_field_table: deprecated
+  metadata_authority_gate:
+    core_rule: No metadata authority loaded, no Figma write
+    always_required:
+    - references/metadata/task-routes.yaml
+    required_for_write:
+    - references/metadata/task-routes.yaml
+    - references/metadata/validation.yaml
+    required_when_components_or_variants_are_touched:
+    - references/metadata/components.yaml
+    required_when_tokens_variables_or_styles_are_touched:
+    - references/metadata/tokens.yaml
+    required_when_source_nodes_are_used:
+    - references/metadata/source-registry.yaml
+    required_when_screenshot_display_export_or_source_frame_duplication_is_needed:
+    - references/metadata/source-frames.yaml
+    required_when_local_visual_cache_is_used:
+    - references/metadata/visual-cache.yaml
+    missing_metadata_policy:
+      l1_lookup_readonly:
+        allowed: true
+        required_label: source_index_only
+        confidence: low
+        must_not_claim:
+        - figma_live_checked
+        - full_validation_available
+      figma_write:
+        allowed: false
+        return_status: metadata_unavailable
+      exploration_draft:
+        allowed_only_when:
+        - references/metadata/task-routes.yaml_loaded
+        - references/metadata/validation.yaml_loaded
+        required_label: must_not_ship_as_production
+    delivery_record_required:
+    - metadata_loaded
+    - missing_metadata_when_any
+  execution_layers:
+    core_rule:
+    - Fast Path = readonly only
+    - Any persistent Figma write = at least L2
+    - Production delivery = L3 full validation
+    - Exploration output must be marked exploration_draft and must_not_ship_as_production
+    l1_lookup_readonly:
+      applies_to:
+      - existing_source_or_state_lookup
+      - project_asset_lookup
+      write_allowed: false
+      persistent_write_allowed: false
+      transient_render_allowed_only_when:
+      - variable_mode_visual_lookup
+      - temporary changes are restored or deleted before response
+      - no source output or legacy-history nodes remain changed
+      evidence_status_required: true
+      evidence_status_values:
+      - local_cache_checked
+      - source_index_only
+      - figma_live_checked
+      - screenshot_checked
+      source_index_only_policy: provisional_result_not_absence_proof
+      allowed_actions:
+      - read_source_index
+      - read_source_registry
+      - read_local_visual_cache
+      - read_live_figma_source
+      - read_component_library
+      - take_or_return_screenshot
+      - transient_variable_mode_render_with_cleanup
+      - persist_and_validate_visual_attachment_for_final_response
+      forbidden_actions:
+      - persistent_write_figma
+      - create_new_frame
+      - leave_render_or_preview_frame
+      - generate_missing_state
+      - present_imagined_preview_as_existing_source
+    l1_5_fast_visual_exploration:
+      applies_to:
+      - multi_option_exploration
+      - quick_visual_direction
+      write_allowed: true_with_draft_label
+      required_before_write:
+      - route_decision
+      - speed_tier_decision
+      - quality_tier_decision
+      - nearest_source_or_previous_output_context
+      - context_basis
+      - target_region
+      - locked_context
+      - new_local_element_scope
+      - design_thesis
+      - production_gap_plan
+      - touched_component_or_icon_family_when_used
+      - persistent_write_scope_plan
+      allowed_actions:
+      - create_dated_top_level_frames_on_fixed_output_page
+      - use_locked_source_screenshot_or_previous_output_as_visual_context_background
+      - add_local_one_off_overlay_or_state_concepts_only_for_the_requested_new_element
+      - use known local component node IDs without repeating component search
+      - prefer_core_token_binding_on_new_visible_ui
+      - screenshot_full_frame_after_write
+      - run_universal_basic_visual_check
+      forbidden_actions:
+      - claim_production_ready
+      - mutate_official_source_pages
+      - reconstruct_existing_page_module_or_component_context_from_primitives
+      - reconstruct_existing_page_module_or_component_context_from_component_stack
+      - trace_locked_screenshot_into_local_text_rectangles_or_vectors
+      - use_local_one_off_overlay_for_existing_status_bar_header_cards_lists_or_bottom_bar
+      - leave_new_visible_ui_with_raw_core_visual_values_without_gap_or_explicit_raw_visual_sketch
+      - run_full_production_gate_before_visual_direction_if_user_only_asked_to_compare_options
+      delivery_label_required:
+      - exploration_draft
+      - productionization_required_after_selection
+      always_blocking:
+      - universal_basic_visual_gate_failure
+      - existing_shell_or_locked_context_changed
+      - invalid_multi_option_difference
+      - registered_component_family_gate_failed
+      report_as_production_gaps:
+      - token_or_style_binding_incomplete
+      - dark_mode_not_validated
+      - auto_layout_or_component_properties_not_production_ready
+      - unregistered_new_componentization_gap
+    l1_6_continuation_iteration:
+      applies_to:
+      - same_thread_refinement
+      - compare_or_merge_existing_options
+      write_allowed: true_when_previous_context_exists
+      required_before_write:
+      - previous_output_context_checked
+      - target_nodes_or_assets_to_reuse
+      - delta_from_previous_option
+      - persistent_write_scope_plan
+      allowed_actions:
+      - duplicate_or_modify_previous_output_frame
+      - reuse_uploaded_screenshot_asset
+      - reuse_resolved_local_component_node_ids
+      - perform_targeted_screenshot_check
+      forbidden_actions:
+      - restart_full_preflight_without_new_dependency
+      - reread_unrelated_references
+      - rerun_design_system_gate_for_unchanged_component_family
+    l2_local_light_mutation:
+      applies_to:
+      - existing_context_local_mutation
+      write_allowed: true_after_gate
+      allowed_only_when:
+      - target_region_is_small_or_explicit
+      - closest_complete_source_screenshot_is_available
+      - locked_regions_are_recorded
+      - source_protection_and_universal_basic_visual_gate_pass
+      never_skip:
+      - source_frame_id
+      - source_screenshot_evidence
+      - task_id
+      - task_container_id
+      - target_region
+      - locked_regions
+      - mutation_scope_check
+      - registered_component_family_gate
+      - screenshot_visual_check
+      - universal_basic_visual_check
+      - persistent_write_scope_check
+      - production_gaps
+      design_system_gate_levels:
+        text_style_gate:
+          applies_when:
+          - text_only_edit
+          - no_component_structure_change
+          required_checks:
+          - source_frame_duplicated
+          - target_text_size_line_height_color_hierarchy_and_alignment_preserved
+          - locked_regions_unchanged
+          - screenshot_visual_check
+        target_component_gate:
+          applies_when:
+          - icon_change
+          - button_change
+          - component_state_change
+          - image_or_asset_replacement
+          required_checks:
+          - text_style_gate
+          - touched_component_or_icon_family_verified
+          - registered_component_family_gate
+          - no_parallel_local_component_family
+        full_design_system_gate:
+          blocking_when:
+          - quality_tier_is_production
+          draft_behavior: enforce registered_component_family_gate and record token Auto Layout dark-mode and
+            unregistered new componentization gaps in production_gaps
+          applies_when:
+          - layout_change
+          - overlay_or_sheet_or_popover_change
+          - card_or_navigation_or_bottom_bar_change
+          - reusable_component_or_variant_change
+          required_checks:
+          - figma_design_system_gate_check
+          - component_instance_or_variant_check
+          - token_and_style_binding_check
+          - screenshot_visual_check
+    l3_production_or_exploration:
+      applies_to:
+      - new_context_exploration
+      - component_or_variant_design
+      - production_delivery
+      production_required:
+      - full_design_system_gate
+      - full_validation
+      - screenshot_visual_check
+      - persistent_write_scope_check
+      exploration_required:
+      - divergence_contract
+      - design_thesis_per_option
+      - option_difference_result_when_multiple_options
+      - universal_basic_visual_check
+      - production_gaps
+      - exploration_draft_label_when_not_production_ready
+      - must_not_ship_as_production_when_any_core_gap_exists
+  forbidden_fallbacks:
+  - hand_draw_status_bar
+  - hand_draw_navigation_bar
+  - hand_draw_bottom_bar
+  - hand_draw_existing_card_or_cell_family
+  - replace_locked_region_with_local_copy
+  - primitive_substitution_for_ready_to_force_in_locked_source_shell_or_production
+  - raw_value_substitution_for_core_tokens_in_production
+  - mechanical_component_stack_without_design_check
+  - missing_context_basis_before_figma_write
+  - source_context_reconstruction_from_primitives
+  - unverified_source_context_reconstruction_from_component_stack
+  - source_context_reconstruction_from_screenshot_tracing
+  - unbounded_full_page_reconstruction_for_existing_context
+  - write_outside_authorized_scope
+  - top_level_frame_overlap
+  responsive_layout_policy:
+    applies_to: all newly generated or modified native screens and components
+    baseline_width: 390
+    verification_widths:
+    - 320
+    - 360
+    - 375
+    - 390
+    - 414
+    - 430
+    rules:
+    - Use Auto Layout for related layout containers; Group is not a layout container.
+    - Page content and cards fill available parent width; preserve context-specific side padding.
+    - Text wraps with fixed available width and Hug height; do not reserve hidden button space.
+    - Icons and avatars retain fixed geometry; text consumes remaining width.
+    - Two-column options use equal Fill children; word tokens wrap naturally.
+    - Consent icon and left-aligned text use 4px gap, top-aligned on multiline text.
+    - Fixed bottom actions account for safe area; scroll content must remain reachable above actions.
+    - Do not claim whole-screen responsiveness based only on component resizing.
+    - Verify actual screenshots at narrow and wide widths plus long-content states.
+    failure_policy: repair affected layout before accepting; record remaining whole-page migration gaps
+    source_existing_screens: audit and explicitly scope structural migration; do not silently redesign approved
+      screens
+  scene_index_first_policy:
+    order:
+    - reuse_exact_current_turn_evidence
+    - query_scene_index_locally
+    - resolve_matched_component_catalog_entries
+    - read_exact_live_master_before_design_write
+    - search_only_on_missing_stale_ambiguous_or_incompatible_index
+    scene_source: references/metadata/scene-index.yaml
+    entry_command: python3 scripts/query_runtime_index.py "<scene or component>" --intent locate --compact
+    lookup_only: Return indexed scene, source screen, family IDs and representative master IDs without live
+      master reads for ordinary locating or selection. Declare source_index_only, not live_verified.
+    write_tasks: Resolve exact master or variant from matched components.yaml entry; read current live properties,
+      variants, resizing, slots and relevant variable bindings before creating or modifying instances. Index
+      and review examples never substitute for masters.
+    visual_queries: Use --intent visualize; exact valid screenshot cache or targeted live screen rendering.
+      Rendering a screen does not require scanning its entire component library. Dark-mode verification rules
+      remain unchanged.
+    fallback: If scene mapping is absent, try the component runtime index, then bounded live search for unresolved
+      semantics. Invalid IDs, ambiguity or unavailable variants require targeted search; do not scan all pages
+      by default.
+    tool_requirements: If the active MCP requires a library/search preflight, perform the minimum scoped lookup
+      after local index resolution; do not treat it as authorization for an all-library scan.
+    refresh: Record discovered stale mappings and update them only within explicit Skill/index maintenance
+      authorization; ordinary read-only lookup must not publish Skill changes.
+    variant_gallery_role: locator_only_not_component_authority_or_responsive_validation
+    variant_gallery_lookup_rule: use instance_id and variant_master_id for lookup and write preparation; card_id
+      is visual presentation only and must not trigger a card traversal
+route_decision:
+  required_before_any_workflow: true
+  fields:
+  - semantic_intent
+  - task_route_type
+  - confidence
+  - evidence
+  - write_allowed
+  - fallback_route
+  confidence_rules:
+    high: continue_with_selected_route
+    medium: read_only_or_conservative_preflight_only_no_figma_write
+    low: ask_user_before_any_write_or_generation
+  rollback_rules:
+    generation_or_mutation_mistaken: existing_source_or_state_lookup
+    exploration_mistaken: existing_context_local_mutation
+    component_mistaken: source_component_family_lookup
+  write_permission:
+    existing_source_or_state_lookup: false
+    existing_context_local_mutation: true_when_selected_context_strategy_source_protection_and_task_atomic_output_gates_pass
+    component_or_variant_design: true_when_component_family_verified_and_either_output_only_draft_policy_or_explicit_formal_component_maintenance_scope_is_recorded
+    new_context_exploration: true_when_source_context_and_divergence_contract_recorded
+turn_intent_contract:
+  required_before:
+  - component_selection
+  - page_recipe_application
+  - figma_write
+  - multi_option_generation
+  purpose: make the user's current-turn explicit request outrank default recipes and full component shapes
+    while preserving design-system semantics.
+  extraction_source:
+  - latest_user_message
+  - attached_reference_images_or_markups
+  - explicit correction from the current thread
+  required_fields:
+  - user_goal
+  - explicit_user_constraints
+  - excluded_fields_or_elements
+  - required_fields_or_elements
+  - occlusion_budget
+  - locked_context
+  - component_semantic_reuse_policy
+  - conflict_resolution
+  optional_fields:
+  - field_budget
+  - visual_weight_override
+  - required_archetype_divergence
+  - allowed_component_shape_change
+  priority_rule:
+  - explicit current-turn constraints outrank default page recipes component defaults and historical examples
+  - keep component semantics tokens icons states and interaction meaning before keeping full component geometry
+  - when a component's default fields conflict with excluded_fields_or_elements remove or hide those fields
+    before resizing or restyling
+  - when the requested presence_role is low or minimal do not use a full source component shape merely because
+    the component exists
+  conflict_resolution_values:
+    skill_rule_overridden_by_turn_intent: allowed_when_component_shape_or_default_fields_conflict_with_explicit_user_constraints
+    ask_or_degrade: use_when_user_constraints_and_hard_component_requirements_cannot_both_be_satisfied
+    hard_stop: use_when_source_protection_core_tokens_or_ready_to_force_semantics_would_be_broken
+  must_not:
+  - reintroduce a user-excluded field because it exists in a default component
+  - preserve full component form when the turn requests a lighter or less intrusive presence
+  - treat component reuse as more important than the stated user outcome
+  - generate multiple options that ignore the requested difference axis
+execution_handoff_policy:
+  role: internal_design_execution_evidence
+  orchestration_owner: agent
+  mechanical_execution_owner: agent_using_available_tools
+  presentation_owner: agent_result_through_transparent_platform
+  preserve_route_profiles: true
+  skill_owns:
+  - semantic_route
+  - source_and_component_resolution
+  - cache_eligibility
+  - design_rules
+  - validation_evidence
+  - visual_query_delivery_completion_contract
+  agent_owns:
+  - shortest_execution_path
+  - tool_capability_detection
+  - figma_read_render_write_when_tools_allow
+  - within_turn_read_deduplication
+  - retry_and_timeout_policy
+  - degradation_sequence
+  - final_response_assembly
+  - durable_visual_attachment_reference
+  platform_owns:
+  - request_forwarding
+  - ordered_agent_process_display
+  - unchanged_agent_result_display
+  - canvas_transport_and_display
+  - task_bound_annotation_transport
+  - session_isolation
+  - authentication_rate_limit_timeout_reconnect_idempotent_retry_and_file_transfer
+  platform_forbidden:
+  - business_intent_classification
+  - shaonian_bowin_semantic_interpretation
+  - figma_query_or_node_counting
+  - authority_source_selection
+  - business_prompt_or_result_template
+  - agent_result_summary_correction_completion_or_reordering
+  - unavailable_status_replacement
+  - historical_business_context_injection
+  - business_answer_cache_reuse
+  capability_rule: the Agent executes or degrades according to its actual tools; the Skill never assumes the
+    platform will add tools render Figma repair a result or complete business logic
+  must_not_control:
+  - final_user_response_layout
+  - exact_platform_transport_implementation
+  - non_visual_link_format
+  - user_visible_technical_fields
+  must_not_weaken:
+  - lookup_readonly_boundary
+  - source_frame_resolution
+  - figma_write_scope
+  - source_context_protection
+  - production_component_and_token_gates
+  - universal_basic_visual_gate
+  - screenshot_visual_check
+route_profiles:
+  lookup_profile:
+    applies_to:
+    - existing_source_or_state_lookup
+    - project_asset_lookup
+    write_allowed: false
+    figma_write_allowed: false
+    skill_cache_write_allowed: explicit_visual_cache_refresh_only
+    minimum_reads:
+    - python3 scripts/read_execution_profile.py profile lookup_profile
+    - exact uploaded current-turn gallery reference when available, otherwise python3 scripts/query_runtime_index.py
+      with the user target and --intent locate for locating/selection or --intent visualize for visual queries
+    - smallest matching authority section through python3 scripts/read_metadata_section.py only when the runtime
+      result is ambiguous stale unsupported or transitions to a write route
+    conditional_reads:
+      current_turn_gallery_reference:
+      - uploaded_preview_file
+      - provided_file_key
+      - provided_node_id
+      source_screen:
+      - references/source-index.md
+      - references/metadata/source-frames.yaml
+      component_or_asset:
+      - references/metadata/components.yaml
+      - references/metadata/source-registry.yaml
+      cache_candidate:
+      - references/metadata/visual-cache.yaml
+      freshness_or_state_mismatch:
+      - live_figma_source
+      explicit_generated_work_lookup:
+      - fixed_generated_output_page
+      scene_component_mapping:
+      - references/metadata/scene-index.yaml matched record via runtime index
+    orchestration_rule: prefer exact current-turn reference evidence, then return only matched runtime records
+      and load only the conditional authority branch needed for ambiguity or escalation; ordinary lookup allows
+      at most one target-resolution call and one screenshot or attachment persistence path, with one corrective
+      retry only for an explicit tool error
+    required_fields:
+    - route_decision
+    - resolved_target
+    - evidence_status
+    - write_allowed
+    - source_nodes_checked
+    - screenshot_or_node_candidates
+    - found_existing_state_or_not_found_in_source
+    - requested_appearance_mode when visual evidence is requested
+    - actual_rendered_appearance_mode when visual evidence is delivered
+    - appearance_mode_verification_status when visual evidence is requested
+    optional_fields:
+    - current_turn_reference_reused
+    - cache_id
+    - cache_status
+    - cache_captured_at
+    forbidden:
+    - persistent_write_figma
+    - create_new_frame
+    - leave_render_or_preview_frame
+    - generate_new_state
+    - present_imagined_preview_as_existing_source
+    component_resolution_policy_ref: global_defaults.scene_index_first_policy
+  continuation_profile:
+    applies_to:
+    - same_thread_refinement
+    - compare_or_merge_existing_options
+    - adjust_existing_generated_option
+    write_allowed: true_when_previous_output_context_exists
+    required_reads:
+    - previous conversation output context
+    - live generated-output page metadata for referenced nodes when available
+    - only newly touched component reference if the delta introduces a new component family
+    - matching screen-patterns.md profile only when the requested delta changes page structure, module role,
+      visual hierarchy, or state model
+    required_fields:
+    - route_decision
+    - speed_tier_decision
+    - quality_tier
+    - previous_output_context
+    - context_strategy
+    - context_basis
+    - turn_intent_contract
+    - target_nodes_or_assets_to_reuse
+    - requested_delta
+    - target_region
+    - locked_context
+    - new_local_element_scope
+    - screenshot_check
+    - basic_visual_gate
+    - production_gaps
+    - output_page_id
+    - task_date
+    - date_divider_id
+    - date_divider_created_or_reused
+    - top_level_canvas_collision_check
+    - persistent_write_scope_check
+    - experience_profile_loaded when page_experience_routing requires it
+    - extension_heuristic_used when page_experience_routing requires it
+    - component_resolution_evidence
+    forbidden:
+    - rerun_full_preflight_when_delta_only_changes_existing_output
+    - requery_source_or_component_catalog_without_new_dependency
+    - recreate_prior_options_from_scratch
+    component_resolution_policy_ref: global_defaults.scene_index_first_policy
+  local_mutation_profile:
+    applies_to:
+    - existing_context_local_mutation
+    write_allowed: true_after_gate
+    required_reads:
+    - python3 scripts/read_execution_profile.py profile local_mutation_profile
+    - exact target record through python3 scripts/query_runtime_index.py
+    - smallest matching task-routes validation and source-frames authority sections needed for the write
+    - relevant component or icon family only when the target mutation touches it
+    - matching screen-patterns.md profile only for module insertion, structure change, new state, or visual
+      hierarchy change
+    - references/figma-workflow.md and matching references/page-recipes.md recipe only for structural changes
+      productionization or unresolved ambiguity
+    orchestration_rule: choose context strategy from global_defaults.context_strategy_routing; preserve the
+      exact source and locked regions; create all requested options in one task-scoped atomic call and inspect
+      every full-frame screenshot
+    required_fields:
+    - route_decision
+    - quality_tier
+    - context_strategy
+    - context_basis
+    - source_frame_id
+    - source_screenshot_evidence
+    - task_id
+    - task_container_id
+    - output_page_id
+    - task_date
+    - date_divider_id
+    - date_divider_created_or_reused
+    - placement_batch_frame_ids
+    - placement_origin
+    - selected_context_strategy_check
+    - task_atomic_output_check
+    - top_level_canvas_collision_check
+    - persistent_write_scope_check
+    - target_region
+    - locked_regions
+    - locked_context
+    - new_local_element_scope
+    - turn_intent_contract
+    - allowed_mutations
+    - mutation_scope_check
+    - basic_visual_gate
+    - production_gaps
+    - presence_role
+    - attention_budget
+    - default_state
+    - experience_profile_loaded when page_experience_routing requires it
+    - extension_heuristic_used when page_experience_routing requires it
+    - component_resolution_evidence
+    locked_by_default:
+    - status_bar
+    - navigation
+    - page_background
+    - title
+    - existing_copy
+    - cards
+    - lists
+    - bottom_bar
+    draft_context_strategy:
+      trigger: user requests a visible draft or multiple options on an existing source context without explicit
+        production-ready native editability
+      context_strategy: source_locked_visual_draft
+      required_fields:
+      - source_frame_id
+      - source_screenshot_evidence
+      - target_region
+      - locked_regions
+      - option_count
+      - basic_visual_gate
+      - production_gaps
+      required_labels:
+      - source_locked_visual_draft
+      - exploration_draft
+      - must_not_ship_as_production
+      delivery_rule: generate and screenshot every requested option in one task-scoped atomic output call
+    component_resolution_policy_ref: global_defaults.scene_index_first_policy
+  exploration_profile:
+    applies_to:
+    - new_context_exploration
+    - explicit_redesign
+    - multi_option_exploration
+    write_allowed: true_after_gate
+    required_reads:
+    - references/design-language.md
+    - matching profile_id section from references/screen-patterns.md
+    - references/metadata/tokens.yaml
+    - references/metadata/components.yaml
+    - relevant_component_reference
+    required_fields:
+    - route_decision
+    - quality_tier
+    - context_strategy
+    - context_basis
+    - mode_used
+    - source_nodes
+    - must_keep
+    - can_vary
+    - target_region
+    - locked_context
+    - new_local_element_scope
+    - turn_intent_contract
+    - divergence_contract
+    - design_thesis
+    - option_difference_result
+    - reference_evidence_level
+    - basic_visual_gate
+    - production_gaps
+    - validation_summary
+    - output_page_id
+    - task_date
+    - date_divider_id
+    - date_divider_created_or_reused
+    - placement_batch_frame_ids
+    - placement_origin
+    - top_level_canvas_collision_check
+    - persistent_write_scope_check
+    - presence_role
+    - attention_budget
+    - default_state
+    - experience_profile_loaded
+    - extension_heuristic_used
+    - component_resolution_evidence
+    - option_difference_result when multiple options are requested
+    divergence_contract:
+      required_fields:
+      - design_thesis
+      - what_changes
+      - what_stays_locked
+      - why_this_is_materially_distinct
+      - visual_difference_evidence
+      invalid_divergence:
+      - color_only
+      - copy_only
+      - spacing_only
+      - shadow_only
+      - option_name_only
+      - near_same_card_shape_relabelled_as_visual_organization
+    allowed_degrade:
+    - non_core_variant_missing
+    - external_reference_used_for_pattern_only
+    degrade_required_labels:
+    - component_gap
+    - exploration_substitute
+    - must_not_ship_as_production
+    component_resolution_policy_ref: global_defaults.scene_index_first_policy
+  component_profile:
+    applies_to:
+    - component_or_variant_design
+    write_allowed: true_after_component_family_verified
+    required_reads:
+    - references/metadata/components.yaml
+    - references/metadata/source-registry.yaml
+    - references/figma-workflow.md
+    - references/component-audit.md
+    - relevant_component_reference
+    - matching screen-patterns.md profile only when validating the component in a real page context
+    required_fields:
+    - route_decision
+    - quality_tier
+    - context_basis
+    - turn_intent_contract
+    - nearest_component_family
+    - variant_strategy
+    - slot_guidance
+    - resizing_risk
+    - new_component_or_variant_decision
+    - component_output_kind
+    - basic_visual_gate
+    - production_gaps
+    - output_page_id
+    - task_date
+    - date_divider_id
+    - date_divider_created_or_reused
+    - placement_batch_frame_ids
+    - placement_origin
+    - top_level_canvas_collision_check
+    - persistent_write_scope_check
+    - source_component_family_unchanged
+    - output_component_authority
+    - publishing_status
+    - write_scope_mode
+    - experience_profile_loaded when real_page_context_validation_is_required
+    - extension_heuristic_used when real_page_context_validation_is_required
+    - component_resolution_evidence
+    output_rules:
+      default_component_output_kind: frame_structure_proposal
+      real_component_nodes_require_explicit_componentization: true
+      formal_component_source_pages_remain_read_only: unless_explicit_formal_component_maintenance
+      output_component_authority: output_only_unless_promoted_under_formal_component_maintenance
+      publishing_status: manual_only
+    formal_component_maintenance_required_fields:
+    - authorized_formal_page_ids
+    - authorized_source_frame_ids
+    - component_name_and_category
+    - property_and_slot_contract
+    - resizing_test
+    - source_instance_replacement_scope
+    - before_after_screenshot_check
+    - metadata_updates
+    forbidden:
+    - mutate_formal_source_component_family_without_explicit_maintenance_intent
+    - create_component_outside_authorized_scope
+    - use_unpromoted_output_component_as_future_source_authority
+    - publish_output_component
+    component_resolution_policy_ref: global_defaults.scene_index_first_policy
+gate_levels:
+  hard_stop:
+  - direct_native_output_cannot_pass_production_gate
+  - draft_blocked_context_unavailable
+  - source_context_reconstruction_hard_fail
+  - lookup_task_attempts_to_write
+  - production_core_component_unavailable_when_quality_tier_is_production
+  - production_core_token_unavailable_when_quality_tier_is_production
+  - status_bar_navigation_or_core_card_must_be_preserved_but_unavailable
+  - registered_component_family_gate_failed
+  - required_instance_or_source_extension_unresolved
+  - registered_component_replaced_by_local_primitives
+  - locked_region_changed
+  - universal_basic_visual_gate_failed
+  - screenshot_has_unexpected_overlap_clip_alignment_spacing_or_safe_area_failure
+  - key_entry_unreadable_or_icon_missing
+  - multiple_options_lack_meaningful_difference
+  - persistent_write_scope_violation
+  - formal_source_component_family_mutated_without_authorization
+  - task_atomic_output_check_failed
+  - screenshot_overlay_used_for_structural_mutation
+  - write_outside_authorized_scope
+  - source_product_or_component_page_modified_without_authorization
+  - top_level_frames_overlap
+  - known_active_page_profile_not_loaded_for_structural_or_visual_generation
+  - profile_must_keep_violation_changes_primary_task_or_source_shell
+  - state_delta_rebuilds_full_page
+  readonly_only:
+  - route_confidence_medium_or_low
+  - figma_mcp_or_source_node_uncertain
+  - user_intent_is_lookup_or_ambiguous_without_generation_verb
+  degrade_with_label:
+  - exploration_non_core_variant_unavailable
+  - external_reference_used_for_pattern_extraction
+  - external_reference_used_for_pattern_only
+  draft_allowed_with_label:
+  - exploration_non_core_component_gap
+  - exploration_external_reference_pattern_only
+  - task_atomic_output_requires_one_correctable_retry
+  report_gap:
+  - non_core_binding_failed
+  - draft_token_or_style_binding_incomplete
+  - draft_dark_mode_not_validated
+  - draft_auto_layout_or_component_properties_not_production_ready
+  - draft_unregistered_new_componentization_gap
+  - metadata_incomplete
+  - figma_mcp_unavailable_cached_lookup_only
+  - output_page_growth_warning
+  - page_experience_gap
+validator_rollout:
+  mode: warning_first_for_non_core_rules
+  blocking_now:
+  - lookup_task_attempts_to_write
+  - local_mutation_without_source_frame_duplication
+  - registered_component_family_gate_failed
+  - required_instance_or_source_extension_unresolved
+  - registered_component_replaced_by_local_primitives
+  - locked_region_changed
+  - universal_basic_visual_gate_failed
+  - multiple_options_lack_meaningful_difference
+  warning_first:
+  - non_core_variable_not_bound
+  - metadata_field_incomplete
+  - naming_inconsistency
+  - screenshot_missing_zoom_crop_for_dense_region
+  - exploration_difference_weak_but_not_production
+  promote_warning_to_blocking_when:
+  - repeated_in_same_route
+  - caused_visible_user_facing_defect
+  - prevents_component_reuse_or_source_protection
+routes:
+  existing_source_or_state_lookup:
+    matching_method: semantic_first_keyword_second
+    semantic_intent:
+      user_goal:
+      - see_existing_design
+      - inspect_existing_state
+      - confirm_whether_state_exists
+      - locate_existing_page_component_or_material
+      - compare_existing_versions
+      no_explicit_generation_verb_required: true
+      examples_without_exact_keyword:
+      - 暗色版给我瞅瞅
+      - 夜间态现在有吗
+      - 这页 dark mode 是哪版
+      - 个人中心夜间模式是什么效果
+      explicit_generation_verbs_that_override_lookup:
+      - 生成
+      - 设计
+      - 做一个
+      - 出一版
+      - 新建
+      - 改成
+      - 画
+      - 落到 Figma
+    triggers:
+    - 长啥样
+    - 长什么样
+    - 看一下
+    - 给我看
+    - 查询
+    - 查一下
+    - 有没有
+    - 找一下
+    - 现有
+    - 现在是什么样
+    - 状态在哪
+    - 页面在哪
+    - 组件在哪
+    - 夜间模式
+    - 夜间态
+    - 暗色模式
+    - 暗色版
+    - 深色模式
+    - 深色态
+    - dark mode
+    - dark
+    - 刷新视觉缓存
+    - 更新本地截图缓存
+    - 重新截取缓存
+    task_route_type: existing_source_or_state_lookup
+    task_mode: existing_source_or_state_lookup
+    page_type: source_lookup
+    main_task: find_existing_page_component_material_or_state
+    design_intent: return existing Figma source or output candidates without creating a new design
+    visual_cache_refresh:
+      semantic_intent: refresh_visual_cache
+      allowed_when:
+      - user explicitly requests refresh
+      - a registered source-change maintenance event is being executed
+      figma_write_allowed: false
+      skill_cache_write_allowed: true_after_validation
+      decision_owner: design_skill
+      execution_owner: agent_using_available_tools
+      eligibility_evidence:
+      - concrete_source_node
+      - live_node_and_render_state_verified
+      - new_visual_checked
+      - metadata_and_asset_pair_valid
+      required_outcome: atomic_asset_and_metadata_replacement
+      failure_behavior:
+      - keep_previous_asset
+      - mark_cache_stale
+      - report_cache_refresh_failed
+    variable_mode_visual_lookup:
+      applies_to:
+      - page_screen
+      - component
+      - component_variant
+      - overlay
+      - sheet
+      - modal
+      - local_state
+      - source_frame
+      use_when:
+      - user asks how any existing target looks without explicitly choosing a visual mode; requested mode is
+        light_default
+      - user asks how any existing target looks in 夜间模式 暗色模式 深色模式 dark mode or equivalent wording
+      semantic_intent: lookup_existing_visual_under_variable_mode
+      precedence: higher_than_parent_existing_state_fallback
+      rule: 'Treat every visual lookup as rendering the same resolved target node under requested_appearance_mode.
+        An unspecified mode is always light_default; explicit night/dark wording selects dark. A missing standalone
+        mode-specific frame is not evidence of absence.
+
+        '
+      preferred_collection:
+        name: Color Token 语义色
+        mode: requested_appearance_mode
+      required_evidence:
+      - concrete exportable screen_frame or component target
+      - exact source_node_id and render_state cache decision
+      - requested_appearance_mode and actual_rendered_appearance_mode exact-match decision
+      - variable collection and requested mode applicability when live rendering is required
+      - rendered visual or explicit unavailable status
+      - source chrome component integrity
+      - zero persistent lookup mutation
+      - validated durable visual attachment embedded in the final response
+      execution_constraints:
+      - exact active unexpired same-node same-mode cache completes the lookup without another render
+      - cache absence expiry node mismatch or mode mismatch requires live Figma rendering
+      - live rendering inspects the requested variable collection applies the requested mode to the same resolved
+        target captures the screenshot and restores the original mode
+      - Agent uses its available Figma or rendering tools for capture and cleanup
+      - Agent persists validates and embeds the captured image according to global_defaults.visual_query_delivery
+      - any temporary variable-mode operation must be fully restored or removed
+      completion_paths:
+        exact_cache: deliver_after_same_node_same_mode_and_freshness_validation
+        live_render: deliver_after_variable_mode_application_actual_mode_verification_persistence_and_cleanup
+        live_tool_failure: return_exact_variable_mode_fallback_status
+      parent_fallback_behavior: excluded
+      generation_invitation_behavior: excluded
+      fallback_status:
+      - variable_mode_not_available when no matching dark mode exists
+      - variable_mode_not_applicable when the target has no relevant variable bindings or cannot inherit the
+        mode
+      - variable_mode_preview_unavailable when the mode exists but the tool cannot render it without persistent
+        Figma output
+      - mcp_unavailable_degraded when live Figma cannot render the mode
+      - requested_appearance_unavailable when no verified live rendering or exact same-node same-mode cache
+        can be delivered
+      forbidden:
+      - use a light or mismatched state cache to answer a dark-mode lookup
+      - use a dark or unknown-mode live screenshot to answer an unspecified light_default lookup
+      - deliver any screenshot before actual_rendered_appearance_mode is verified
+      - report not_found_in_source only because no separate dark-mode frame exists
+      - generate or redesign a dark state without explicit generation wording
+      - leave source nodes with changed explicit variable modes after lookup
+      - create persistent Render dark preview or local preview frames in any Figma file for a lookup request
+      - hand redraw status bar navigation bar back icon or icon button while answering a lookup
+    source_options:
+      source_screen: source-index.md and source-frames.yaml
+      component_or_asset: components.yaml source-registry.yaml and relevant component pages
+      ordinary_visual_preview: exact active unexpired visual-cache entry with freshness calculated from captured_at
+        plus max_age_days
+      freshness_or_state_sensitive: live canonical Figma source
+      generated_work: fixed generated-output page only when explicitly requested
+      historical_fallback: stale visual cache with timestamped evidence only
+    source_selection_rule: choose the smallest matching branch and reuse current-turn evidence
+    required_evidence:
+    - resolved_target_or_not_found_in_source
+    - evidence_status
+    - whether_generation_was_explicitly_requested
+    - visual_query_delivery_evidence_when_user_asks_to_see_the_result
+    forbidden:
+    - persistent_write_figma
+    - create_new_frame
+    - leave_render_or_preview_frame
+    - generate_new_state
+    - mutate_source_or_output_file
+    - present_local_preview_as_existing_source
+    fallback_policy: ordinary lookup outside variable_mode_visual_lookup reports not_found_in_source when no
+      existing source state is found; variable_mode_visual_lookup uses its own fallback_status and completes
+      without a generation invitation
+    validation_gates:
+    - source_or_state_lookup_readonly_check
+    - visual_cache_lookup_check
+    - variable_mode_visual_lookup_check_when_active
+  existing_context_local_mutation:
+    triggers:
+    - 在现有页面
+    - 在当前页面
+    - 在已有页面
+    - 在页面里
+    - 在模块里
+    - 在组件上
+    - 给页面加
+    - 给模块加
+    - 给组件加
+    - 加到页面
+    - 加到模块
+    - 加到组件
+    - 新增入口
+    - 加一个入口
+    - 加一个功能
+    - 局部引导
+    - 引导
+    - 提示
+    - 状态
+    - 浮层
+    - 弹出
+    - 弹窗
+    - 气泡
+    - Popover
+    - popover
+    - Toast
+    - Coachmark
+    - 选中
+    - 展开
+    - 收起
+    - 加载
+    - 空态
+    - 禁用
+    - 修改文案
+    - 换图标
+    task_route_type: existing_context_local_mutation
+    task_mode: existing_context_local_mutation
+    page_type: existing_context
+    main_task: mutate_local_region_or_state
+    design_intent: preserve the whole source context and change only the requested local region or visible
+      state
+    experience_profile: derive_from_source_frame_when_required
+    source_selection:
+      rule: choose closest complete live source Frame by page/module/component semantics
+      fallback_policy: if no registered active source matches, stop and report source_node_missing instead
+        of using unregistered summary pages
+    required_prewrite_records:
+    - source_context_type
+    - context_basis
+    - source_frame_id
+    - source_screenshot_evidence
+    - task_id
+    - task_container_id
+    - target_region
+    - locked_context
+    - new_local_element_scope
+    - allowed_mutations
+    - forbidden_mutations
+    - locked_regions
+    required_flow:
+    - pass_context_integrity_gate
+    - use_selected_context_strategy
+    - use_task_scoped_atomic_output
+    - lock_all_non_target_regions_by_default
+    - mutate_only_target_region_or_topmost_overlay_layer
+    - compare_source_and_output_locked_regions_before_delivery
+    allowed_local_layout:
+    - target_region_only
+    - topmost_overlay_layer_when_surface_state
+    - directly_affected_sibling_stack_when_recorded
+    forbidden:
+    - start_without_exact_source_evidence
+    - approximate_source_context_without_verified_native_components_or_locked_screenshot
+    - rebuild_source_context_from_primitives
+    - trace_source_screenshot_into_local_page_context
+    - source_compatible_local_rebuild
+    - mutate_unrelated_background_navigation_cards_lists_body_or_bottom_bar
+    - change_existing_copy_outside_target_region
+    - use_text_engine_behavior_as_reason_to_redesign_page
+    validation_gates:
+    - source_context_preservation_check
+    - mutation_scope_check
+    - locked_context_unchanged_check
+    - primitive_substitution_hard_fail
+    - page_experience_profile_check when page_experience_routing requires it
+    context_strategy_ref: global_defaults.context_strategy_routing
+  project_asset_lookup:
+    triggers:
+    - 找星星人
+    - 星星人表情
+    - 星星人素材
+    - IP素材
+    - IP 素材
+    - 表情图片
+    - 开心表情
+    - 图标
+    - icon
+    - 组件
+    - 素材
+    - 有没有
+    - 查一下
+    - 找一个
+    task_mode: project_asset_lookup
+    page_type: asset_library
+    main_task: find_existing_asset
+    design_intent: find existing traceable Shaonian Bowen Figma assets
+    source_reference: source-index.md > Project Asset Lookup Sources
+    source_refs:
+    - source_registry.use_for=project_asset_lookup
+    - source_registry.use_for=expression_lookup
+    - source_registry.use_for=image_source
+    - source_registry.use_for=icon_lookup
+    - source_registry.use_for=icon_candidate
+    lookup_method:
+    - do_not_rely_on_layer_names_only
+    - inspect_source_area_and_parent_context
+    - inspect_node_type_component_or_instance_metadata
+    - scan_screenshots_or_thumbnails_for_visual_candidates
+    - inspect_real_page_usage_when_asset_library_is_ambiguous
+    required_evidence:
+    - source_nodes_checked
+    - visual_candidates_with_reason
+    - recommended_candidate
+    - whether_external_search_was_requested
+    forbidden:
+    - default_web_image_search
+    - default_image_generation
+    - fail_only_because_layer_name_missing
+    - return_external_clipart_before_figma_lookup
+    validation_gates:
+    - project_asset_lookup_check
+    - visual_cache_lookup_check
+  contextual_overlay:
+    triggers:
+    - 弹窗
+    - 弹窗态
+    - 设置弹窗
+    - 弹出层
+    - 气泡
+    - 解释气泡
+    - 词条解释
+    - 概念解释
+    - Popover
+    - popover
+    - 下拉菜单
+    - 选项菜单
+    - 文笔风格
+    - 深度版
+    - Toast
+    - 短提示
+    task_mode: overlay_or_contextual_feedback
+    page_type: modal
+    main_task: contextual_explain_or_choose
+    design_intent: choose the overlay type by anchor relationship before visual styling
+    experience_profile: contextual_overlay
+    context_experience_profile: derive_from_underlying_source_frame
+    page_pattern: 'screen-patterns.md > profile_id: contextual_overlay'
+    component_reference: component-overlays.md > Overlay Decision
+    registered_component_family_gate: required_for_every_quality_tier
+    source_refs:
+    - components.AnchoredPopover
+    - components.SheetPicker
+    mode_overrides:
+      production_mode:
+        component_strictness: medium
+        source_structure_authority: medium
+        divergence_required: false
+      exploration_mode:
+        component_strictness: medium
+        source_structure_authority: low
+        divergence_required: true
+    primary_components:
+    - AnchoredPopover
+    - SheetPicker_when_fallback_to_Floating_Sheet
+    production_required_components:
+    - AnchoredPopover_or_source_contextual_overlay_pattern
+    must_use_components:
+    - AnchoredPopover_or_source_contextual_overlay_pattern
+    - SheetPicker_or_matching_source_Floating_Sheet_when_bottom_overlay_semantics
+    allowed_local_layout:
+    - popover_container
+    - option_rows
+    - definition_text_stack
+    - arrow_or_anchor_connector
+    information_priority:
+    - anchor_context
+    - short_explanation_or_current_selection
+    - available_options_or_weak_action
+    validation_gates:
+    - anchored_popover_check
+    - layout_check.zoom_screenshot_check
+    - page_experience_profile_check
+  cold_start_age_selection:
+    triggers:
+    - 冷启
+    - 欢迎页
+    - 年龄选择
+    - 选择用户年龄
+    - 少年年龄
+    task_mode: new_screen_or_onboarding_state
+    page_type: onboarding
+    main_task: configure
+    design_intent: choose identity age or reading difficulty with light companionship
+    experience_profile: cold_start_identity
+    page_pattern: 'screen-patterns.md > profile_id: cold_start_identity'
+    page_recipe: page-recipes.md > Cold Start / Identity Or Age
+    source_refs:
+    - source_frames.use_for=cold_start_identity_context
+    source_status: active_screen_frame_registered
+    source_policy: use_registered_source_frame_for_existing_context_work
+    primary_components:
+    - ButtonApp
+    - StarBaby_or_source_IP_asset
+    - AgeOptionRow_or_nearest_age_picker_row
+    must_use_components:
+    - ButtonApp
+    - StarBaby_or_source_IP_asset
+    allowed_local_layout:
+    - AgeOptionRow until componentized
+    - welcome title/subtitle
+    - weak skip text
+    minimum_instance_count: 2
+    required_auto_layout_containers:
+    - option_list_vertical
+    - action_stack
+    information_priority:
+    - welcome
+    - choice_question
+    - identity_or_age_options
+    - continue_button
+    - weak_skip
+    required_structure:
+    - IP/brand warm welcome
+    - compact age options
+    - one primary continue button
+    - optional weak skip/back control only if source supports it
+    density_rule: keep onboarding short; do not add marketing benefits or feature education
+    forbidden:
+    - marketing_onboarding
+    - dense_explanation_blocks
+    - adult_account_setup_language
+    validation_gates:
+    - new_source_pattern_check
+    - component_family_check
+    - screenshot_visual_check
+    - page_experience_profile_check
+  comment_list_modification:
+    triggers:
+    - 评论
+    - 评论列表
+    - 回复
+    - 语音评论
+    - 输入框
+    task_mode: local_interaction_modification
+    page_type: detail
+    main_task: discuss
+    design_intent: improve comment interaction without disturbing reading context
+    experience_profile: derive_from_source_frame
+    default_experience_profile: article_detail
+    page_pattern: 'screen-patterns.md > profile_id: article_detail'
+    page_recipe: page-recipes.md > Comment Area
+    source_refs:
+    - source_frames.use_for=article_detail
+    - source_frames.use_for=article_detail_no_comments
+    primary_components:
+    - CommentCell
+    - CommentInputTrigger
+    - IconButton
+    must_use_components:
+    - CommentCell
+    - CommentInputTrigger
+    allowed_local_layout:
+    - comment_section_parent
+    - reply_count_text_when_no_component_exists
+    minimum_instance_count: 3
+    required_auto_layout_containers:
+    - comment_list_vertical
+    - reply_stack_if_present
+    information_priority:
+    - input_affordance
+    - root_comment
+    - reply_preview
+    - comment_actions
+    locked_regions_default:
+    - article_title
+    - article_metadata
+    - article_body
+    - top_navigation
+    - bottom_action_bar
+    - page_background
+    required_structure:
+    - preserve article detail shell
+    - change only comment region and needed reply hierarchy
+    - keep input affordance consistent with source
+    forbidden:
+    - rewrite_article_detail
+    - change_body_typography
+    - change_navigation_or_bottom_bar
+    - turn_comments_into_feed_cards
+    validation_gates:
+    - intent_trigger_check.task_mode_rules.local_interaction_modification
+    - new_source_pattern_check
+    - component_construction_check
+    - comment_component_check
+    - locked_context_unchanged_check
+    - page_experience_profile_check when page_experience_routing requires it
+  profile_state:
+    triggers:
+    - 个人中心
+    - 我的
+    - 普通用户
+    - 付费用户
+    - 未登录
+    - 空态
+    task_mode: existing_page_modification_or_profile_state
+    page_type: profile
+    main_task: choose_content
+    design_intent: show identity and reading history first; keep utilities and paid entry secondary
+    experience_profile: profile_mine
+    page_pattern: 'screen-patterns.md > profile_id: profile_mine'
+    page_recipe: page-recipes.md > Profile / Mine
+    source_refs:
+    - source_frames.use_for=profile
+    primary_components:
+    - UserCard
+    - CellReadingHistory
+    - ArticlePreviewCell
+    - EmptyPlaceholder
+    - SettingsRow
+    - PlusBadge
+    must_use_components:
+    - UserCard
+    - ArticlePreviewCell_or_CellReadingHistory
+    - EmptyPlaceholder_when_empty
+    - TabBar
+    allowed_local_layout:
+    - profile_tab_row_if_source_component_absent
+    - weak_utility_strip
+    minimum_instance_count: 4
+    required_auto_layout_containers:
+    - profile_section_stack
+    - content_list_stack
+    information_priority:
+    - identity
+    - history_or_content
+    - login_or_empty_state
+    - utilities
+    - paid_entry
+    hierarchy_rule: identity and history/content always outrank paid entry; paid entry stays contextual and
+      secondary
+    forbidden:
+    - marketing_homepage_layout
+    - paid_cta_as_primary_page_goal
+    - merge_account_risk_action_with_content_history
+    validation_gates:
+    - new_source_pattern_check
+    - feature_insertion_check.role_rules.low_frequency_utility
+    - layout_check.profile_secondary_entries
+    - page_experience_profile_check
+  subscription_modal:
+    triggers:
+    - 付费弹窗
+    - 订阅弹窗
+    - Plus
+    - 会员
+    - 解锁
+    - 试用
+    task_mode: modal_or_bottom_sheet
+    page_type: modal
+    main_task: unlock
+    design_intent: contextual unlock in a calm bottom sheet with one clear primary action
+    experience_profile: commerce_and_feedback
+    page_pattern: 'screen-patterns.md > profile_id: commerce_and_feedback'
+    page_recipe: page-recipes.md > Subscription Modal
+    component_reference: component-overlays.md > Paywall Half Sheet
+    source_refs:
+    - source_registry.use_for=subscription_modal
+    - components.SheetPicker
+    mode_overrides:
+      production_mode:
+        component_strictness: high
+        source_structure_authority: high
+        divergence_required: false
+      exploration_mode:
+        component_strictness: medium
+        source_structure_authority: low
+        divergence_required: true
+        must_record_divergence_contract: true
+    primary_components:
+    - Paywall Half Sheet
+    - source_subscription_sheet_geometry
+    - PlusBadge_or_source_plus_identity
+    - ButtonApp
+    - IconButton_or_source_close
+    production_required_components:
+    - Paywall Half Sheet
+    - source_subscription_sheet_geometry_or_SheetPicker.Type5
+    - PlusBadge_or_source_plus_identity
+    - ButtonApp
+    - IconButton_or_source_close
+    must_use_components:
+    - Paywall Half Sheet
+    - source_subscription_sheet_geometry_or_SheetPicker.Type5
+    - PlusBadge_or_source_plus_identity
+    - ButtonApp
+    - IconButton_or_source_close
+    exploration_allowed_surfaces:
+    - horizontal_plan_cards
+    - unboxed_price_list
+    - segmented_selector
+    - recommendation_summary
+    - benefits_first_sheet
+    - single_recommended_plan_with_secondary_rows
+    allowed_local_layout:
+    - PlanOptionCell until componentized
+    - plan_selection_area_in_exploration_mode
+    - IP_zone
+    - renewal_privacy_helper
+    minimum_instance_count: 3
+    required_auto_layout_containers:
+    - sheet_vertical_stack
+    - plan_selection_area
+    - action_helper_stack
+    information_priority:
+    - unlock_reason
+    - plan_choice
+    - primary_action
+    - renewal_privacy_helper
+    - weak_cancel
+    required_structure:
+    - dimmed overlay
+    - edge-attached Paywall Half Sheet with top large radius
+    - Plus identity badge or source IP identity
+    - clear plan choice or unlock choice area
+    - one primary subscribe button
+    - weak cancel or close control
+    variable_by_touchpoint:
+    - title_copy
+    - benefit_order
+    - default_selected_plan
+    invariant_across_touchpoints:
+    - bottom_sheet_surface
+    - button_hierarchy
+    - cancellation_treatment
+    - calm_unlock_tone
+    forbidden:
+    - full_screen_marketing_page
+    - multiple_competing_primary_buttons
+    - alert_dialog_style_for_subscription
+    - near_replica_of_original_plan_cards_when_exploration_requested
+    - clipped_price_or_protocol_text
+    - misaligned_price_columns
+    validation_gates:
+    - new_source_pattern_check
+    - component_family_check.required_reuse.subscription_modal
+    - bottom_sheet_type_check
+    - screenshot_visual_check
+    - page_experience_profile_check
+  settings_modification:
+    triggers:
+    - 设置
+    - 设置页
+    - 字体风格
+    - 选择身份
+    - 切换账号
+    - 检查更新
+    - 关于
+    task_mode: existing_page_modification
+    page_type: settings
+    main_task: configure
+    design_intent: add or adjust quiet configuration rows without creating primary cards
+    experience_profile: settings
+    page_pattern: 'screen-patterns.md > profile_id: settings'
+    page_recipe: page-recipes.md > Settings
+    source_refs:
+    - source_frames.use_for=settings
+    - source_frames.use_for=settings_sheets
+    primary_components:
+    - NavigationBar
+    - SettingsRow
+    - ButtonApp
+    must_use_components:
+    - NavigationBar
+    - SettingsRow
+    - ButtonApp_when_action
+    allowed_local_layout:
+    - account_group_gap
+    minimum_instance_count: 2
+    required_auto_layout_containers:
+    - settings_group_vertical
+    - settings_row_horizontal
+    information_priority:
+    - row_label
+    - current_value_or_helper
+    - account_action
+    - risk_action
+    forbidden:
+    - standalone_feature_card
+    - primary_marketing_cta
+    - merge_account_action_with_logout
+    validation_gates:
+    - feature_insertion_check.role_rules.low_frequency_utility
+    - layout_check.settings_rows
+    - design_quality_audit
+    - page_experience_profile_check

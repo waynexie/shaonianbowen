@@ -1,0 +1,1701 @@
+schema_version: 1
+purpose: exportable product screen frame index for Shaonian Bowen source groups
+source_file:
+  file_key: oULxBlEvFNkWGGVaJ0ClEz
+  file_name: 少年博闻 Component Architecture v2
+  file_role: read_only_design_source
+  naming_note: file_name is the authoritative Figma design file; ordinary output is restricted to the registered
+    output-only page in task-routes.yaml.
+  policy: read_only_by_default_with_explicit_formal_component_maintenance_exception
+maintenance:
+  index_type: cached_frame_resolution_index
+  live_figma_metadata_preferred: true
+  last_verified_at: '2026-10-29'
+  verify_when:
+  - source Figma page or frame is renamed
+  - source Figma node is moved or replaced
+  - frame size changes
+  - a lookup returns no match but the user expects an existing screen
+  - before promoting a source-frame mismatch from warning to blocking
+  stale_policy:
+  - do not treat cached aliases as proof that a live node still exists
+  - prefer live Figma node metadata when available
+  - if live metadata contradicts this index, report source_frame_index_stale and use live evidence conservatively
+  - missing or stale non-critical frame entries start as warning, not blocking
+  - screenshot, export, and duplication still require a live exportable screen_frame
+  last_verified_scope:
+  - 7323:2913
+  - 4232:11310
+usage_policy:
+  load_when:
+  - existing_source_or_state_lookup
+  - screenshot_display
+  - png_export
+  - local_mutation_profile
+  - source_frame_duplication
+  do_not_load_for:
+  - pure_component_lookup
+  - pure_token_lookup
+  - general_design_language_question
+  rule: source_group nodes are not display/export targets; resolve to an exportable screen_frame before screenshot,
+    export, or duplication.
+  resolution_order:
+  - exact_alias_match
+  - exact_frame_name_match
+  - primary_display_frame
+  - first_exportable_390w_frame
+platform_display_contract:
+  purpose: resolve design evidence to a concrete displayable node instead of guessing from page or group names
+  contract_scope: semantic_display_target_only
+  semantic_resolution_owner: agent
+  platform_role: unchanged_transport_and_display_only
+  required_when:
+  - returning a visible screen link
+  - returning screenshot target
+  - returning export target
+  - returning local mutation base frame
+  - handing source nodes to another agent or platform
+  required_fields:
+  - file_key
+  - node_id
+  - node_role
+  - exportable
+  - evidence_status
+  optional_context_fields:
+  - source_group_id
+  - name
+  - size
+  valid_result:
+    node_role: screen_frame
+    exportable: true
+    evidence_status_allowed:
+    - local_cache_checked
+    - figma_live_checked
+    - screenshot_checked
+    - source_index_only
+  invalid_result:
+  - source_group_only
+  - missing_node_id
+  - stale_or_missing_node_as_primary
+  - canvas_or_page_name_without_screen_frame
+  - source_index_only_claimed_as_live_verified
+  - local_cache_checked_claimed_as_live_verified
+  stale_node_policy:
+  - stale nodes may be returned only under stale_or_fallback_candidates
+  - stale nodes must include replacement_candidates when known
+  - if no live screen_frame can be verified, return readonly_only with source_frame_index_stale
+node_roles:
+  source_group:
+    exportable: false
+    use_for:
+    - semantic_lookup_scope
+    - child_frame_search
+    - source_context_scan
+  screen_frame:
+    exportable: true
+    use_for:
+    - screenshot_display
+    - png_export
+    - source_frame_duplication
+    - local_mutation_base
+experience_profile_contract:
+  authority: references/screen-patterns.md
+  required_for_active_exportable_frames:
+  - experience_profile
+  - state_role
+  optional_context_field: context_experience_profile
+  loading_rule: load only the matching profile_id section; when context_experience_profile exists, load it as the
+    locked underlying page context.
+  status_policy:
+    confirmed: may guide production and exploration
+    provisional: exploration reference only; not a production source
+  maintenance_rule:
+  - map a new frame to an existing profile when cognitive flow and surface grammar are unchanged
+  - add only a new state_role for a state delta
+  - create a new profile only after the page model is confirmed
+source_groups:
+  4229:9258:
+    name: ↳ tab1 少年报首页
+    node_role: source_group
+    exportable: false
+    primary_display_frame: 4229:9259
+    frames:
+    - node_id: 4229:9259
+      name: 少年报 - 首页
+      node_role: screen_frame
+      exportable: true
+      size: 390x1116
+      aliases:
+      - 首页
+      - 少年报首页
+      - 首页基础态
+      - 今日速读
+      use_for:
+      - home
+      - home_feed
+      - home_base
+      experience_profile: home_feed
+      state_role: base
+    - node_id: 4229:9277
+      name: 少年报 - 首页 - 无内容
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 首页无内容
+      - 暂无内容
+      - 空首页
+      use_for:
+      - home_empty_state
+      experience_profile: home_feed
+      state_role: empty
+    - node_id: 4229:9294
+      name: 冷启页 - 选身份
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 冷启
+      - 选身份
+      - 身份选择
+      - onboarding
+      use_for:
+      - cold_start_identity_context
+      - identity_selection
+      experience_profile: cold_start_identity
+      state_role: identity_selection
+    - node_id: 4361:8325
+      name: 少年报 - 首页 - 上滑效果
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 首页上滑
+      - 上滑效果
+      - 首页滚动
+      use_for:
+      - home_scroll_state
+      experience_profile: home_feed
+      state_role: scrolled
+  4229:9516:
+    name: ↳ tab1 少年报底层
+    node_role: source_group
+    exportable: false
+    primary_display_frame: 4229:9517
+    frames:
+    - node_id: 4229:9517
+      name: 少年报 底层页
+      node_role: screen_frame
+      exportable: true
+      size: 390x1651
+      aliases:
+      - 底层页
+      - 文章详情
+      - 详情页
+      - 阅读页
+      - 底层基础态
+      use_for:
+      - article_detail
+      - detail_bottom
+      - article_audio
+      - comments
+      experience_profile: article_detail
+      state_role: base
+    - node_id: 4229:9779
+      name: 少年报底层页- 新闻解读 - 速度版
+      node_role: screen_frame
+      exportable: true
+      size: 390x912
+      aliases:
+      - 新闻解读
+      - 速度版
+      - 速读版
+      use_for:
+      - article_function_sheet
+      - speed_reading
+      experience_profile: article_learning_function
+      state_role: speed
+    - node_id: 4229:10034
+      name: 少年报底层页 - 新闻解读 - 速度版（有图）
+      node_role: screen_frame
+      exportable: true
+      size: 390x1098
+      aliases:
+      - 速度版有图
+      - 速读版有图
+      use_for:
+      - article_function_sheet
+      - speed_reading_with_image
+      experience_profile: article_learning_function
+      state_role: speed_with_image
+    - node_id: 4229:9808
+      name: 少年报底层页 - 新闻解读 - 深度版
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 深度版
+      - 新闻解读深度版
+      use_for:
+      - article_function_sheet
+      - deep_reading
+      experience_profile: article_learning_function
+      state_role: deep
+    - node_id: 4229:9861
+      name: 少年报底层页 - 新闻解读 - 深度版（有图）
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 深度版有图
+      - 新闻解读有图
+      use_for:
+      - article_function_sheet
+      - deep_reading_with_image
+      experience_profile: article_learning_function
+      state_role: deep_with_image
+    - node_id: 4229:9824
+      name: 少年报底层页 - 新闻解读 - 词条弹窗
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 词条弹窗
+      - 解释气泡
+      - 定义气泡
+      - 词条解释
+      use_for:
+      - anchored_popover
+      - definition_bubble
+      experience_profile: contextual_overlay
+      context_experience_profile: article_detail
+      state_role: definition
+    - node_id: 4229:9880
+      name: 少年报底层页 - 新闻解读  - 切换版本
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 切换版本
+      - 文笔风格
+      - 深度版选择
+      use_for:
+      - option_popover
+      - version_switch
+      experience_profile: contextual_overlay
+      context_experience_profile: article_learning_function
+      state_role: option
+    - node_id: 4229:9738
+      name: 少年报底层页 - 新闻解读 - 大图预览
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 大图预览
+      - 图片预览
+      use_for:
+      - image_preview
+      experience_profile: article_learning_function
+      state_role: image_preview
+    - node_id: 4229:9994
+      name: 少年报底层页 - 中英对照
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 中英对照
+      - 翻译
+      use_for:
+      - bilingual_reading
+      experience_profile: article_learning_function
+      state_role: bilingual
+    - node_id: 4229:10019
+      name: 少年报底层页 - pdf预览
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - PDF预览
+      - pdf
+      - 下载PDF
+      use_for:
+      - pdf_preview
+      experience_profile: article_learning_function
+      state_role: pdf
+    - node_id: 4229:9742
+      name: 少年报底层 - 空页面
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 底层空页面
+      - 404
+      - 空页面
+      use_for:
+      - article_empty_state
+      experience_profile: article_detail
+      state_role: empty
+    - node_id: 4229:9748
+      name: 少年报底层页 - 分享弹窗
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 分享弹窗
+      - 分享sheet
+      - 分享
+      use_for:
+      - share_sheet
+      experience_profile: contextual_overlay
+      context_experience_profile: article_detail
+      state_role: share
+    - node_id: 4232:10738
+      name: 少年报底层页 - 评论输入框单行
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 评论输入
+      - 单行输入
+      - 评论单行
+      use_for:
+      - comment_input_single_line
+      experience_profile: article_detail
+      state_role: comment_input_single
+    - node_id: 4232:10767
+      name: 少年报底层页 - 评论输入框多行
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 评论输入多行
+      - 多行输入
+      use_for:
+      - comment_input_multi_line
+      experience_profile: article_detail
+      state_role: comment_input_multi
+    - node_id: 4232:10796
+      name: 少年报底层页 - 无评论
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 无评论
+      - 评论空态
+      - 详情无评论
+      use_for:
+      - article_detail_no_comments
+      - comment_empty_state
+      experience_profile: article_detail
+      state_role: no_comments
+  4232:11310:
+    name: ↳  tab3 个人中心
+    node_role: source_group
+    exportable: false
+    aliases:
+    - 个人中心
+    primary_display_frame: 7317:1218
+    frames:
+    - node_id: 7317:1218
+      name: 个人中心 - 普通用户 - 看过
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 - 普通用户 - 看过
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=History; Active=Mine
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - '6436:46'
+      - 7593:8064
+      - 7593:8094
+      - 7593:8202
+      - 17:236
+      - 7593:8302
+      - 557:5100
+      - 96:543
+    - node_id: 7317:1271
+      name: 个人中心 - vip用户
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 - vip用户
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=History; Active=Mine
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 557:5100
+      - 2440:4673
+      - 7593:8064
+      - 7593:8094
+      - 7593:8202
+      - 7593:8302
+      - 96:543
+    - node_id: 7317:1347
+      name: 个人中心 - 普通用户 -评论
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 - 普通用户 -评论
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=Comments; Active=Mine
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 570:10302
+      - 7593:8064
+      - 7593:8094
+      - 7593:8202
+      - 17:236
+      - 7593:8302
+      - 557:5100
+      - 96:543
+    - node_id: 7317:1401
+      name: 个人中心 - 普通用户 - 赞过
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 - 普通用户 - 赞过
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=Likes; Active=Mine
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 2440:4673
+      - 7593:8064
+      - 7593:8094
+      - 7593:8202
+      - 17:236
+      - 7593:8302
+      - 557:5100
+      - 96:543
+    - node_id: 7317:1454
+      name: 个人中心 - 普通用户 - 空内容
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 - 普通用户 - 空内容
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=Favorites; Active=Mine
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 218:6895
+      - 7593:8064
+      - 7593:8094
+      - 7593:8202
+      - 17:236
+      - 7593:8302
+      - 557:5100
+      - 96:543
+    - node_id: 7317:1503
+      name: 个人中心 - 上滑后
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 - 上滑后
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=History; Active=Mine
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 2440:4673
+      - 7593:8064
+      - 17:236
+      - 557:5100
+      - 96:543
+      - 7593:8302
+    - node_id: 7317:1871
+      name: 个人中心 - 未登录
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 - 未登录
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=Favorites; Active=Mine
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 557:5248
+      - 7598:13640
+      - 218:6895
+      - 7593:8064
+      - 17:236
+      - 557:5100
+      - 96:543
+    - node_id: 7317:1915
+      name: 个人中心 / 输入手机号
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 / 输入手机号
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=Favorites; Active=Mine; Type=PhoneLogin, State=Empty
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 218:6895
+      - 7593:8064
+      - 17:236
+      - 557:5100
+      - 7598:13640
+      - 96:543
+      - 570:7520
+    - node_id: 7317:1962
+      name: 个人中心 / 输入手机号
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 / 输入手机号
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=Favorites; Active=Mine; Type=PhoneLogin, State=Filled
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 218:6895
+      - 7593:8064
+      - 17:236
+      - 557:5100
+      - 7598:13640
+      - 96:543
+      - 570:7520
+    - node_id: 7317:2009
+      name: 个人中心 / 输入验证码
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 / 输入验证码
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=Favorites; Active=Mine; Type=Verification, State=Partial
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 218:6895
+      - 7593:8064
+      - 17:236
+      - 557:5100
+      - 7598:13640
+      - 96:543
+      - 570:7520
+    - node_id: 7317:2066
+      name: 个人中心 / 输入验证码
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 / 输入验证码
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=Favorites; Active=Mine; Type=Verification, State=Complete
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 218:6895
+      - 7593:8064
+      - 17:236
+      - 557:5100
+      - 7598:13640
+      - 96:543
+      - 570:7520
+    - node_id: 7317:2126
+      name: 个人中心 / 输入验证码
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 / 输入验证码
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=Favorites; Active=Mine; Type=Verification, State=Error
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 218:6895
+      - 7593:8064
+      - 17:236
+      - 557:5100
+      - 7598:13640
+      - 96:543
+      - 570:7520
+    - node_id: 7317:2190
+      name: iPhone 13 & 14 - 98
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - iPhone 13 & 14 - 98
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: iPhone 13 & 14 - 98
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 557:5165
+    - node_id: 7317:2195
+      name: Screen / Login / Floating Sheet
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - Screen / Login / Floating Sheet
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Type=ProfileLogin, State=Social3
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 570:7520
+    - node_id: 7469:4610
+      name: 设置页 / 新增问候语 · 默认
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 设置页 / 新增问候语 · 默认
+      use_for:
+      - profile_mine
+      - settings
+      - settings_sheets
+      experience_profile: settings
+      state_role: Tone=Primary, Size=XL, Content=Text, State=Default; Type=GreetingEdit, State=Random
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7596:9566
+      - 557:5165
+      - 2055:106
+      - 557:4982
+      - 570:7520
+    - node_id: 7469:4668
+      name: 设置页 / 新增问候语 · 默认
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 设置页 / 新增问候语 · 默认
+      use_for:
+      - profile_mine
+      - settings
+      - settings_sheets
+      experience_profile: settings
+      state_role: Tone=Primary, Size=XL, Content=Text, State=Default; Type=GreetingEdit, State=Suggested
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7596:9566
+      - 557:5165
+      - 2055:106
+      - 557:4982
+      - 570:7520
+    - node_id: 7469:4979
+      name: 联系客服
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 联系客服
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Tone=Danger, Size=XL, Content=Text, State=Default; Type=CustomerService, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7596:9566
+      - 557:5165
+      - 2055:106
+      - 570:7520
+      - 557:4982
+    - node_id: 7469:6019
+      name: 个人中心 - 设置页
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 - 设置页
+      use_for:
+      - profile_mine
+      - settings
+      experience_profile: settings
+      state_role: Tone=Danger, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7596:9836
+      - 2055:106
+      - 557:5165
+    - node_id: 7469:6147
+      name: 个人中心 - 设置页 - 选择身份
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 - 设置页 - 选择身份
+      use_for:
+      - profile_mine
+      - settings
+      - settings_sheets
+      experience_profile: settings
+      state_role: Tone=Danger, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7596:9836
+      - 2055:106
+      - 557:5165
+      - 570:7520
+    - node_id: 7469:6243
+      name: 个人中心 / 设置 / 字体选择
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 / 设置 / 字体选择
+      use_for:
+      - profile_mine
+      - settings
+      - settings_sheets
+      experience_profile: settings
+      state_role: Tone=Danger, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7596:9836
+      - 2055:106
+      - 557:5165
+      - 570:7520
+    - node_id: 7469:6350
+      name: 个人中心 / 头像选择
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 / 头像选择
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=History; Active=Mine
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 2440:4673
+      - 7593:8064
+      - 7593:8094
+      - 7593:8202
+      - 17:236
+      - 7593:8302
+      - 557:5100
+      - 96:543
+    - node_id: 7469:6405
+      name: 个人中心 / 头像选择
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心 / 头像选择
+      use_for:
+      - profile_mine
+      experience_profile: profile_mine
+      state_role: Active=History; Active=Mine; Type=ProfileEdit, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 2440:4673
+      - 7593:8064
+      - 7593:8094
+      - 7593:8202
+      - 17:236
+      - 7593:8302
+      - 557:5100
+      - 96:543
+      - 570:7520
+    - node_id: 7469:6475
+      name: 设置页 / 系统相册独立入口 · 方案3
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 设置页 / 系统相册独立入口 · 方案3
+      use_for:
+      - profile_mine
+      - settings
+      experience_profile: settings
+      state_role: Tone=Primary, Size=XL, Content=Text, State=Disabled
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 557:5165
+      - 2055:106
+      - 7596:10234
+    superseded_frame_ids:
+    - 4232:11311
+    - 4232:11367
+    - 4232:11561
+    - 4232:11706
+    - 4232:11831
+    - 4232:11932
+    - 4232:12002
+    - 4232:12018
+    - 4232:12036
+  3649:6678:
+    name: ↳ 付费交互示意
+    node_role: source_group
+    exportable: false
+    primary_display_frame: 3649:6679
+    frames:
+    - node_id: 3649:6679
+      name: 少年报首页
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 首页付费入口
+      - 过往少年报入口
+      - pdf简报入口
+      use_for:
+      - paywall_entry_home
+      experience_profile: commerce_and_feedback
+      context_experience_profile: home_feed
+      state_role: entry
+    - node_id: 3649:6695
+      name: 少年报首页 - 日历
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 日历
+      - 日历弹窗
+      - 日期选择
+      use_for:
+      - calendar_sheet
+      experience_profile: contextual_overlay
+      context_experience_profile: home_feed
+      state_role: calendar
+    - node_id: 3649:7541
+      name: 少年报首页 - 付费弹窗
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 付费弹窗
+      - 订阅弹窗
+      - 解锁弹窗
+      - paywall
+      use_for:
+      - subscription_modal
+      - paywall_half_sheet
+      experience_profile: commerce_and_feedback
+      context_experience_profile: home_feed
+      state_role: paywall
+    - node_id: 3726:7265
+      name: 少年报首页 - 充值钻石
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 充值钻石
+      - 充值弹窗
+      - 钻石购买
+      use_for:
+      - recharge_diamond
+      experience_profile: commerce_and_feedback
+      context_experience_profile: home_feed
+      state_role: recharge
+    - node_id: 4232:12329
+      name: 少年报首页 - 反馈toast
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 反馈toast
+      - 开通成功toast
+      - toast
+      use_for:
+      - payment_toast
+      - vip_feedback_toast
+      experience_profile: commerce_and_feedback
+      context_experience_profile: home_feed
+      state_role: success
+    - node_id: 3684:5366
+      name: 个人中心 - vip
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 个人中心VIP反馈
+      - VIP开通反馈
+      use_for:
+      - vip_feedback_toast
+      - profile_vip_feedback
+      experience_profile: commerce_and_feedback
+      context_experience_profile: profile_mine
+      state_role: success
+    - node_id: 3727:9402
+      name: toast
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 成功toast
+      - toast单独页
+      use_for:
+      - payment_toast
+      experience_profile: commerce_and_feedback
+      state_role: success
+    - node_id: 3943:6681
+      name: 我的 / 探索 01 贴纸圆角块
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 失败toast
+      - 网络异常
+      - 充值失败
+      use_for:
+      - payment_failure_toast
+      experience_profile: commerce_and_feedback
+      context_experience_profile: profile_mine
+      state_role: failure
+  7323:2913:
+    name: 二期
+    node_role: source_group
+    exportable: false
+    aliases:
+    - 少年报底层页二期
+    - 考点分析
+    - 作文金句
+    - 各方观点
+    - 英语挑战
+    primary_display_frame: 7469:2716
+    frames:
+    - node_id: 7323:3823
+      name: 少年报底层页 - 考点分析 - 判断
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 判断
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: 少年报底层页 - 考点分析 - 判断
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 557:5322
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:3863
+      name: 少年报底层页 - 作文金句
+      node_role: screen_frame
+      exportable: true
+      size: 390x1018
+      aliases:
+      - 少年报底层页 - 作文金句
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: 少年报底层页 - 作文金句
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 458:3953
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:3929
+      name: 少年报底层页 - 考点分析 - 答对
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 答对
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=SingleChoice, State=Correct; Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 557:5322
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:3973
+      name: 少年报底层页 - 考点分析 - 回答完成
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 回答完成
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=SingleChoice, State=Correct; Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 5074:5802
+      - 458:3953
+      - 557:5322
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4016
+      name: 少年报底层页 - 考点分析 - 判断完成
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 判断完成
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 557:5322
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4048
+      name: 少年报底层页 - 考点分析 - 答错
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 答错
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=SingleChoice, State=Incorrect; Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 557:5322
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4091
+      name: 少年报底层页 - 考点分析 - 回答完成
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 回答完成
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: 少年报底层页 - 考点分析 - 回答完成
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 557:5322
+      - 458:3953
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4156
+      name: 少年报底层页 - 考点分析 - 回答完成
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 回答完成
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: 少年报底层页 - 考点分析 - 回答完成
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 557:5322
+      - 458:3953
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4221
+      name: 少年报底层页 - 考点分析 - 右滑判断
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 右滑判断
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: 少年报底层页 - 考点分析 - 右滑判断
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 557:5322
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4301
+      name: 少年报底层页 - 考点分析 - 左滑判断
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 左滑判断
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: 少年报底层页 - 考点分析 - 左滑判断
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 557:5322
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4341
+      name: 少年报底层页 - 考点分析 - 判断错误
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 判断错误
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 557:5322
+      - 557:5165
+      - 66:6081
+      - 2055:106
+    - node_id: 7323:4385
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=WordAssembly, State=Empty; Tone=Primary, Size=XL, Content=Text, State=Disabled
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4421
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=VocabularyChoice, State=Unanswered; Tone=Primary, Size=XL, Content=Text, State=Disabled
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4451
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=VocabularyChoice, State=Correct; Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4483
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=VocabularyChoice, State=Incorrect; Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4515
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: 少年报底层页 - 英语挑战
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 557:5322
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4555
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=ReadingChoice, State=Unanswered
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4580
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=ReadingChoice, State=Correct; Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 557:5165
+      - 66:6081
+      - 2055:106
+    - node_id: 7323:4617
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x1141
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Tone=Primary, Size=L, Content=IconText, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 7323:3408
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4647
+      name: 少年报底层页 - 考点分析
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: 少年报底层页 - 考点分析
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7323:3408
+      - 557:5165
+    - node_id: 7323:4665
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=ReadingChoice, State=Incorrect; Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 557:5165
+      - 66:6081
+      - 2055:106
+    - node_id: 7323:4702
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 557:5322
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4748
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 557:5322
+      - 557:5165
+      - 66:6081
+      - 2055:106
+    - node_id: 7323:4794
+      name: 少年报底层页 - 英语挑战 - 回看
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战 - 回看
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=WordAssembly, State=Composing; Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4830
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=WordAssembly, State=Correct; Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4871
+      name: 少年报底层页 - 英语挑战
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=WordAssembly, State=Incorrect; Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 2055:106
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4914
+      name: 少年报底层页 - 考点分析 - 未答
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 未答
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Type=SingleChoice, State=Unanswered; Tone=Primary, Size=XL, Content=Text, State=Disabled
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 458:3953
+      - 5074:5802
+      - 2055:106
+      - 557:5322
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:4998
+      name: 少年报底层页 - 考点分析 - 判断正确
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 判断正确
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 557:5322
+      - 557:5165
+      - 66:6081
+      - 2055:106
+    - node_id: 7323:5067
+      name: 少年报底层页 - 英语挑战 - 回看
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战 - 回看
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 2055:106
+      - 458:3953
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:5112
+      name: 少年报底层页 - 英语挑战 - 回看
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 英语挑战 - 回看
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: Tone=Primary, Size=XL, Content=Text, State=Default
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 2055:106
+      - 458:3953
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:5158
+      name: 少年报底层页 - 各方观点
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 各方观点
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: State=Unvoted
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 7512:4215
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:5184
+      name: 少年报底层页 - 各方观点 - 投正方
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 各方观点 - 投正方
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: State=VotedFor
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 7512:4215
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:5213
+      name: 少年报底层页 - 各方观点 - 投反方
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 各方观点 - 投反方
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: State=VotedAgainst
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 7579:4721
+      - 7512:4215
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:5283
+      name: 少年报底层页 - 考点分析 - 判断完成
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 判断完成
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: 少年报底层页 - 考点分析 - 判断完成
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 557:5322
+      - 458:3953
+      - 557:5165
+      - 66:6081
+    - node_id: 7323:5331
+      name: 少年报底层页 - 考点分析 - 回答完成
+      node_role: screen_frame
+      exportable: true
+      size: 390x844
+      aliases:
+      - 少年报底层页 - 考点分析 - 回答完成
+      use_for:
+      - article_learning_function
+      experience_profile: article_learning_function
+      state_role: 少年报底层页 - 考点分析 - 回答完成
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 17:236
+      - 557:5322
+      - 458:3953
+      - 557:5165
+      - 66:6081
+    - node_id: 7469:2716
+      name: 少年报 底层页
+      node_role: screen_frame
+      exportable: true
+      size: 390x1014
+      aliases:
+      - 少年报 底层页
+      use_for:
+      - article_learning_function
+      experience_profile: article_detail
+      state_role: State=Home, 播放中=False
+      last_verified_at: '2026-10-29'
+      component_family_ids:
+      - 97:1502
+      - 557:4875
+      - 66:6081
+      - 2387:4731
+      - 94:1226
+      - 570:8215
+      - 97:2581
+      - 97:4869
+      - 557:5165
+      - 17:236
+      - 4389:11236
+stale_nodes:
+- node_id: 2536:5209
+  status: missing_in_live_figma
+  checked_at: '2026-07-12'
+  use_for:
+  - settings
+  - legacy_settings
+  policy:
+  - do_not_use_as_primary_source
+  - do_not_return_as_platform_display_node
+  - search_live_source_frames_before_answering
+  replacement_candidates:
+  - 4232:12002
+  - 4232:12018
+  - 4232:12036

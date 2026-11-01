@@ -1,0 +1,409 @@
+schema_version: 1
+purpose: machine-readable Figma source node registry for Shaonian Bowen lookup, mutation, exploration, and
+  stale-node checks
+source_file:
+  file_key: oULxBlEvFNkWGGVaJ0ClEz
+  file_name: 少年博闻 Component Architecture v2
+  policy: source_pages_read_only_output_page_write_only_except_explicit_formal_component_or_scene_index_maintenance
+output_only_pages:
+- node_id: 4608:4097
+  name: 界面生成方案
+  status: output_only
+  writable: true
+  last_verified_at: '2026-10-29'
+  forbidden_for:
+  - source_lookup
+  - design_authority
+  - component_authority
+  - style_authority
+  - source_frame_duplication_origin
+  generated_frames:
+  - node_id: 4937:5749
+    name: 2026-07-20 / 组件 / 内容组件分类预览
+    node_role: output_frame
+    exportable: true
+    status: output_only
+    last_verified_at: '2026-07-20'
+    use_for:
+    - content_component_taxonomy_preview
+    - component_instance_visual_audit
+    - continuation_iteration_when_explicitly_named
+    forbidden_for:
+    - design_authority
+    - component_authority
+    - source_frame_duplication_origin
+  layout_utilities:
+    date_divider:
+      node_id: 5365:3659
+      name: date
+      node_role: date_divider_pattern
+      status: output_only
+      size: 1974x120
+      visible_text_example: '2026-07-23'
+      last_verified_at: '2026-07-23'
+      use_for:
+      - date_divider_pattern
+      - output_canvas_day_grouping
+      forbidden_for:
+      - design_authority
+      - component_authority
+      - source_frame_duplication_origin
+node_health_check:
+  required_before_use: true
+  checks:
+  - node_exists
+  - node_name_matches_or_parent_context_matches
+  - expected_page_matches
+  - expected_size_matches_when_known
+  - node_role_matches_intent
+  - exportable_frame_resolved_for_screenshot_or_display
+  - screenshot_or_metadata_available
+  stale_behavior:
+  - report_source_node_stale
+  - do_not_use_as_primary_source
+  - search_replacement_candidates
+  mcp_unavailable_behavior:
+    status: mcp_unavailable_degraded
+    allowed: cached_index_or_asset_lookup_only
+    forbidden:
+    - claim_live_node_verified
+    - claim_figma_write_completed
+    - claim_screenshot_checked
+node_role_resolution:
+  rule: source_group nodes are for locating and scanning only; screenshot, export, display, and source-frame
+    duplication must resolve to an exportable screen_frame child first.
+  source_group:
+    exportable: false
+    allowed_for:
+    - semantic_lookup_scope
+    - child_frame_search
+    - source_context_scan
+    forbidden_for:
+    - direct_png_export
+    - direct_screenshot_display
+    - direct_source_frame_duplication
+  screen_frame:
+    exportable: true
+    allowed_for:
+    - screenshot_display
+    - png_export
+    - source_frame_duplication
+    - local_mutation_base
+  fallback_order_for_group_lookup:
+  - exact_alias_match
+  - exact_child_name_match
+  - primary_display_frame
+  - first_exportable_390w_frame
+nodes:
+- node_id: 4229:9258
+  name: ↳ tab1 少年报首页
+  node_role: source_group
+  exportable: false
+  primary_display_frame: 4229:9259
+  page: product_source_groups
+  use_for:
+  - home
+  - home_feed
+  - home_empty_state
+  - cold_start_identity_context
+  - home_header
+  - home_scroll_state
+  expected_size: unknown_group
+  last_verified_at: '2026-07-11'
+  status: active
+  child_index_ref: references/metadata/source-frames.yaml#source_groups.4229:9258
+  replacement_candidates: []
+- node_id: 4229:9516
+  name: ↳ tab1 少年报底层
+  node_role: source_group
+  exportable: false
+  primary_display_frame: 4229:9517
+  page: product_source_groups
+  use_for:
+  - article_detail
+  - detail_bottom
+  - article_audio
+  - article_function_area
+  - comments
+  - comment_input
+  - overlays_in_detail_context
+  - share_sheet
+  - article_function_sheet
+  expected_size: unknown_group
+  last_verified_at: '2026-07-11'
+  status: active
+  child_index_ref: references/metadata/source-frames.yaml#source_groups.4229:9516
+  replacement_candidates:
+  - 4232:10796
+- node_id: 4232:10796
+  name: 少年报底层页 - 无评论
+  node_role: screen_frame
+  exportable: true
+  size: 390x844
+  page: ↳ tab1 少年报底层
+  use_for:
+  - article_detail_no_comments
+  - comment_empty_state
+  - comment_input
+  expected_size: mobile_screen
+  last_verified_at: '2026-07-11'
+  status: active_child_state
+  replacement_candidates:
+  - 4229:9516
+- node_id: 4232:11310
+  name: ↳  tab3 个人中心
+  node_role: source_group
+  exportable: false
+  primary_display_frame: 7317:1218
+  page: product_source_groups
+  use_for:
+  - profile
+  - profile_vip
+  - profile_guest
+  - settings
+  - settings_sheets
+  - profile_empty_state
+  - profile_night_mode_lookup
+  expected_size: unknown_group
+  last_verified_at: '2026-10-29'
+  status: active
+  child_index_ref: references/metadata/source-frames.yaml#source_groups.4232:11310
+  replacement_candidates: []
+- node_id: 3649:6678
+  name: ↳ 付费交互示意
+  node_role: source_group
+  exportable: false
+  primary_display_frame: 3649:6679
+  page: product_source_groups
+  use_for:
+  - paywall_interaction
+  - recharge_diamond
+  - subscription_modal
+  - calendar_sheet
+  - payment_toast
+  - vip_feedback_toast
+  expected_size: unknown_group
+  last_verified_at: '2026-07-11'
+  status: active
+  child_index_ref: references/metadata/source-frames.yaml#source_groups.3649:6678
+  replacement_candidates:
+  - 570:7229
+- node_id: 521:3670
+  name: 11 Data Display - Avatars
+  page: Component Library
+  use_for:
+  - project_asset_lookup
+  - star_baby
+  - avatar
+  - ip_material
+  expected_size: component_page
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates: []
+- node_id: 224:12087
+  name: IP Avatar - Star Baby 2D
+  page: 11 Data Display - Avatars
+  use_for:
+  - star_baby_2d
+  - expression_lookup
+  - ip_material
+  expected_size: component_or_component_set
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates:
+  - 521:3670
+  - 97:2582
+- node_id: 2373:5101
+  name: IP Avatar - Star Baby 3D
+  page: 11 Data Display - Avatars
+  use_for:
+  - star_baby_3d
+  - expression_lookup
+  - ip_material
+  expected_size: component_or_component_set
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates:
+  - 521:3670
+  - 97:2582
+- node_id: 97:2582
+  name: 18 Assets - Image Source
+  page: 18 Assets - Image Source
+  use_for:
+  - image_source
+  - ip_material
+  - illustration
+  - offline_asset_lookup
+  expected_size: asset_page
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates:
+  - 521:3670
+- node_id: 521:3322
+  name: 02 Icons - SF Symbols
+  page: Component Library
+  use_for:
+  - icon_lookup
+  - icon_component
+  - sf_symbol
+  expected_size: component_page
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates:
+  - 401:2676
+- node_id: 401:2676
+  name: 17 References - Icon Candidates
+  page: 17 References - Icon Candidates
+  use_for:
+  - icon_candidate
+  - iconsax_candidate
+  - missing_icon_fallback
+  expected_size: reference_page
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates:
+  - 521:3322
+- node_id: 570:7229
+  name: 13 Overlays - Sheets & Pickers
+  page: Component Library
+  use_for:
+  - floating_sheet
+  - paywall_half_sheet
+  - picker
+  - share_sheet
+  - calendar_sheet
+  - subscription_sheet
+  expected_size: component_page
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates: []
+- node_id: 2756:23531
+  name: Subscription Modal Source A
+  page: 二期/订阅相关
+  use_for:
+  - subscription_modal
+  - paywall_half_sheet
+  expected_size: mobile_screen_or_sheet
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates:
+  - 2756:23549
+  - 570:7229
+- node_id: 2756:23549
+  name: Subscription Modal Source B
+  page: 二期/订阅相关
+  use_for:
+  - subscription_modal
+  - paywall_half_sheet
+  expected_size: mobile_screen_or_sheet
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates:
+  - 2756:23531
+  - 570:7229
+- node_id: 2756:23270
+  name: Subscription Plan Source
+  page: 二期/订阅相关
+  use_for:
+  - subscription_plan
+  - plan_option_cell_reference
+  expected_size: local_module
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates:
+  - 2756:23298
+- node_id: 2756:23298
+  name: Subscription Plan Source Alternate
+  page: 二期/订阅相关
+  use_for:
+  - subscription_plan
+  - plan_option_cell_reference
+  expected_size: local_module
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates:
+  - 2756:23270
+- node_id: 2379:7061
+  name: Subscription Sheet Source
+  page: 二期/订阅相关
+  use_for:
+  - subscription_sheet
+  - paywall_half_sheet
+  expected_size: mobile_screen_or_sheet
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates:
+  - 570:7229
+- node_id: 2430:4641
+  name: 查看全部文章入口
+  use_for:
+  - link_entry_cell
+  - view_all_articles_entry
+  expected_size: component_or_local_module
+  last_verified_at: '2026-07-11'
+  status: active
+  replacement_candidates: []
+- node_id: 7323:2913
+  name: 二期
+  node_role: source_group
+  exportable: false
+  primary_display_frame: 7469:2716
+  status: active
+  last_verified_at: '2026-10-29'
+  child_index_ref: references/metadata/source-frames.yaml#source_groups.7323:2913
+stale_nodes:
+- node_id: 2536:5209
+  name: legacy settings candidate
+  page: unknown_or_removed
+  use_for:
+  - settings
+  - legacy_settings
+  checked_at: '2026-07-12'
+  status: missing_in_live_figma
+  policy:
+  - do_not_use_as_primary_source
+  - do_not_return_as_platform_display_node
+  - resolve_to_exportable_screen_frame_before_handoff
+  replacement_candidates:
+  - 4232:12002
+  - 4232:12018
+  - 4232:12036
+explicit_exclusions:
+- node_id: 5164:7992
+  name: 冷启页 - 占位
+  status: excluded_placeholder
+  reason: placeholder frame is not an active product state, display target, or mutation base
+  policy:
+  - do_not_route_as_active_source
+  - reconsider_only_after_product_confirmation
+lookup_aliases_by_use_for:
+  project_asset_lookup:
+  - 项目素材
+  - 素材库
+  star_baby:
+  - 星星人
+  - 星宝
+  - StarBaby
+  star_baby_2d:
+  - 星星人
+  - 星宝
+  - StarBaby
+  - 星星人2D
+  - 小黄星
+  star_baby_3d:
+  - 星星人
+  - 星宝
+  - StarBaby
+  - 星星人3D
+  - 3D小黄星
+  expression_lookup:
+  - 表情
+  - 动作
+  - 姿势
+  ip_material:
+  - IP素材
+  - 角色素材
+  - 星星人
+  podcast:
+  - 播客
+  - 电台

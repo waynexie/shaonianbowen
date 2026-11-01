@@ -1,0 +1,2480 @@
+schema_version: 2
+verified_at: '2026-10-29'
+organization: type_archive_plus_scene_index
+figma_index_node_id: 7612:14416
+main_component_rule: one canonical main component; scene examples are instances only
+screens:
+- node_id: 7323:3823
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:3863
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:3929
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4681
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7504:3110
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:3973
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4681
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7504:3110
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4016
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4048
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4691
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7504:3139
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4091
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4156
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4221
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4301
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4341
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+- node_id: 7323:4385
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7560:3386
+  - id: 2055:106
+    name: App Button
+    master: 2028:4852
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4421
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7568:4249
+  - id: 2055:106
+    name: App Button
+    master: 2028:4852
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4451
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4681
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7568:4295
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4483
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4691
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7568:4341
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4515
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5348
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4555
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7585:144
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4580
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4701
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7585:159
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+- node_id: 7323:4617
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 7323:3408
+    name: Legacy / icons
+    master: 7323:3454
+  - id: 2055:106
+    name: App Button
+    master: 2028:4818
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4647
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7323:3408
+    name: Legacy / icons
+    master: 7323:3454
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+- node_id: 7323:4665
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4711
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7585:177
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+- node_id: 7323:4702
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4701
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5348
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4748
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4711
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5348
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+- node_id: 7323:4794
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7560:3435
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4830
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4701
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7560:3482
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4871
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4711
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7560:3533
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4914
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 5074:5802
+    name: Learning Module Card
+    master: 7504:3081
+  - id: 2055:106
+    name: App Button
+    master: 2028:4852
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:4998
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+- node_id: 7323:5067
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4701
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:5112
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4701
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:5158
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 7512:4215
+    name: Opinion Vote Panel
+    master: 7512:4161
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:5184
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 7512:4215
+    name: Opinion Vote Panel
+    master: 7512:4177
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:5213
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7579:4721
+    name: Learning Guide Card
+    master: 7579:4673
+  - id: 7512:4215
+    name: Opinion Vote Panel
+    master: 7512:4195
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:5283
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7323:5331
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 557:5322
+    name: Icon 16
+    master: 557:5338
+  - id: 458:3953
+    name: Divider
+    master: 458:3950
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 66:6081
+    name: Function Tab
+    master: 94:839
+- node_id: 7469:2716
+  component_families:
+  - id: 97:1502
+    name: Audio Player Bar
+    master: 97:1501
+  - id: 557:4875
+    name: Impact Card
+    master: 557:4875
+  - id: 66:6081
+    name: Function Tab
+    master: 7495:3884
+  - id: 2387:4731
+    name: Plus Badge
+    master: 2387:4725
+  - id: 94:1226
+    name: Section Title
+    master: 94:1226
+  - id: 570:8215
+    name: Comment Input Trigger
+    master: 570:8215
+  - id: 97:2581
+    name: Comment Cell
+    master: 458:4611
+  - id: 97:4869
+    name: Footer
+    master: 97:4869
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:4896
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 4389:11236
+    name: Detail Action Bar
+    master: 96:541
+- node_id: 7317:1218
+  component_families:
+  - id: '6436:46'
+    name: Article Preview Cell/Large/SourceTime/4:3
+    master: '6436:46'
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8033
+  - id: 7593:8094
+    name: Profile Stats Card
+    master: 7593:8078
+  - id: 7593:8202
+    name: Profile Membership Card
+    master: 7593:8195
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7593:8302
+    name: Profile Identity Header
+    master: 7593:8271
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+- node_id: 7317:1271
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 2440:4673
+    name: Article Preview Cell
+    master: 530:3391
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8033
+  - id: 7593:8094
+    name: Profile Stats Card
+    master: 7593:8092
+  - id: 7593:8202
+    name: Profile Membership Card
+    master: 7593:8201
+  - id: 7593:8302
+    name: Profile Identity Header
+    master: 7593:8291
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+- node_id: 7317:1347
+  component_families:
+  - id: 570:10302
+    name: Message Cell
+    master: 570:10153
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8043
+  - id: 7593:8094
+    name: Profile Stats Card
+    master: 7593:8078
+  - id: 7593:8202
+    name: Profile Membership Card
+    master: 7593:8195
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7593:8302
+    name: Profile Identity Header
+    master: 7593:8271
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+- node_id: 7317:1401
+  component_families:
+  - id: 2440:4673
+    name: Article Preview Cell
+    master: 530:3391
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8053
+  - id: 7593:8094
+    name: Profile Stats Card
+    master: 7593:8078
+  - id: 7593:8202
+    name: Profile Membership Card
+    master: 7593:8195
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7593:8302
+    name: Profile Identity Header
+    master: 7593:8271
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+- node_id: 7317:1454
+  component_families:
+  - id: 218:6895
+    name: Empty Placeholder
+    master: 218:6895
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8063
+  - id: 7593:8094
+    name: Profile Stats Card
+    master: 7593:8078
+  - id: 7593:8202
+    name: Profile Membership Card
+    master: 7593:8195
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7593:8302
+    name: Profile Identity Header
+    master: 7593:8271
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+- node_id: 7317:1503
+  component_families:
+  - id: 2440:4673
+    name: Article Preview Cell
+    master: 530:3391
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8033
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+  - id: 7593:8302
+    name: Profile Identity Header
+    master: 7598:13702
+- node_id: 7317:1871
+  component_families:
+  - id: 557:5248
+    name: Icon 20
+    master: 5625:14137
+  - id: 7598:13640
+    name: Profile Login Prompt
+    master: 7598:13631
+  - id: 218:6895
+    name: Empty Placeholder
+    master: 218:6895
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8063
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+- node_id: 7317:1915
+  component_families:
+  - id: 218:6895
+    name: Empty Placeholder
+    master: 218:6895
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8063
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 7598:13640
+    name: Profile Login Prompt
+    master: 7598:13639
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+  - id: 570:7520
+    name: Sheet & Picker
+    master: 7596:10302
+- node_id: 7317:1962
+  component_families:
+  - id: 218:6895
+    name: Empty Placeholder
+    master: 218:6895
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8063
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 7598:13640
+    name: Profile Login Prompt
+    master: 7598:13639
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+  - id: 570:7520
+    name: Sheet & Picker
+    master: 7596:10483
+- node_id: 7317:2009
+  component_families:
+  - id: 218:6895
+    name: Empty Placeholder
+    master: 218:6895
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8063
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 7598:13640
+    name: Profile Login Prompt
+    master: 7598:13639
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+  - id: 570:7520
+    name: Sheet & Picker
+    master: 7596:10529
+- node_id: 7317:2066
+  component_families:
+  - id: 218:6895
+    name: Empty Placeholder
+    master: 218:6895
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8063
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 7598:13640
+    name: Profile Login Prompt
+    master: 7598:13639
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+  - id: 570:7520
+    name: Sheet & Picker
+    master: 7596:10588
+- node_id: 7317:2126
+  component_families:
+  - id: 218:6895
+    name: Empty Placeholder
+    master: 218:6895
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8063
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 7598:13640
+    name: Profile Login Prompt
+    master: 7598:13639
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+  - id: 570:7520
+    name: Sheet & Picker
+    master: 7596:10647
+- node_id: 7317:2190
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:237
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+- node_id: 7317:2195
+  component_families:
+  - id: 570:7520
+    name: Sheet & Picker
+    master: 7598:13410
+- node_id: 7469:4610
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:237
+  - id: 7596:9566
+    name: Settings Row
+    master: 7596:9515
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 557:4982
+    name: Icon Button
+    master: 557:4981
+  - id: 570:7520
+    name: Sheet & Picker
+    master: 7596:10752
+- node_id: 7469:4668
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:237
+  - id: 7596:9566
+    name: Settings Row
+    master: 7596:9515
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 2055:106
+    name: App Button
+    master: 2028:4846
+  - id: 557:4982
+    name: Icon Button
+    master: 557:4981
+  - id: 570:7520
+    name: Sheet & Picker
+    master: 7596:10831
+- node_id: 7469:4979
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:237
+  - id: 7596:9566
+    name: Settings Row
+    master: 7596:9557
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 2055:106
+    name: App Button
+    master: 2028:5233
+  - id: 570:7520
+    name: Sheet & Picker
+    master: 7598:13598
+  - id: 557:4982
+    name: Icon Button
+    master: 557:4981
+- node_id: 7469:6019
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:237
+  - id: 7596:9836
+    name: Settings List Card
+    master: 7596:9835
+  - id: 2055:106
+    name: App Button
+    master: 2028:5233
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+- node_id: 7469:6147
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:237
+  - id: 7596:9836
+    name: Settings List Card
+    master: 7596:9835
+  - id: 2055:106
+    name: App Button
+    master: 2028:5233
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 570:7520
+    name: Sheet & Picker
+    master: 570:7433
+- node_id: 7469:6243
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:237
+  - id: 7596:9836
+    name: Settings List Card
+    master: 7596:9835
+  - id: 2055:106
+    name: App Button
+    master: 2028:5233
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 570:7520
+    name: Sheet & Picker
+    master: 570:7519
+- node_id: 7469:6350
+  component_families:
+  - id: 2440:4673
+    name: Article Preview Cell
+    master: 530:3391
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8033
+  - id: 7593:8094
+    name: Profile Stats Card
+    master: 7593:8078
+  - id: 7593:8202
+    name: Profile Membership Card
+    master: 7593:8195
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7593:8302
+    name: Profile Identity Header
+    master: 7593:8301
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+- node_id: 7469:6405
+  component_families:
+  - id: 2440:4673
+    name: Article Preview Cell
+    master: 530:3391
+  - id: 7593:8064
+    name: Profile Content Tabs
+    master: 7593:8033
+  - id: 7593:8094
+    name: Profile Stats Card
+    master: 7593:8078
+  - id: 7593:8202
+    name: Profile Membership Card
+    master: 7593:8195
+  - id: 17:236
+    name: 状态栏
+    master: 17:238
+  - id: 7593:8302
+    name: Profile Identity Header
+    master: 7593:8301
+  - id: 557:5100
+    name: Icon 24
+    master: 325:4744
+  - id: 96:543
+    name: Tab Bar
+    master: 458:2764
+  - id: 570:7520
+    name: Sheet & Picker
+    master: 7596:10694
+- node_id: 7469:6475
+  component_families:
+  - id: 17:236
+    name: 状态栏
+    master: 17:237
+  - id: 557:5165
+    name: Navigation Bar
+    master: 557:5166
+  - id: 2055:106
+    name: App Button
+    master: 2028:4852
+  - id: 7596:10234
+    name: Avatar Choice Grid
+    master: 7596:10234
+gaps:
+- screen_id: 7323:3863
+  scene: 作文金句
+  status: source_only_reference
+  reason: no registered dedicated family in current source
+figma_index_page_id: 7620:14622
+figma_index_page_name: 00 场景索引
+figma_index_role: scene_navigation_and_instance_examples
+placement_policy:
+  canonical_page_id: 7620:14622
+  canonical_frame_id: 7612:14416
+  keep_masters_on_type_pages: true
+  examples_are_instances_only: true
+  agent_outputs_page_id: 4608:4097
+  agent_outputs_page_name: 界面生成方案
+  index_must_not_be_on_agent_outputs_page: true
+  write_requires_explicit_index_maintenance_request: true
+variant_gallery:
+  page_id: 7620:14622
+  viewport_width: 390
+  component_width_rule: preserve the component width used in a 390 screen; do not stretch small widgets to
+    390
+  role: scene_variant_locator_not_responsive_validation
+  presentation_rule: transparent category frame containing one token-bound visual card per variant; each card
+    contains one formal instance and its state label
+  card_surface_variable_id: VariableID:180:3519
+  category_title_variable_id: VariableID:180:3367
+  state_label_variable_id: VariableID:180:3365
+  groups:
+  - id: '7652:2'
+    name: 变体平铺 / 单词组句
+    viewport_width: 390
+    source_screen_ids:
+    - 7323:4385
+    variant_rows:
+    - instance_id: 7560:3734
+      card_id: 7670:1976
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7560:3386
+      variant_name: Empty
+      component_width: 350
+      component_height: 289
+    - instance_id: 7560:3864
+      card_id: 7670:1977
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7560:3435
+      variant_name: Composing
+      component_width: 350
+      component_height: 289
+    - instance_id: 7560:3997
+      card_id: 7670:1978
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7560:3482
+      variant_name: Correct
+      component_width: 350
+      component_height: 289
+    - instance_id: 7560:4142
+      card_id: 7670:1979
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7560:3533
+      variant_name: Incorrect
+      component_width: 350
+      component_height: 289
+    row_count: 4
+    instance_count: 4
+    w: 500
+    h: 1718
+  - id: '7652:4'
+    name: 变体平铺 / 词义选择
+    viewport_width: 390
+    source_screen_ids:
+    - 7323:4421
+    variant_rows:
+    - instance_id: 7568:4510
+      card_id: 7673:77
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7568:4249
+      variant_name: Unanswered
+      component_width: 350
+      component_height: 246
+    - instance_id: 7568:4631
+      card_id: 7673:78
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7568:4295
+      variant_name: Correct
+      component_width: 350
+      component_height: 246
+    - instance_id: 7568:4752
+      card_id: 7673:79
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7568:4341
+      variant_name: Incorrect
+      component_width: 350
+      component_height: 246
+    row_count: 3
+    instance_count: 3
+    w: 500
+    h: 1182
+  - id: '7652:6'
+    name: 变体平铺 / 引导与答题反馈
+    viewport_width: 390
+    source_screen_ids:
+    - 7323:4830
+    variant_rows:
+    - instance_id: 7579:8569
+      card_id: 7673:132
+      family_id: 7579:4721
+      family_name: Learning Guide Card
+      variant_master_id: 7579:4673
+      variant_name: 0 / Detail false
+      component_width: 350
+      component_height: 70
+    - instance_id: 7579:8624
+      card_id: 7673:133
+      family_id: 7579:4721
+      family_name: Learning Guide Card
+      variant_master_id: 7579:4681
+      variant_name: 1 / Detail false
+      component_width: 350
+      component_height: 70
+    - instance_id: 7579:8685
+      card_id: 7673:134
+      family_id: 7579:4721
+      family_name: Learning Guide Card
+      variant_master_id: 7579:4691
+      variant_name: 2 / Detail false
+      component_width: 350
+      component_height: 70
+    - instance_id: 7579:8746
+      card_id: 7673:135
+      family_id: 7579:4721
+      family_name: Learning Guide Card
+      variant_master_id: 7579:4701
+      variant_name: 1 / Detail true
+      component_width: 350
+      component_height: 96
+    - instance_id: 7579:8807
+      card_id: 7673:136
+      family_id: 7579:4721
+      family_name: Learning Guide Card
+      variant_master_id: 7579:4711
+      variant_name: 2 / Detail true
+      component_width: 350
+      component_height: 96
+    row_count: 5
+    instance_count: 5
+    w: 500
+    h: 1082
+  - id: '7652:8'
+    name: 变体平铺 / 阅读选择
+    viewport_width: 390
+    source_screen_ids:
+    - 7323:4555
+    variant_rows:
+    - instance_id: 7585:6889
+      card_id: 7673:213
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7585:144
+      variant_name: ReadingChoice / Unanswered
+      component_width: 330
+      component_height: 436
+    - instance_id: 7585:6989
+      card_id: 7673:214
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7585:159
+      variant_name: ReadingChoice / Correct
+      component_width: 330
+      component_height: 687
+    - instance_id: 7585:7098
+      card_id: 7673:215
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7585:177
+      variant_name: ReadingChoice / Incorrect
+      component_width: 330
+      component_height: 686
+    row_count: 3
+    instance_count: 3
+    w: 500
+    h: 2253
+  - id: '7652:10'
+    name: 变体平铺 / 个人中心基础模块
+    viewport_width: 390
+    source_screen_ids:
+    - 7469:6350
+    - 7317:1218
+    variant_rows:
+    - instance_id: 7593:10023
+      card_id: 7673:346
+      family_id: 66:6081
+      family_name: Function Tab
+      variant_master_id: 7593:8005
+      variant_name: Layout=Profile, State=Default
+      component_width: 350
+      component_height: 34
+    - instance_id: 7593:10036
+      card_id: 7673:347
+      family_id: 66:6081
+      family_name: Function Tab
+      variant_master_id: 7593:8023
+      variant_name: Layout=Profile, State=Selected
+      component_width: 350
+      component_height: 34
+    - instance_id: 7593:10070
+      card_id: 7673:348
+      family_id: 7593:8064
+      family_name: Profile Content Tabs
+      variant_master_id: 7593:8033
+      variant_name: Active=History
+      component_width: 350
+      component_height: 34
+    - instance_id: 7593:10125
+      card_id: 7673:349
+      family_id: 7593:8064
+      family_name: Profile Content Tabs
+      variant_master_id: 7593:8043
+      variant_name: Active=Comments
+      component_width: 350
+      component_height: 34
+    - instance_id: 7593:10180
+      card_id: 7673:350
+      family_id: 7593:8064
+      family_name: Profile Content Tabs
+      variant_master_id: 7593:8053
+      variant_name: Active=Likes
+      component_width: 350
+      component_height: 34
+    - instance_id: 7593:10235
+      card_id: 7673:351
+      family_id: 7593:8064
+      family_name: Profile Content Tabs
+      variant_master_id: 7593:8063
+      variant_name: Active=Favorites
+      component_width: 350
+      component_height: 34
+    - instance_id: 7593:10302
+      card_id: 7673:352
+      family_id: 7593:8094
+      family_name: Profile Stats Card
+      variant_master_id: 7593:8078
+      variant_name: Divider=Hidden
+      component_width: 350
+      component_height: 86
+    - instance_id: 7593:10384
+      card_id: 7673:353
+      family_id: 7593:8094
+      family_name: Profile Stats Card
+      variant_master_id: 7593:8092
+      variant_name: Divider=Visible
+      component_width: 350
+      component_height: 86
+    - instance_id: 7593:10445
+      card_id: 7673:354
+      family_id: 7593:8202
+      family_name: Profile Membership Card
+      variant_master_id: 7593:8195
+      variant_name: Membership=Regular
+      component_width: 350
+      component_height: 46
+    - instance_id: 7593:10479
+      card_id: 7673:355
+      family_id: 7593:8202
+      family_name: Profile Membership Card
+      variant_master_id: 7593:8201
+      variant_name: Membership=VIP
+      component_width: 350
+      component_height: 46
+    - instance_id: 7593:10531
+      card_id: 7673:356
+      family_id: 7593:8302
+      family_name: Profile Identity Header
+      variant_master_id: 7593:8271
+      variant_name: Type=Regular
+      component_width: 210
+      component_height: 80
+    - instance_id: 7593:10616
+      card_id: 7673:357
+      family_id: 7593:8302
+      family_name: Profile Identity Header
+      variant_master_id: 7593:8291
+      variant_name: Type=VIP
+      component_width: 210
+      component_height: 80
+    - instance_id: 7593:10692
+      card_id: 7673:358
+      family_id: 7593:8302
+      family_name: Profile Identity Header
+      variant_master_id: 7593:8301
+      variant_name: Type=Editable
+      component_width: 210
+      component_height: 80
+    row_count: 13
+    instance_count: 13
+    w: 500
+    h: 2332
+  - id: 7653:1816
+    name: 变体平铺 / 设置与登录
+    viewport_width: 390
+    source_screen_ids:
+    - 7469:6019
+    - 7317:1915
+    - 7469:6475
+    variant_rows:
+    - instance_id: 7596:12085
+      card_id: 7673:915
+      family_id: 7596:9566
+      family_name: Settings Row
+      variant_master_id: 7596:9512
+      variant_name: Type=Value, Surface=Standalone, Divider=Hidden, Height=70
+      component_width: 350
+      component_height: 70
+    - instance_id: 7596:12101
+      card_id: 7673:916
+      family_id: 7596:9566
+      family_name: Settings Row
+      variant_master_id: 7596:9515
+      variant_name: Type=Label, Surface=Standalone, Divider=Hidden, Height=58
+      component_width: 350
+      component_height: 58
+    - instance_id: 7596:12129
+      card_id: 7673:917
+      family_id: 7596:9566
+      family_name: Settings Row
+      variant_master_id: 7596:9523
+      variant_name: Type=ValueChevron, Surface=Grouped, Divider=Visible, Height=70
+      component_width: 350
+      component_height: 70
+    - instance_id: 7596:12169
+      card_id: 7673:918
+      family_id: 7596:9566
+      family_name: Settings Row
+      variant_master_id: 7596:9530
+      variant_name: Type=ValueChevron, Surface=Grouped, Divider=Hidden, Height=70
+      component_width: 350
+      component_height: 70
+    - instance_id: 7596:12215
+      card_id: 7673:919
+      family_id: 7596:9566
+      family_name: Settings Row
+      variant_master_id: 7596:9540
+      variant_name: Type=PermissionValue, Surface=Grouped, Divider=Visible, Height=80
+      component_width: 350
+      component_height: 80
+    - instance_id: 7596:12261
+      card_id: 7673:920
+      family_id: 7596:9566
+      family_name: Settings Row
+      variant_master_id: 7596:9547
+      variant_name: Type=Disclosure, Surface=Grouped, Divider=Visible, Height=70
+      component_width: 350
+      component_height: 70
+    - instance_id: 7596:12292
+      card_id: 7673:921
+      family_id: 7596:9566
+      family_name: Settings Row
+      variant_master_id: 7596:9552
+      variant_name: Type=Value, Surface=Grouped, Divider=Visible, Height=70
+      component_width: 350
+      component_height: 70
+    - instance_id: 7596:12317
+      card_id: 7673:922
+      family_id: 7596:9566
+      family_name: Settings Row
+      variant_master_id: 7596:9557
+      variant_name: Type=Disclosure, Surface=Grouped, Divider=Hidden, Height=70
+      component_width: 350
+      component_height: 70
+    - instance_id: 7596:12351
+      card_id: 7673:923
+      family_id: 7596:9566
+      family_name: Settings Row
+      variant_master_id: 7596:9565
+      variant_name: Type=PermissionSwitch, Surface=Grouped, Divider=Visible, Height=80
+      component_width: 350
+      component_height: 80
+    - instance_id: 7596:12436
+      card_id: 7673:924
+      family_id: 7596:9836
+      family_name: Settings List Card
+      variant_master_id: 7596:9806
+      variant_name: Type=Preferences
+      component_width: 350
+      component_height: 210
+    - instance_id: 7596:12584
+      card_id: 7673:925
+      family_id: 7596:9836
+      family_name: Settings List Card
+      variant_master_id: 7596:9835
+      variant_name: Type=General
+      component_width: 350
+      component_height: 360
+    - instance_id: 7596:12675
+      card_id: 7673:926
+      family_id: 7596:9994
+      family_name: Profile Text Input
+      variant_master_id: 7596:9986
+      variant_name: Type=Phone, State=Empty
+      component_width: 350
+      component_height: 56
+    - instance_id: 7596:12688
+      card_id: 7673:927
+      family_id: 7596:9994
+      family_name: Profile Text Input
+      variant_master_id: 7596:9989
+      variant_name: Type=Phone, State=Filled
+      component_width: 350
+      component_height: 56
+    - instance_id: 7596:12704
+      card_id: 7673:928
+      family_id: 7596:9994
+      family_name: Profile Text Input
+      variant_master_id: 7596:9993
+      variant_name: Type=Nickname, State=Filled
+      component_width: 350
+      component_height: 52
+    - instance_id: 7596:12720
+      card_id: 7673:929
+      family_id: 7596:10011
+      family_name: Verification Digit
+      variant_master_id: 7596:10004
+      variant_name: State=Filled
+      component_width: 45
+      component_height: 48
+    - instance_id: 7596:12733
+      card_id: 7673:930
+      family_id: 7596:10011
+      family_name: Verification Digit
+      variant_master_id: 7596:10006
+      variant_name: State=Empty
+      component_width: 45
+      component_height: 48
+    - instance_id: 7596:12746
+      card_id: 7673:931
+      family_id: 7596:10011
+      family_name: Verification Digit
+      variant_master_id: 7596:10010
+      variant_name: State=Error
+      component_width: 45
+      component_height: 48
+    - instance_id: 7596:12792
+      card_id: 7673:932
+      family_id: 7596:10129
+      family_name: Verification Code Input
+      variant_master_id: 7596:10061
+      variant_name: State=Partial
+      component_width: 350
+      component_height: 52
+    - instance_id: 7596:12871
+      card_id: 7673:933
+      family_id: 7596:10129
+      family_name: Verification Code Input
+      variant_master_id: 7596:10088
+      variant_name: State=Complete
+      component_width: 350
+      component_height: 52
+    - instance_id: 7596:12950
+      card_id: 7673:934
+      family_id: 7596:10129
+      family_name: Verification Code Input
+      variant_master_id: 7596:10115
+      variant_name: State=Error
+      component_width: 350
+      component_height: 52
+    - instance_id: 7596:13005
+      card_id: 7673:935
+      family_id: 7596:10138
+      family_name: Avatar Choice
+      variant_master_id: 7596:10134
+      variant_name: State=Selected
+      component_width: 60
+      component_height: 60
+    - instance_id: 7653:1818
+      card_id: 7673:936
+      family_id: 7596:10138
+      family_name: Avatar Choice
+      variant_master_id: 7596:10137
+      variant_name: State=Default
+      component_width: 60
+      component_height: 60
+    - instance_id: 7596:13187
+      card_id: 7673:937
+      family_id: 7596:10234
+      family_name: Avatar Choice Grid
+      variant_master_id: 7596:10234
+      variant_name: Avatar Choice Grid
+      component_width: 350
+      component_height: 436
+    - instance_id: 7596:13389
+      card_id: 7673:938
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7596:10302
+      variant_name: Type=PhoneLogin, State=Empty
+      component_width: 370
+      component_height: 260
+    - instance_id: 7596:13486
+      card_id: 7673:939
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7596:10483
+      variant_name: Type=PhoneLogin, State=Filled
+      component_width: 370
+      component_height: 260
+    - instance_id: 7596:13622
+      card_id: 7673:940
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7596:10529
+      variant_name: Type=Verification, State=Partial
+      component_width: 370
+      component_height: 278
+    - instance_id: 7596:13797
+      card_id: 7673:941
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7596:10588
+      variant_name: Type=Verification, State=Complete
+      component_width: 370
+      component_height: 278
+    - instance_id: 7596:13972
+      card_id: 7673:942
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7596:10647
+      variant_name: Type=Verification, State=Error
+      component_width: 370
+      component_height: 278
+    - instance_id: 7596:14111
+      card_id: 7673:943
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7596:10694
+      variant_name: Type=ProfileEdit, State=Default
+      component_width: 370
+      component_height: 406
+    - instance_id: 7596:14283
+      card_id: 7673:944
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7596:10752
+      variant_name: Type=GreetingEdit, State=Random
+      component_width: 370
+      component_height: 493
+    - instance_id: 7596:14518
+      card_id: 7673:945
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7596:10831
+      variant_name: Type=GreetingEdit, State=Suggested
+      component_width: 370
+      component_height: 491
+    row_count: 31
+    instance_count: 31
+    w: 500
+    h: 8720
+  - id: '7652:14'
+    name: 变体平铺 / 登录入口与客服
+    viewport_width: 390
+    source_screen_ids:
+    - 7317:1915
+    variant_rows:
+    - instance_id: 7598:15829
+      card_id: 7673:1099
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7598:13410
+      variant_name: Type=ProfileLogin, State=Social3
+      component_width: 370
+      component_height: 267
+    - instance_id: 7598:15998
+      card_id: 7673:1100
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7598:13467
+      variant_name: Type=ProfileLogin, State=Social2
+      component_width: 370
+      component_height: 267
+    - instance_id: 7598:16116
+      card_id: 7673:1101
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7598:13507
+      variant_name: Type=ProfileLogin, State=Action
+      component_width: 370
+      component_height: 267
+    - instance_id: 7598:16258
+      card_id: 7673:1102
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7598:13555
+      variant_name: Type=ProfileLogin, State=Skippable
+      component_width: 370
+      component_height: 324
+    - instance_id: 7598:16385
+      card_id: 7673:1103
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 7598:13598
+      variant_name: Type=CustomerService, State=Default
+      component_width: 370
+      component_height: 326
+    - instance_id: 7598:16482
+      card_id: 7673:1104
+      family_id: 7598:13640
+      family_name: Profile Login Prompt
+      variant_master_id: 7598:13631
+      variant_name: Type=Social
+      component_width: 350
+      component_height: 152
+    - instance_id: 7598:16573
+      card_id: 7673:1105
+      family_id: 7598:13640
+      family_name: Profile Login Prompt
+      variant_master_id: 7598:13639
+      variant_name: Type=Action
+      component_width: 350
+      component_height: 114
+    - instance_id: 7598:16604
+      card_id: 7673:1106
+      family_id: 7593:8302
+      family_name: Profile Identity Header
+      variant_master_id: 7598:13702
+      variant_name: Type=Compact
+      component_width: 210
+      component_height: 32
+    row_count: 8
+    instance_count: 8
+    w: 500
+    h: 2785
+  - id: '7651:2'
+    name: 变体平铺 / 首页与日历
+    viewport_width: 390
+    source_screen_ids:
+    - 4229:9259
+    - 3649:6695
+    variant_rows:
+    - instance_id: 7639:853
+      card_id: 7673:1413
+      family_id: '4384:9'
+      family_name: News Card
+      variant_master_id: 272:2723
+      variant_name: News Card / Property 1=News, Property 2=Loading
+      component_width: 350
+      component_height: 309
+    - instance_id: 7639:972
+      card_id: 7673:1414
+      family_id: '4384:9'
+      family_name: News Card
+      variant_master_id: 2518:8436
+      variant_name: News Card / Property 1=News, Property 2=Default
+      component_width: 350
+      component_height: 312
+    - instance_id: 7639:1082
+      card_id: 7673:1415
+      family_id: 97:1502
+      family_name: Audio Player Bar
+      variant_master_id: 97:1501
+      variant_name: Audio Player Bar / State=Home, 播放中=False
+      component_width: 350
+      component_height: 52
+    - instance_id: 7639:1147
+      card_id: 7673:1416
+      family_id: 97:1502
+      family_name: Audio Player Bar
+      variant_master_id: 97:1500
+      variant_name: Audio Player Bar / State=Home, 播放中=True
+      component_width: 350
+      component_height: 52
+    - instance_id: 7639:1209
+      card_id: 7673:1417
+      family_id: 97:1502
+      family_name: Audio Player Bar
+      variant_master_id: 4898:15147
+      variant_name: Audio Player Bar / State=PrimaryAction, 播放中=False
+      component_width: 200
+      component_height: 50
+    - instance_id: 7639:1259
+      card_id: 7673:1418
+      family_id: 97:1502
+      family_name: Audio Player Bar
+      variant_master_id: 4898:15343
+      variant_name: Audio Player Bar / State=PrimaryAction, 播放中=True
+      component_width: 200
+      component_height: 50
+    - instance_id: 7639:1348
+      card_id: 7673:1419
+      family_id: 570:6879
+      family_name: Home Header Bar
+      variant_master_id: 554:4019
+      variant_name: Home Header Bar / State=Default
+      component_width: 350
+      component_height: 60
+    - instance_id: 7639:1473
+      card_id: 7673:1420
+      family_id: 570:6879
+      family_name: Home Header Bar
+      variant_master_id: 4857:24122
+      variant_name: Home Header Bar / State=State3
+      component_width: 350
+      component_height: 60
+    - instance_id: 7639:1604
+      card_id: 7673:1421
+      family_id: 570:6879
+      family_name: Home Header Bar
+      variant_master_id: 570:6880
+      variant_name: Home Header Bar / State=backtoday
+      component_width: 350
+      component_height: 60
+    - instance_id: 7639:1696
+      card_id: 7673:1422
+      family_id: 629:5486
+      family_name: Count Button
+      variant_master_id: 629:5358
+      variant_name: Count Button / Progress=1
+      component_width: 36
+      component_height: 36
+    - instance_id: 7639:1740
+      card_id: 7673:1423
+      family_id: 629:5486
+      family_name: Count Button
+      variant_master_id: 629:5485
+      variant_name: Count Button / Progress=2
+      component_width: 36
+      component_height: 36
+    - instance_id: 7639:1784
+      card_id: 7673:1424
+      family_id: 629:5486
+      family_name: Count Button
+      variant_master_id: 629:5484
+      variant_name: Count Button / Progress=3
+      component_width: 36
+      component_height: 36
+    - instance_id: 7639:1828
+      card_id: 7673:1425
+      family_id: 629:5486
+      family_name: Count Button
+      variant_master_id: 629:5483
+      variant_name: Count Button / Progress=4
+      component_width: 36
+      component_height: 36
+    - instance_id: 7639:1872
+      card_id: 7673:1426
+      family_id: 629:5486
+      family_name: Count Button
+      variant_master_id: 629:5481
+      variant_name: Count Button / Progress=5
+      component_width: 36
+      component_height: 36
+    - instance_id: 7639:1916
+      card_id: 7673:1427
+      family_id: 629:5486
+      family_name: Count Button
+      variant_master_id: 629:5480
+      variant_name: Count Button / Progress=6
+      component_width: 36
+      component_height: 36
+    - instance_id: 7639:1960
+      card_id: 7673:1428
+      family_id: 629:5486
+      family_name: Count Button
+      variant_master_id: 629:5482
+      variant_name: Count Button / Progress=7
+      component_width: 36
+      component_height: 36
+    - instance_id: 7639:2004
+      card_id: 7673:1429
+      family_id: 629:5486
+      family_name: Count Button
+      variant_master_id: 629:5479
+      variant_name: Count Button / Progress=8
+      component_width: 36
+      component_height: 36
+    - instance_id: 7639:2048
+      card_id: 7673:1430
+      family_id: 629:5486
+      family_name: Count Button
+      variant_master_id: 629:5477
+      variant_name: Count Button / Progress=9
+      component_width: 36
+      component_height: 36
+    - instance_id: 7639:2092
+      card_id: 7673:1431
+      family_id: 629:5486
+      family_name: Count Button
+      variant_master_id: 629:5478
+      variant_name: Count Button / Progress=10
+      component_width: 36
+      component_height: 36
+    - instance_id: 7639:2136
+      card_id: 7673:1432
+      family_id: 94:1226
+      family_name: Section Title
+      variant_master_id: 94:1226
+      variant_name: Section Title / Section Title
+      component_width: 80
+      component_height: 26
+    - instance_id: 7639:2183
+      card_id: 7673:1433
+      family_id: 96:543
+      family_name: Tab Bar
+      variant_master_id: 66:4630
+      variant_name: Tab Bar / Active=Brief
+      component_width: 350
+      component_height: 70
+    - instance_id: 7639:2233
+      card_id: 7673:1434
+      family_id: 96:543
+      family_name: Tab Bar
+      variant_master_id: 458:2764
+      variant_name: Tab Bar / Active=Mine
+      component_width: 350
+      component_height: 70
+    - instance_id: 7639:2532
+      card_id: 7673:1435
+      family_id: 570:7520
+      family_name: Sheet & Picker
+      variant_master_id: 570:7326
+      variant_name: Sheet & Picker / Type=CalendarPickerSheet
+      component_width: 350
+      component_height: 350
+    row_count: 23
+    instance_count: 23
+    w: 500
+    h: 4693
+  - id: '7652:16'
+    name: 变体平铺 / 一期底层
+    viewport_width: 390
+    source_screen_ids:
+    - 4229:9517
+    variant_rows:
+    - instance_id: 7639:2842
+      card_id: 7673:1761
+      family_id: 557:4875
+      family_name: Impact Card
+      variant_master_id: 557:4875
+      variant_name: Impact Card / Impact Card
+      component_width: 350
+      component_height: 191
+    - instance_id: 7639:2886
+      card_id: 7673:1762
+      family_id: 570:8215
+      family_name: Comment Input Trigger
+      variant_master_id: 570:8215
+      variant_name: Comment Input Trigger / Comment Input Trigger
+      component_width: 350
+      component_height: 48
+    - instance_id: 7639:3050
+      card_id: 7673:1763
+      family_id: 97:2581
+      family_name: Comment Cell
+      variant_master_id: 458:4611
+      variant_name: Comment Cell / Level=Root
+      component_width: 350
+      component_height: 179
+    - instance_id: 7639:3274
+      card_id: 7673:1764
+      family_id: 97:2581
+      family_name: Comment Cell
+      variant_master_id: 2519:10051
+      variant_name: Comment Cell / Level=Reply
+      component_width: 350
+      component_height: 128
+    - instance_id: 7639:3366
+      card_id: 7673:1765
+      family_id: 3384:4846
+      family_name: Attitude
+      variant_master_id: 3384:4845
+      variant_name: Attitude / Property 1=LMAO
+      component_width: 64
+      component_height: 26
+    - instance_id: 7639:3398
+      card_id: 7673:1766
+      family_id: 3384:4846
+      family_name: Attitude
+      variant_master_id: 3384:4843
+      variant_name: Attitude / Property 1=Adore
+      component_width: 64
+      component_height: 26
+    - instance_id: 7639:3430
+      card_id: 7673:1767
+      family_id: 3384:4846
+      family_name: Attitude
+      variant_master_id: 3384:4842
+      variant_name: Attitude / Property 1=Cool
+      component_width: 64
+      component_height: 26
+    - instance_id: 7639:3462
+      card_id: 7673:1768
+      family_id: 3384:4846
+      family_name: Attitude
+      variant_master_id: 3384:4841
+      variant_name: Attitude / Property 1=Like
+      component_width: 64
+      component_height: 26
+    - instance_id: 7639:3494
+      card_id: 7673:1769
+      family_id: 3384:4846
+      family_name: Attitude
+      variant_master_id: 3384:4844
+      variant_name: Attitude / Property 1=Disgust
+      component_width: 64
+      component_height: 26
+    - instance_id: 7639:3523
+      card_id: 7673:1770
+      family_id: 3384:4846
+      family_name: Attitude
+      variant_master_id: 3384:5522
+      variant_name: Attitude / Property 1=Default
+      component_width: 32
+      component_height: 26
+    - instance_id: 7639:3594
+      card_id: 7673:1771
+      family_id: 4389:11236
+      family_name: Detail Action Bar
+      variant_master_id: 96:541
+      variant_name: Detail Action Bar / 喜欢=False, 收藏=False
+      component_width: 350
+      component_height: 80
+    - instance_id: 7639:3743
+      card_id: 7673:1772
+      family_id: 4389:11236
+      family_name: Detail Action Bar
+      variant_master_id: 505:3211
+      variant_name: Detail Action Bar / 喜欢=True, 收藏=False
+      component_width: 350
+      component_height: 80
+    - instance_id: 7639:3892
+      card_id: 7673:1773
+      family_id: 4389:11236
+      family_name: Detail Action Bar
+      variant_master_id: 505:3229
+      variant_name: Detail Action Bar / 喜欢=False, 收藏=True
+      component_width: 350
+      component_height: 80
+    - instance_id: 7639:4041
+      card_id: 7673:1774
+      family_id: 4389:11236
+      family_name: Detail Action Bar
+      variant_master_id: 505:3248
+      variant_name: Detail Action Bar / 喜欢=True, 收藏=True
+      component_width: 350
+      component_height: 80
+    - instance_id: 7639:4157
+      card_id: 7673:1775
+      family_id: 557:5165
+      family_name: Navigation Bar
+      variant_master_id: 557:4896
+      variant_name: Navigation Bar / Type=Type1
+      component_width: 350
+      component_height: 60
+    - instance_id: 7639:4198
+      card_id: 7673:1776
+      family_id: 557:5165
+      family_name: Navigation Bar
+      variant_master_id: 557:5166
+      variant_name: Navigation Bar / Type=Type2
+      component_width: 350
+      component_height: 60
+    - instance_id: 7639:4242
+      card_id: 7673:1777
+      family_id: 557:5165
+      family_name: Navigation Bar
+      variant_master_id: 7061:6532
+      variant_name: Navigation Bar / Type=Type3
+      component_width: 350
+      component_height: 60
+    - instance_id: 7639:4298
+      card_id: 7673:1778
+      family_id: 557:5165
+      family_name: Navigation Bar
+      variant_master_id: 7061:6553
+      variant_name: Navigation Bar / Type=Type4
+      component_width: 350
+      component_height: 60
+    - instance_id: 7639:4336
+      card_id: 7673:1779
+      family_id: 2387:4731
+      family_name: Plus Badge
+      variant_master_id: 2387:4725
+      variant_name: Plus Badge / Context=Corner, Size=XS
+      component_width: 42
+      component_height: 20
+    - instance_id: 7639:4356
+      card_id: 7673:1780
+      family_id: 2387:4731
+      family_name: Plus Badge
+      variant_master_id: 2387:4727
+      variant_name: Plus Badge / Context=Inline, Size=S
+      component_width: 58
+      component_height: 20
+    - instance_id: 7639:4376
+      card_id: 7673:1781
+      family_id: 2387:4731
+      family_name: Plus Badge
+      variant_master_id: 2387:4729
+      variant_name: Plus Badge / Context=Inline, Size=XS
+      component_width: 38
+      component_height: 18
+    row_count: 21
+    instance_count: 21
+    w: 500
+    h: 3980
+  - id: '7652:18'
+    name: 变体平铺 / 付费流程
+    viewport_width: 390
+    source_screen_ids:
+    - 3649:7541
+    variant_rows:
+    - instance_id: 7639:4404
+      card_id: 7673:1802
+      family_id: 2055:106
+      family_name: App Button
+      variant_master_id: 2028:4846
+      variant_name: App Button / Tone=Primary, Size=XL, Content=Text, State=Default
+      component_width: 350
+      component_height: 56
+    - instance_id: 7639:4424
+      card_id: 7673:1803
+      family_id: 2055:106
+      family_name: App Button
+      variant_master_id: 2028:4849
+      variant_name: App Button / Tone=Primary, Size=XL, Content=Text, State=Pressed
+      component_width: 350
+      component_height: 56
+    - instance_id: 7639:4444
+      card_id: 7673:1804
+      family_id: 2055:106
+      family_name: App Button
+      variant_master_id: 2028:4852
+      variant_name: App Button / Tone=Primary, Size=XL, Content=Text, State=Disabled
+      component_width: 350
+      component_height: 56
+    - instance_id: 7639:4482
+      card_id: 7673:1805
+      family_id: 516:3258
+      family_name: Bottom Bar
+      variant_master_id: 516:3258
+      variant_name: Bottom Bar / Bottom Bar
+      component_width: 350
+      component_height: 70
+    - instance_id: 7639:4526
+      card_id: 7673:1806
+      family_id: 97:4869
+      family_name: Footer
+      variant_master_id: 97:4869
+      variant_name: Footer / Footer
+      component_width: 350
+      component_height: 148
+    row_count: 5
+    instance_count: 5
+    w: 500
+    h: 1066
+  - id: '7656:2'
+    name: 变体平铺 / 考点与学习卡
+    viewport_width: 390
+    source_screen_ids:
+    - 7323:4914
+    variant_rows:
+    - instance_id: '7656:4'
+      card_id: 7673:1910
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 4898:15483
+      variant_name: Type=Question
+      component_width: 350
+      component_height: 288
+    - instance_id: '7656:19'
+      card_id: 7673:1911
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 4941:5701
+      variant_name: Type=Summary
+      component_width: 350
+      component_height: 270
+    - instance_id: '7656:41'
+      card_id: 7673:1912
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7504:3081
+      variant_name: Type=SingleChoice, State=Unanswered
+      component_width: 330
+      component_height: 282
+    - instance_id: 7656:68
+      card_id: 7673:1913
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7504:3110
+      variant_name: Type=SingleChoice, State=Correct
+      component_width: 330
+      component_height: 282
+    - instance_id: 7656:95
+      card_id: 7673:1914
+      family_id: 5074:5802
+      family_name: Learning Module Card
+      variant_master_id: 7504:3139
+      variant_name: Type=SingleChoice, State=Incorrect
+      component_width: 330
+      component_height: 282
+    row_count: 5
+    instance_count: 5
+    w: 500
+    h: 2084
+  - id: 7656:122
+    name: 变体平铺 / 各方观点
+    viewport_width: 390
+    source_screen_ids:
+    - 7323:5158
+    variant_rows:
+    - instance_id: 7656:124
+      card_id: 7673:1971
+      family_id: 7512:4215
+      family_name: Opinion Vote Panel
+      variant_master_id: 7512:4161
+      variant_name: State=Unvoted
+      component_width: 370
+      component_height: 446
+    - instance_id: 7656:145
+      card_id: 7673:1972
+      family_id: 7512:4215
+      family_name: Opinion Vote Panel
+      variant_master_id: 7512:4177
+      variant_name: State=VotedFor
+      component_width: 370
+      component_height: 446
+    - instance_id: 7656:167
+      card_id: 7673:1973
+      family_id: 7512:4215
+      family_name: Opinion Vote Panel
+      variant_master_id: 7512:4195
+      variant_name: State=VotedAgainst
+      component_width: 370
+      component_height: 446
+    row_count: 3
+    instance_count: 3
+    w: 500
+    h: 1782
+  group_count: 12
+  variant_count: 124
+  instance_count: 124
+  maintenance_rule: keep one 390-screen instance in one theme-bound card per semantic variant; category frame
+    remains transparent; responsive checks remain task-specific
+scene_navigation:
+- name: 首页 / 新闻卡
+  source_screen_id: 4229:9259
+  source_instance_id: 4389:9435
+  component_family_id: '4384:9'
+  component_family_name: News Card
+  example_frame_id: 7631:5750
+  example_instance_id: 7631:5770
+  variant_gallery_id: '7651:2'
+- name: 首页 / 音频播放
+  source_screen_id: 4229:9259
+  source_instance_id: 4229:9273
+  component_family_id: 97:1502
+  component_family_name: Audio Player Bar
+  example_frame_id: 7631:5804
+  example_instance_id: 7631:5824
+  variant_gallery_id: '7651:2'
+- name: 一期底层 / 影响解读
+  source_screen_id: 4229:9517
+  source_instance_id: 4229:9526
+  component_family_id: 557:4875
+  component_family_name: Impact Card
+  example_frame_id: 7631:5844
+  example_instance_id: 7631:5864
+  variant_gallery_id: '7652:16'
+- name: 一期底层 / 评论互动
+  source_screen_id: 4229:9517
+  source_instance_id: 4229:9541
+  component_family_id: 97:2581
+  component_family_name: Comment Cell
+  example_frame_id: 7631:5958
+  example_instance_id: 7631:5978
+  variant_gallery_id: '7652:16'
+- name: 付费流程 / PDF 入口按钮
+  source_screen_id: 3649:7541
+  source_instance_id: 3649:7694
+  component_family_id: 2055:106
+  component_family_name: App Button
+  example_frame_id: 7631:6027
+  example_instance_id: 7631:6047
+  variant_gallery_id: '7652:18'
+- name: 首页 / 日历选择
+  source_screen_id: 3649:6695
+  source_instance_id: 3649:6712
+  component_family_id: 570:7520
+  component_family_name: Sheet & Picker
+  example_frame_id: 7631:6141
+  example_instance_id: 7631:6161
+  variant_gallery_id: '7651:2'
+- name: 考点选择题
+  source_screen_id: 7323:4914
+  example_frame_id: 7612:14417
+  variant_gallery_id: '7656:2'
+- name: 各方观点
+  source_screen_id: 7323:5158
+  example_frame_id: 7612:14437
+  variant_gallery_id: 7656:122
+- name: 单词组句
+  source_screen_id: 7323:4385
+  example_frame_id: 7612:14457
+- name: 词义选择
+  source_screen_id: 7323:4421
+  example_frame_id: 7612:14483
+- name: 阅读选择
+  source_screen_id: 7323:4555
+  example_frame_id: 7612:14507
+- name: 引导与答题反馈
+  source_screen_id: 7323:4830
+  example_frame_id: 7612:14526
+- name: 用户信息
+  source_screen_id: 7469:6350
+  example_frame_id: 7612:14540
+- name: 会员与学习数据
+  source_screen_id: 7317:1218
+  example_frame_id: 7612:14553
+- name: 设置列表
+  source_screen_id: 7469:6019
+  example_frame_id: 7612:14570
+- name: 手机号登录
+  source_screen_id: 7317:1915
+  example_frame_id: 7612:14595
+- name: 头像选择
+  source_screen_id: 7469:6475
+  example_frame_id: 7612:14615
+- name: 作文金句 / 源页面索引
+  source_screen_id: 7323:3863
+  example_frame_id: 7612:14670
+  entry_role: source_screen_only
+screen_reference_contract:
+  source: source-frames.yaml#source_groups
+  key: node_id
+  owned_fields:
+  - component_families
+  inherited_fields: screen identity size state aliases use_for experience_profile source_group and component_family_ids
+  rule: resolve every screen node_id uniquely in source-frames before building lookup records; preserve per-screen
+    observed master references as scene relationships

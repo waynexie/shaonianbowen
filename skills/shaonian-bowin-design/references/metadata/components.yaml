@@ -1,0 +1,2971 @@
+schema_version: 1
+source:
+  source_figma_file_key: oULxBlEvFNkWGGVaJ0ClEz
+  authority: live_figma_components_first
+  rule: extend_nearest_family_before_creating_new_family
+  excluded_authority_page_ids:
+  - 4608:4097
+  component_resolution_policy:
+    primary_locator: node_id
+    required_live_type_check: true
+    valid_instance_sources:
+    - COMPONENT
+    - concrete COMPONENT child of COMPONENT_SET
+    container_behavior: if node_id resolves to FRAME SECTION or catalog container, scan its local descendants
+      or registered component page for the matching COMPONENT or COMPONENT_SET; never instance the container
+      itself.
+    rule: resolve only local nodes inside Figma file oULxBlEvFNkWGGVaJ0ClEz; no secondary locator, non-local
+      fallback, or destination switch exists.
+    last_verified: '2026-07-14'
+    target_page_for_instance_smoke_test: 4608:4097
+    failure_policy: if live type verification cannot resolve a concrete local ready_to_force component or variant,
+      stop instead of switching files or drawing primitives.
+component_audit_contract:
+  reference: references/component-audit.md
+  status_values:
+    ready_to_force: must use as instance or variant; stop if unavailable
+    usable_with_recipe: use with page recipe constraints; local composition allowed only where documented
+    needs_componentization: source pattern is stable but not a component; follow recipe and report gap
+    source_only_reference: visual or IA reference only
+  default_fallback_policy:
+    ready_to_force: stop
+    usable_with_recipe: use_recipe_or_stop
+    needs_componentization: recipe_local_layout_allowed
+    source_only_reference: do_not_force_as_component
+  precedence:
+  - required_instance and ready_to_force requirements apply to every quality tier and context strategy
+  - source_locked_visual_draft locks context while registered target-region components remain instances variants
+    or documented same-family extensions
+  - production_gaps scope is limited to unregistered new componentization and other production-readiness gaps
+  ready_to_force:
+  - HomeHeaderBar
+  - NavigationBar
+  - StatusBar
+  - SectionTitle
+  - TabBar
+  - ButtonApp
+  - Button
+  - IconButton
+  - CountButton
+  - PlusBadge
+  - NewsCard
+  - ImpactCard
+  - FeatureCover
+  - RecommendationTicker
+  - LearningModuleCard
+  - LandscapeCover
+  - SquareCover
+  - CommentCell
+  - CommentInputTrigger
+  - VoiceCommentCell
+  - ExpertOpinionCell
+  - LinkEntryCell
+  - ArticlePreviewCell
+  - EmptyPlaceholder
+  - Footer
+  - FloatingIconButton
+  - MicIcon
+  - MicFillIcon
+  - AudioPlayerBar
+  - ArticleSummaryAudio
+  - AudioProgressControl
+  - UserAnswerBubble
+  - AudioScriptParagraph
+  - Icon16
+  - Icon20
+  - Icon24
+  needs_componentization:
+  - BottomBar
+  - SettingsRow
+  - SubscriptionSheet
+  - PlanOptionCell
+  - ExpertBubble
+  - AIRadioControlCluster
+  - AgeOptionRow
+  generation_rule:
+  - For ready_to_force components, do not hand-draw with rectangles/text/groups.
+  - For needs_componentization patterns, follow page-recipes.md and report the gap.
+  - For weak names like Frame 39/40/41, inspect source context before reuse.
+  - Top-level channels preserve the source bottom-navigation container and use a TabBar variant; BottomBar
+    remains a componentization gap until a live master exists.
+  - For overlays, read references/component-overlays.md and choose Paywall Half Sheet, Floating Sheet, Definition
+    Bubble, Option Popover, or Light Feedback by anchor and scene semantics before drawing.
+components:
+  HomeHeaderBar:
+    node_id: 570:6879
+    locator_node_role: component_set
+    live_locator_type: COMPONENT_SET
+    concrete_component_candidates:
+    - 554:4019
+    - 570:6880
+    live_type_verified_at: '2026-10-29'
+    expected_component_asset_type: component_set
+    family: navigation_header
+    component_status: ready_to_force
+    construction_status: stable_with_constraints
+    component_reference: references/component-navigation.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    variant_guidance: extend_this_family_for_top_level_headers
+    known_gaps: []
+    use_for:
+    - top-level feed header
+    - pages with left avatar/mark plus title/subtitle and right controls
+    variant_route:
+    - inspect source HomeHeaderBar in 4229:9258 / ↳ tab1 少年报首页 when the task explicitly targets home/feed
+    - create HomeHeaderBar variant for new title/subtitle/progress before creating a new header component
+    parameters:
+      width: 350
+      height: 60
+      side_padding_context: 20
+      typography:
+        title: tokens.typography.title_page
+        subtitle: tokens.typography.caption
+      right_controls:
+      - IconButton
+      - CountButton
+    resizing_guidance:
+    - keep header content inside 350px page width
+    - shorten or constrain long title/subtitle before squeezing right controls
+    slot_guidance:
+    - right controls use IconButton or CountButton instances
+    - do not replace icons with text or temporary vectors
+    examples:
+      source:
+      - node_id: 570:6337
+        screen: 4229:9258 / ↳ tab1 少年报首页, explicit home/feed tasks only
+        why: top-level page header with same left-content/right-control layout
+    do_not:
+    - hand-draw icon buttons if IconButton exists
+    live_name: Home Header Bar
+    category_page_id: 554:4020
+    category_page_name: 05 Navigation - Headers
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 554:4019
+      name: State=Default
+    - node_id: 4857:24122
+      name: State=State3
+    - node_id: 570:6880
+      name: State=backtoday
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 首页头部
+    - 首页顶部栏
+    - 首页导航头
+  NavigationBar:
+    node_id: 557:5165
+    expected_component_asset_type: component_set
+    family: navigation_header
+    component_status: needs_componentization
+    construction_status: needs_component_cleanup
+    component_reference: references/component-navigation.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    variant_guidance: use_default_or_full_screen_sheet_header
+    use_for:
+    - settings pages
+    - detail pages
+    - full-screen sheets
+    parameters:
+      height: 60
+      top_y: 40
+      icon_button_size: 36
+    slot_guidance:
+    - left and right controls use IconButton instances
+    - use Type=FullScreenSheetHeader for full-screen sheet header only
+    examples:
+      source:
+      - node_id: 570:9925
+        screen: source-frames.yaml use_for=settings
+        why: settings page uses top back button only
+    live_name: Navigation Bar
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 554:4020
+    category_page_name: 05 Navigation - Headers
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 557:4896
+      name: Type=Type1
+    - node_id: 557:5166
+      name: Type=Type2
+    - node_id: 7061:6532
+      name: Type=Type3
+    - node_id: 7061:6553
+      name: Type=Type4
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 导航栏
+    - 顶部导航
+    - 返回栏
+  StatusBar:
+    node_id: 17:236
+    expected_component_asset_type: component_set
+    family: system_status_bar
+    component_status: ready_to_force
+    construction_status: stable
+    component_reference: references/component-navigation.md
+    required_instance: true
+    fallback_policy: preserve_source_instance_or_stop
+    use_for:
+    - mobile screen status bar
+    - transparent immersive status bar
+    - opaque content status bar
+    known_variants:
+      Style=Opaque: 17:237
+      Style=Transparent: 17:238
+    do_not:
+    - redraw time signal wifi or battery from primitives
+    - substitute a local approximation for a source instance
+    aliases:
+    - 状态栏
+    - 系统状态栏
+  BottomBar:
+    legacy_node_id: 516:3258
+    source_node_status: missing_in_live_figma_2026_07_13
+    expected_component_asset_type: component
+    family: bottom_navigation_wrapper
+    component_status: needs_componentization
+    construction_status: needs_component_cleanup
+    component_reference: references/component-navigation.md
+    required_instance: false
+    fallback_policy: preserve_source_bottom_navigation_container_and_tabbar_instance
+    local_layout_allowed: false
+    production_new_wrapper_policy: stop_and_report_needs_componentization
+    variant_guidance: preserve existing source wrapper when present; use TabBar variants for selected state;
+      do not create a parallel BottomBar master
+    known_gaps:
+    - The indexed master node is missing; existing source-page BottomBar appearance remains locked through
+      the source screenshot context.
+    - Current Home and component-library sources use TabBar directly; do not require a missing BottomBar master.
+    - visual_context_instance is lookup preview only and cannot satisfy production component instantiation.
+    use_for:
+    - fixed bottom wrapper for top-level pages
+    parameters:
+      width: 390
+      height: 80
+      y_in_844_viewport: 764_or_768_by_source
+      top_radius: 12
+      effect: tokens.effects.bottom_bar
+    resizing_guidance:
+    - keep bottom safe area and 80px wrapper height
+    - main content and CTAs must not sit under BottomBar
+    contains:
+    - TabBar
+    variant_route:
+    - preserve the source bottom-navigation appearance through locked source screenshot context
+    - extend TabBar for tab count or active tab changes
+    - report BottomBar as needs_componentization when a reusable wrapper master is requested
+    do_not:
+    - create BottomBarThreeTabs as a parallel family
+    - hand-draw a replacement wrapper and claim it is the missing component
+    - use dot, underline, glow, or platform-specific selected state
+    aliases:
+    - 底部栏
+    - 底部导航
+    - 底栏
+  Footer:
+    node_id: 97:4869
+    expected_component_asset_type: component
+    family: safe_area_footer
+    component_status: ready_to_force
+    construction_status: stable_with_constraints
+    component_reference: references/component-audio.md
+    required_instance: false
+    fallback_policy: preserve_source_instance_when_present
+    use_for:
+    - immersive audio bottom safe area context
+    known_gaps:
+    - Some source instances sit outside the visible viewport; keep their source position as locked context
+      and do not force them into view.
+    do_not:
+    - move an off-viewport source Footer into the visible control area
+    - treat Footer as the three-button playback cluster
+    live_name: Footer
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 554:4194
+    category_page_name: 12 Feedback - Empty States
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 安全区页脚
+    - 沉浸页页脚
+  FloatingIconButton:
+    node_id: 557:4983
+    expected_component_asset_type: component
+    family: icon_button
+    component_status: ready_to_force
+    construction_status: stable
+    component_reference: references/component-navigation.md
+    required_instance: true
+    fallback_policy: use_matching_IconButton_variant_or_stop
+    use_for:
+    - immersive audio navigation action
+    aliases:
+    - 悬浮图标按钮
+    - 圆形返回按钮
+  MicIcon:
+    node_id: 2572:8771
+    expected_component_asset_type: component
+    family: icon
+    component_status: ready_to_force
+    construction_status: stable
+    component_reference: references/component-audio.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - inactive voice dialogue control
+    - microphone action
+    size: 24
+    aliases:
+    - 麦克风
+    - 话筒
+    - 语音按钮
+  MicFillIcon:
+    node_id: 2572:8856
+    expected_component_asset_type: component
+    family: icon
+    component_status: ready_to_force
+    construction_status: stable
+    component_reference: references/component-audio.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - active voice dialogue control
+    - user speaking state
+    size: 24
+    aliases:
+    - 麦克风选中
+    - 话筒选中
+    - 语音输入中
+  TabBar:
+    node_id: 96:543
+    expected_component_asset_type: component_set
+    family: bottom_navigation_tabs
+    component_status: ready_to_force
+    construction_status: stable
+    component_reference: references/component-navigation.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - app top-level tab labels inside BottomBar
+    variant_route:
+    - duplicate/extend TabBar variants only for new top-level channel states
+    - preserve selected pill background and stronger text
+    known_variants:
+      Active=Brief: 66:4630
+      Active=Mine: 458:2764
+    known_variant_keys:
+      Active=Brief: a35a47b3ec101fe4f90217d6e87a237de864f78c
+      Active=Mine: 93d120c0c929f3c274b43d23c349d3d4ad544c30
+    selected_state:
+      fill: tokens.colors.background.block
+      label: tokens.colors.text.t1
+      radius: tokens.radii.pill
+    unselected_state:
+      fill: transparent_or_card
+      label: tokens.colors.text.t2
+    do_not:
+    - invent a new selected-state grammar
+    live_name: Tab Bar
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3524
+    category_page_name: 06 Navigation - Bars
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 66:4630
+      name: Active=Brief
+    - node_id: 458:2764
+      name: Active=Mine
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 标签栏
+    - 页签栏
+    - tab栏
+  CommentInputTrigger:
+    node_id: 570:8215
+    family: comment_input
+    component_status: ready_to_force
+    construction_status: stable_with_constraints
+    component_reference: references/component-comments.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - comment input affordance
+    - detail page discussion entry
+    parameters:
+      width: 390
+      height: 48
+      avatar_size: 32
+    resizing_guidance:
+    - check long placeholder against right padding
+    - do not overlap avatar or bottom action bar
+    slot_guidance:
+    - placeholder text is editable
+    - avatar remains source/avatar slot
+    do_not:
+    - hand-draw a new input bubble for comment entry
+    - change article body, navigation, or bottom bar for a local comment request
+    live_name: Comment Input Trigger
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 570:8126
+    category_page_name: 04 Inputs - Comment
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 评论输入框
+    - 评论入口
+  NewsCard:
+    node_id: '4384:9'
+    expected_component_asset_type: component_set
+    family: feed_card
+    component_status: ready_to_force
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    known_gaps:
+    - Do not recreate feed-card family if card content feels dense; trim fields first.
+    use_for:
+    - home feed cards
+    - feed-like topic cards
+    - variants with top media and lower content
+    surface:
+      fill: tokens.colors.background.card
+      radius: tokens.radii.r20
+      stroke: none
+      shadow: none
+    media:
+      preferred_ratios:
+      - source_newscard_ratio
+      - CoverLandscape235x1
+      - CoverSquare1x1
+      do_not:
+      - invent shallow banner ratios
+      - use abstract placeholder shapes for final visual drafts
+    variant_route:
+    - reuse Type=News, State=Default for home news
+    - create a NewsCard variant before creating any parallel feed-card family
+    known_variants:
+      Type=News, State=Loading: 272:2723
+      Type=News, State=Default: 2518:8436
+      Type=News, State=txt: 2560:6537
+    known_variant_keys:
+      Type=News, State=Loading: 22955863aa912a3d0dfab43ddaf747c66eb62b29
+      Type=News, State=Default: f349b92be33f04cdfa52d2a438dbd997eef636b4
+      Type=News, State=txt: ab614e1d21abb3228689fa7d4ff341f7cfff99ef
+    examples:
+      source:
+      - node_id: 637:10036
+        screen: 4229:9258 / ↳ tab1 少年报首页, explicit home/feed tasks only
+        why: finished visual feed card; no border or content shadow
+    do_not:
+    - add stroke to make the card visible
+    - compress title/stats/tags/actions into one dense footer band
+    live_name: News Card
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3299
+    category_page_name: 08 Data Display - Cards
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 272:2723
+      name: Property 1=News, Property 2=Loading
+    - node_id: 2518:8436
+      name: Property 1=News, Property 2=Default
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 新闻卡片
+    - 资讯卡片
+  FeatureCover:
+    node_id: 4939:5696
+    expected_component_asset_type: component
+    family: feature_cover
+    component_page: 10 Data Display - Covers / 570:6196
+    component_status: ready_to_force
+    construction_status: stable_with_constraints
+    component_reference: references/component-content-modules.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    legacy_aliases: []
+    use_for:
+    - immersive first viewport focused on one content object
+    - daily topic special topic or course theme cover
+    - full-width cover with optional recommendation and audio action
+    parameters:
+      width: 390
+      height: 540
+    component_properties:
+      text:
+      - Title
+      - Source Name
+      - Source Role
+      - Recommendation
+      boolean:
+      - Show Recommendation
+      - Show Audio
+      instance_swap:
+      - Audio Player
+    variant_guidance:
+      current_semantic_variant: Layout=Immersive
+      create_component_set_now: false
+      future_axis_allowed_only_with_confirmed_second_structure: Layout
+      theme_policy: use_variable_modes_not_variants
+    slot_guidance:
+    - cover media is replaceable without changing hero geometry
+    - title source name source role and recommendation use TEXT properties
+    - audio remains an Audio Player Bar instance swap
+    resizing_guidance:
+    - keep hero width at 390 in the current mobile source
+    - recommendation stays single-line and is clipped or animated horizontally
+    known_construction_limits:
+    - current master keeps an embedded recommendation structure to preserve existing parent text-property compatibility
+    - do not claim RecommendationTicker is nested until live structure confirms an INSTANCE
+    usage_nodes:
+      authoritative_source_instances:
+      - 4957:5342
+      output_only_preview_instances:
+      - 4956:6219
+      - 4946:6008
+    do:
+    - use for one dominant topic and preserve title/action readability
+    - replace media and content through properties or slots
+    do_not:
+    - include status bar or Home Header Bar inside the component
+    - use as a multi-item feed card marketing hero or ordinary thumbnail
+    - create a page-specific parallel hero family
+    live_name: Feature Cover
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 570:6196
+    category_page_name: 10 Data Display - Covers
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 特写封面
+    - 主视觉封面
+  RecommendationTicker:
+    node_id: 4938:5681
+    expected_component_asset_type: component
+    family: content_attribution
+    component_page: 09 Data Display - Cells / 521:3377
+    component_status: ready_to_force
+    construction_status: stable_with_constraints
+    component_reference: references/component-content-modules.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    legacy_aliases: []
+    use_for:
+    - expert editor or source recommendation on a cover
+    - horizontal attribution message in content context
+    component_properties:
+      text:
+      - Source Name
+      - Source Role
+      - Recommendation
+      boolean:
+      - Show Avatar
+    variant_guidance:
+      create_component_set_now: false
+      motion_is_not_a_visual_variant: true
+      future_layout_axis_requires_confirmed_second_structure: true
+    slot_guidance:
+    - avatar source name source role and recommendation are replaceable
+    resizing_guidance:
+    - horizontal hug content
+    - never wrap into multiple lines inside the hero
+    usage_nodes:
+      authoritative_source_instances: []
+      output_only_preview_instances:
+      - 4956:6235
+    known_construction_limits:
+    - standalone master is ready for direct reuse
+    - current FeatureCover recommendation layer is visually equivalent but not yet a nested instance because
+      nested property exposure could not be preserved safely
+    do:
+    - keep attribution and recommendation hierarchy clear
+    - let the container control horizontal movement and clipping
+    do_not:
+    - treat as an anchored popover toast or marketing badge
+    - create visual variants for animation speed or direction
+    live_name: Recommendation Ticker
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 521:3377
+    category_page_name: 09 Data Display - Cells
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  LearningModuleCard:
+    node_id: 5074:5802
+    expected_component_asset_type: component_set
+    family: learning_module_card
+    component_page: 08 Data Display - Cards / 521:3299
+    component_status: ready_to_force
+    construction_status: stable
+    component_reference: references/component-content-modules.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    legacy_aliases:
+    - Question Card
+    - QuestionCard
+    - Learning Summary Card
+    - LearningSummaryCard
+    use_for:
+    - judgment single-choice or comprehension question
+    - learning takeaway method steps or reasoning path
+    - article topic or course conclusion with explanation
+    parameters:
+      width: 350
+      height: content_driven
+    known_variants:
+      Type=Question: 4898:15483
+      Type=Summary: 4941:5701
+    component_properties:
+      shared_text:
+      - Eyebrow
+      Type=Question:
+        text:
+        - Question
+        - Option 1
+        - Option 2
+        - Option 3
+        boolean:
+        - Show Illustration
+      Type=Summary:
+        text:
+        - Summary
+        - Step 1
+        - Step 2
+        - Step 3
+        - Callout
+    variant_guidance:
+      axis: Type
+      values:
+      - Question
+      - Summary
+      meaning: content_structure_not_process_state
+      select_type_before_editing_properties: true
+      future_question_state_axis_allowed_with_real_states:
+      - Default
+      - Selected
+      - Answered
+      forbidden_parallel_families:
+      - News
+      - Comment
+      - Paid
+      - GenericDisplay
+    slot_guidance:
+    - shared eyebrow
+    - Question uses question illustration and three option labels
+    - Summary uses summary three steps and callout
+    - fill only properties belonging to the selected Type
+    resizing_guidance:
+    - long prompt and option text increase component height
+    - option text stays centered and may wrap
+    usage_nodes:
+      authoritative_source_instances:
+      - 4957:5358
+      - 4957:5371
+      output_only_preview_instances:
+      - 4956:6241
+      - 4956:6254
+      - 4956:6300
+      - 4946:6037
+    do:
+    - choose Type before replacing content or boolean properties
+    - use Question when the user must judge choose or check understanding
+    - use Summary for concise conclusions steps and explanatory context
+    - extend the nearest axis only when a confirmed structure or state appears
+    do_not:
+    - use NewsCard or local option Frames as a substitute
+    - call Question and Summary process states
+    - clip long text or shrink primary typography to preserve fixed height
+    - create a parallel component for each topic or page
+    - add news comment paid-benefit or generic display structures as Type values
+    live_name: Learning Module Card
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3299
+    category_page_name: 08 Data Display - Cards
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 4898:15483
+      name: Type=Question
+    - node_id: 4941:5701
+      name: Type=Summary
+    - node_id: 7504:3081
+      name: Type=SingleChoice, State=Unanswered
+    - node_id: 7504:3110
+      name: Type=SingleChoice, State=Correct
+    - node_id: 7504:3139
+      name: Type=SingleChoice, State=Incorrect
+    - node_id: 7560:3386
+      name: Type=WordAssembly, State=Empty
+    - node_id: 7560:3435
+      name: Type=WordAssembly, State=Composing
+    - node_id: 7560:3482
+      name: Type=WordAssembly, State=Correct
+    - node_id: 7560:3533
+      name: Type=WordAssembly, State=Incorrect
+    - node_id: 7568:4249
+      name: Type=VocabularyChoice, State=Unanswered
+    - node_id: 7568:4295
+      name: Type=VocabularyChoice, State=Correct
+    - node_id: 7568:4341
+      name: Type=VocabularyChoice, State=Incorrect
+    - node_id: 7585:144
+      name: Type=ReadingChoice, State=Unanswered
+    - node_id: 7585:159
+      name: Type=ReadingChoice, State=Correct
+    - node_id: 7585:177
+      name: Type=ReadingChoice, State=Incorrect
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  UserCard:
+    node_id: 637:10013
+    family: profile_identity
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: stop_if_unavailable_for_profile_identity
+    variant_guidance: preserve profile identity language; utilities are separate weak rows
+    use_for:
+    - profile identity module
+    - login/anonymous state
+    surface:
+      fill: tokens.colors.background.card
+      radius: tokens.radii.r20
+      stroke: none
+      shadow: none
+    modification_rule:
+    - preserve UserCard when adding secondary profile functions
+    - add weak entries around existing content instead of redesigning identity module
+  CellReadingHistory:
+    node_id: 530:3391
+    family: list_cell
+    component_status: ready_to_force
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - profile reading history rows
+    - compact text + thumbnail rows
+    parameters:
+      width: 350
+      height: 110
+      gap: 16
+      image_size: 110
+      image_radius: tokens.radii.r12
+    variant_route:
+    - start here for left text / right image feed-like compact rows
+  ArticlePreviewCell:
+    node_id: 2440:4673
+    family: list_cell
+    component_status: ready_to_force
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - profile article preview list
+    - compact read-count rows in new profile states
+    - ordinary history/content lists when ReadingHistory is too large
+    known_variants:
+      Size=Large, Meta=SourceTime: 530:3391
+      Size=Compact, Meta=ReadCount: 2379:7633
+    parameters:
+      width: 350
+      large_height: 110
+      compact_height: 90
+    do_not:
+    - create local profile history rows from primitives
+    - mix compact and large heights in one repeated list unless state changes require it
+    live_name: Article Preview Cell
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3377
+    category_page_name: 09 Data Display - Cells
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 530:3391
+      name: Size=Large, Meta=SourceTime, Cover=1:1
+    - node_id: 2379:7633
+      name: Size=Compact, Meta=ReadCount, Cover=4:3
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 文章预览
+    - 文章预览项
+  CommentCell:
+    node_id: 97:2581
+    historical_measurements:
+      provenance: component-comments.md in release 2026.11.01.1; not reverified live
+      use_policy: locator_hint_only_verify_before_use
+      root_width_approx: 350
+      reply_width_approx: 282
+      avatar_size: 32
+    family: comment_cell
+    component_status: ready_to_force
+    construction_status: stable_with_constraints
+    component_reference: references/component-comments.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    variant_guidance: use Root/Reply variants instead of manual indentation
+    use_for:
+    - article comments
+    - reply threads
+    known_variants:
+      Level=Root: 458:4611
+      Level=Reply: 2519:10051
+    resizing_guidance:
+    - check long nickname, long body, like count, reply summary, and no-reply state
+    - use Reply variant for indentation instead of manual x offsets
+    slot_guidance:
+    - avatar, nickname, body, meta, like count, and reply summary are editable slots
+    local_modification_rule:
+    - when the task says 评论/回复/语音评论, lock article body, header, bottom bar, and unrelated modules
+    - modify only 评论区, 评论列表, Comment Input Trigger, Comment Cell, and necessary reply cells
+    do_not:
+    - overlap badges or labels over avatar, nickname, body, or reply metadata
+    - hand-draw reply indentation if the Reply variant exists
+    live_name: Comment Cell
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3377
+    category_page_name: 09 Data Display - Cells
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 458:4611
+      name: Level=Root
+    - node_id: 2519:10051
+      name: Level=Reply
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 评论单元
+    - 评论项
+    - 评论组件
+  VoiceCommentCell:
+    node_id: 2212:4643
+    historical_measurements:
+      provenance: component-comments.md in release 2026.11.01.1; not reverified live
+      use_policy: locator_hint_only_verify_before_use
+      width: 350
+      height_approx: 118
+    family: comment_cell
+    component_status: ready_to_force
+    construction_status: stable_with_constraints
+    component_reference: references/component-comments.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - voice comment entry
+    - audio reply preview
+    resizing_guidance:
+    - keep waveform, duration, nickname, like count, and meta readable
+    - do not compress waveform below recognizable voice affordance
+    slot_guidance:
+    - voice duration and nickname may change
+    - waveform uses source structure unless a real audio waveform component exists
+    live_name: Voice Comment Cell
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 521:3377
+    category_page_name: 09 Data Display - Cells
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 语音评论
+    - 语音评论项
+  ExpertOpinionCell:
+    node_id: 5084:4109
+    expected_component_asset_type: component_set
+    component_status: ready_to_force
+    construction_status: stable_with_constraints
+    component_reference: references/component-content-modules.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    known_gaps: []
+    use_for:
+    - 二期专家观点列表
+    known_variants:
+      Size=Long: 2422:5401
+      Size=Default: 2422:5410
+      Size=Compact: 4942:5704
+    usage_nodes:
+      authoritative_source_instances:
+      - 4957:5391
+      - 4957:5398
+      output_only_preview_instances:
+      - 4956:6290
+      - 4946:6057
+      - 4946:6064
+    resizing_guidance:
+    - Size=Compact remains 220x184 for aligned horizontal scrolling
+    - compact opinion uses the 紧凑观点 property and stays within about four lines
+    do_not:
+    - replace with ordinary CommentCell unless the content is user discussion
+    live_name: Expert Opinion Cell
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3377
+    category_page_name: 09 Data Display - Cells
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 4942:5704
+      name: Size=Compact
+    - node_id: 2422:5401
+      name: Size=Long
+    - node_id: 2422:5410
+      name: Size=Default
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    family: expert_opinion_cell
+    aliases:
+    - 专家观点
+    - 专家观点卡
+  LinkEntryCell:
+    node_id: 2430:4641
+    family: link_entry_cell
+    component_status: ready_to_force
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - 查看全部文章
+    parameters:
+      width: 350
+      height: 80
+    do_not:
+    - turn 查看全部文章 into a NewsCard
+    - style it as a paid promotion or marketing CTA
+    live_name: Link Entry Cell
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 521:3377
+    category_page_name: 09 Data Display - Cells
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 链接入口
+    - 查看全部入口
+  ButtonApp:
+    node_id: 2028:5233
+    family: app_button
+    component_status: ready_to_force
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    variant_guidance: choose Tone/Size/Content/State variant; never redraw button rectangles
+    use_for:
+    - primary/secondary/danger full-width actions
+    radius: tokens.radii.pill
+    examples:
+      source:
+      - node_id: 2047:4305
+        screen: source-frames.yaml use_for=settings
+        label: 退出登录
+        why: danger action separated from setting rows
+    aliases:
+    - 主按钮
+    - 应用按钮
+  PlusBadge:
+    node_id: 2387:4731
+    family: subscription_badge
+    component_status: ready_to_force
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - paid membership badge
+    - plus entry in profile or subscription modal
+    known_variants:
+      Context=Corner, Size=XS: 2387:4725
+      Context=Inline, Size=S: 2387:4727
+      Context=Inline, Size=XS: 2387:4729
+    do_not:
+    - hand-draw Plus labels
+    - make paid entry visually stronger than identity/history content on Profile
+    live_name: Plus Badge
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3359
+    category_page_name: 03 Actions - Buttons
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 2387:4725
+      name: Context=Corner, Size=XS
+    - node_id: 2387:4727
+      name: Context=Inline, Size=S
+    - node_id: 2387:4729
+      name: Context=Inline, Size=XS
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 会员标
+    - plus标识
+  FunctionTab:
+    family: horizontal_feature_tabs
+    component_status: ready_to_force
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - article function tabs
+    - category/filter tabs when more appropriate than a simple chip
+    selected_state:
+      use_source_green_state: true
+      radius: tokens.radii.pill
+    do_not:
+    - hand-space text with unequal left/right padding
+  SheetPicker:
+    node_id: 570:7520
+    family: overlays
+    component_status: usable_with_recipe
+    construction_status: stable_with_constraints
+    required_instance: true
+    required_instance_scope: every_quality_tier
+    fallback_policy: use_source_sheet_or_stop
+    component_reference: references/component-overlays.md
+    default_surface: Floating Sheet
+    variant_guidance: use Floating Sheet for ordinary overlays; use Paywall Half Sheet only for paid/unlock/purchase/strong
+      conversion
+    known_gaps:
+    - Subscription plan cards and IP area are local structures; follow page recipe and report componentization
+      gap.
+    use_for:
+    - calendar picker
+    - option picker
+    - font picker
+    - share sheet
+    - ordinary selection sheet
+    - login prompt sheet
+    - subscription/Type5 sheet
+    usage_scope:
+      Floating Sheet:
+      - default for ordinary, non-emphasized bottom overlays
+      - keep side margins and full rounded corners
+      - do not add strong paywall illustration or marketing CTA
+      Paywall Half Sheet:
+      - paid membership, unlock, purchase, subscription, strong conversion
+      - keep edge-attached bottom half sheet geometry
+      - fixed close control and one primary App Button
+    fallback_policy_by_surface:
+      Floating Sheet: use_sheet_picker_variant_or_source_floating_sheet_or_stop
+      Paywall Half Sheet: use_source_subscription_geometry_or_SheetPicker.Type5_or_stop
+    known_variants:
+      Type=CalendarPickerSheet: 570:7326
+      Type=Type5: 2379:7061
+      Type=ShareSheet: 2063:4322
+      Type=OptionPickerSheet: 570:7433
+      Type=FontPickerSheet: 570:7519
+    source_lookup:
+      ordinary_floating_sheet: inspect source-index.md and live Figma for the nearest matching Floating Sheet
+        before drawing
+    delivery_evidence:
+    - resolved SheetPicker variant or matching source Floating Sheet node id
+    - delivered instance or documented same-family extension node id
+    - changed properties slots and option count
+    - modal state screenshot
+    overlay_rule:
+    - use Overlay Black40 or source mask behind sheets
+    - Floating Sheet keeps side/bottom margins and complete corner radius
+    - Paywall Half Sheet keeps top radius 20, edge-attached width, and stable close control
+    do_not:
+    - use Paywall Half Sheet for ordinary pickers just because content is long
+    - use Floating Sheet for paid/unlock/subscription decisions
+    - create a custom sheet family for paid modals before checking Type5 and source Subscription Modal
+    - rebuild ordinary Floating Sheet as local Sheet Header plus local option rows when SheetPicker or a matching
+      source Floating Sheet exists
+    live_name: Sheet & Picker
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 570:7229
+    category_page_name: 13 Overlays - Sheets & Pickers
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 570:7326
+      name: Type=CalendarPickerSheet
+    - node_id: 2379:7061
+      name: Type=Type5
+    - node_id: 2063:4322
+      name: Type=ShareSheet
+    - node_id: 3153:6141
+      name: Type=Login
+    - node_id: 570:7433
+      name: Type=OptionPickerSheet
+    - node_id: 570:7519
+      name: Type=FontPickerSheet
+    - node_id: 7596:10302
+      name: Type=PhoneLogin, State=Empty
+    - node_id: 7596:10483
+      name: Type=PhoneLogin, State=Filled
+    - node_id: 7596:10529
+      name: Type=Verification, State=Partial
+    - node_id: 7596:10588
+      name: Type=Verification, State=Complete
+    - node_id: 7596:10647
+      name: Type=Verification, State=Error
+    - node_id: 7596:10694
+      name: Type=ProfileEdit, State=Default
+    - node_id: 7596:10752
+      name: Type=GreetingEdit, State=Random
+    - node_id: 7596:10831
+      name: Type=GreetingEdit, State=Suggested
+    - node_id: 7598:13410
+      name: Type=ProfileLogin, State=Social3
+    - node_id: 7598:13467
+      name: Type=ProfileLogin, State=Social2
+    - node_id: 7598:13507
+      name: Type=ProfileLogin, State=Action
+    - node_id: 7598:13555
+      name: Type=ProfileLogin, State=Skippable
+    - node_id: 7598:13598
+      name: Type=CustomerService, State=Default
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 底部选择器
+    - 浮层选择器
+    - sheet
+  AnchoredPopover:
+    family: overlays
+    component_status: usable_with_recipe
+    construction_status: risky_needs_recipe
+    required_instance: false
+    fallback_policy: follow_component_overlays_recipe_or_stop
+    component_reference: references/component-overlays.md
+    default_surface: Anchored Popover
+    variant_guidance: choose Definition Bubble for text explanations; choose Option Popover for small anchored
+      option menus
+    known_gaps:
+    - Do not assume a stable Figma component exists; inspect live Figma source examples and follow the overlay
+      recipe.
+    - Weak or missing layer names are expected; use anchor context, parent page, placement, size, and screenshot
+      inspection.
+    use_for:
+    - definition bubble
+    - keyword explanation
+    - concept helper
+    - option popover
+    - contextual anchored menu
+    - small setting popover
+    usage_scope:
+      Definition Bubble:
+      - anchored to highlighted body text or a concept token
+      - short explanation only
+      - avoid blocking the reading path
+      Option Popover:
+      - anchored to a control, tab, chip, or icon
+      - small set of options with current item highlighted
+      - use Floating Sheet when options are long or complex
+    overlay_rule:
+    - record anchor_node, popover_type, placement, and fallback_when_not_enough_space
+    - keep at least 20px screen edge margin
+    - flip or offset near screen edges
+    - never let the popover look like a detached bottom sheet or marketing card
+    do_not:
+    - create a floating card without a visible anchor relationship
+    - use Definition Bubble for long multi-section content
+    - use Option Popover for complex selection flows that need confirmation
+    - cover the anchor or critical reading path
+  ArticleSummaryAudio:
+    node_id: 2422:5418
+    expected_component_asset_type: component
+    family: audio_content
+    component_status: ready_to_force
+    construction_status: stable_with_constraints
+    component_reference: references/component-audio.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - AI radio content entry
+    resizing_guidance:
+    - keep summary audio below title/body priority and above weak metadata
+    - check long summary title or source text before delivery
+  AudioPlayerBar:
+    node_id: 97:1502
+    expected_component_asset_type: component_set
+    family: audio_control
+    component_status: ready_to_force
+    construction_status: stable_with_constraints
+    component_reference: references/component-audio.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    variant_guidance: use State=Home/HomePlaying/DetailPageAI/DetailPageAIPlaying
+    use_for:
+    - home daily audio entry
+    - article detail audio helper
+    - detail AI summary playback state
+    known_variants:
+      State=Home: 97:1501
+      State=HomePlaying: 97:1500
+      State=DetailPageAI: 2245:11757
+      State=DetailPageAIPlaying: 2245:12521
+    known_variant_keys:
+      State=Home: 4de6441893534f58d21ef28c761e742d32434a38
+      State=HomePlaying: 3d23bcd23c688e10c704165cef806a56d6c4067a
+      State=DetailPageAI: 077526e2e67dc00d8001495f0bc0f4c3053becf6
+      State=DetailPageAIPlaying: e42355988f107ba3059a8965679ea3a38c0bd6be
+    parameters:
+      width: 350
+      height: 52
+    resizing_guidance:
+    - title is nowrap; shorten or constrain long titles before squeezing duration
+    - keep play/pause button fixed and duration readable
+    slot_guidance:
+    - title and duration are editable
+    - play/pause icon uses Icon16 family
+    live_name: Audio Player Bar
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3672
+    category_page_name: 14 Media - Audio
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 97:1501
+      name: State=Home, 播放中=False
+    - node_id: 97:1500
+      name: State=Home, 播放中=True
+    - node_id: 4898:15147
+      name: State=PrimaryAction, 播放中=False
+    - node_id: 4898:15343
+      name: State=PrimaryAction, 播放中=True
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 音频播放栏
+    - 播放器
+  AudioProgressControl:
+    node_id: 2422:5424
+    historical_measurements:
+      provenance: component-audio.md in release 2026.11.01.1; not reverified live
+      use_policy: locator_hint_only_verify_before_use
+      height_approx: 25
+    expected_component_asset_type: component
+    family: audio_control
+    component_status: ready_to_force
+    construction_status: risky_needs_recipe
+    component_reference: references/component-audio.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - podcast playback progress
+    known_construction_risks:
+    - fixed width and absolute positioning can break when scaled or when time labels change
+    resizing_guidance:
+    - preserve 332px source width unless a deliberate responsive variant is created
+    - zoom-check current time, duration, track contrast, and clipping
+    live_name: Audio Progress Control
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 521:3672
+    category_page_name: 14 Media - Audio
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  UserAnswerBubble:
+    node_id: 2422:5433
+    expected_component_asset_type: component
+    family: audio_dialogue
+    component_status: ready_to_force
+    construction_status: stable_with_constraints
+    component_reference: references/component-audio.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - AI radio user answer
+    - dialogue state in immersive podcast
+    resizing_guidance:
+    - check long dialogue text wraps without colliding with controls
+  AudioScriptParagraph:
+    node_id: 2422:5436
+    expected_component_asset_type: component
+    family: audio_dialogue
+    component_status: ready_to_force
+    construction_status: stable_with_constraints
+    component_reference: references/component-audio.md
+    required_instance: true
+    fallback_policy: stop_if_unavailable
+    use_for:
+    - AI radio script paragraph
+    - transcript chunks
+    resizing_guidance:
+    - keep transcript readable and above playback controls
+    - do not let background imagery reduce text contrast
+  Icon16:
+    node_id: 557:5322
+    expected_component_asset_type: component_set
+    family: icon
+    component_status: ready_to_force
+    required_instance: true
+    fallback_policy: use_iconsax_candidate_or_stop
+    size: 16
+    live_name: Icon 16
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3322
+    category_page_name: 02 Icons - SF Symbols
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 557:5323
+      name: Name=quote.opening.fill
+    - node_id: 557:5325
+      name: Name=quote.closing.fill
+    - node_id: 557:5327
+      name: Name=bubble
+    - node_id: 557:5329
+      name: Name=paperplane
+    - node_id: 557:5331
+      name: Name=mappin
+    - node_id: 557:5333
+      name: Name=mappin.fill
+    - node_id: 557:5336
+      name: Name=chevron.left
+    - node_id: 2244:6105
+      name: Name=chevron.right
+    - node_id: 557:5338
+      name: Name=chevron.down
+    - node_id: 557:5340
+      name: Name=arrowshape.turn.up.right
+    - node_id: 557:5342
+      name: Name=arrow.turn.up.left
+    - node_id: 557:5344
+      name: Name=xmark
+    - node_id: 557:5346
+      name: Name=ellipsis
+    - node_id: 557:5348
+      name: Name=play.fill
+    - node_id: 557:5351
+      name: Name=pause.fill
+    - node_id: 557:5353
+      name: Name=speaker
+    - node_id: 557:5355
+      name: Name=speaker.fill
+    - node_id: 557:5357
+      name: Name=speaker.wave.2
+    - node_id: 557:5359
+      name: Name=speaker.wave.2.fill
+    - node_id: 557:5361
+      name: Name=star
+    - node_id: 557:5363
+      name: Name=star.fill.multicolor
+    - node_id: 557:5365
+      name: Name=heart
+    - node_id: 557:5367
+      name: Name=heart.fill
+    - node_id: 557:5369
+      name: Name=heart.fill.multicolor
+    - node_id: 557:5371
+      name: Name=lightbulb
+    - node_id: 557:5373
+      name: Name=translate
+    - node_id: 557:5375
+      name: Name=gearshape
+    - node_id: 557:5377
+      name: Name=printer
+    - node_id: 557:5379
+      name: Name=tray.and.arrow.down
+    - node_id: 557:5381
+      name: Name=doc.arrow.down
+    - node_id: 557:5383
+      name: Name=doc.arrow.down.fill
+    - node_id: 570:7495
+      name: Name=check
+    - node_id: 570:7498
+      name: Name=check.fill
+    - node_id: 2073:5699
+      name: Name=Link
+    - node_id: 2378:6922
+      name: Name=List
+    - node_id: 2572:9313
+      name: Name=mic
+    - node_id: 2572:9320
+      name: Name=mic.fill
+    - node_id: 2607:10155
+      name: Name=Verified
+    - node_id: 5625:14056
+      name: Name=Edit
+    - node_id: '7386:52'
+      name: Name=copy
+    - node_id: '7386:55'
+      name: Name=Next
+    - node_id: '7386:57'
+      name: Name=previous
+    - node_id: '7386:59'
+      name: Name=Flash-Linear
+    - node_id: 7386:61
+      name: Name=Refresh-Linear
+    - node_id: 7386:63
+      name: Name=Maximize
+    - node_id: 7386:65
+      name: Name=image
+    - node_id: 7386:67
+      name: Name=Uncheck
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  Icon20:
+    node_id: 557:5248
+    expected_component_asset_type: component_set
+    family: icon
+    component_status: ready_to_force
+    required_instance: true
+    fallback_policy: use_iconsax_candidate_or_stop
+    size: 20
+    live_name: Icon 20
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3322
+    category_page_name: 02 Icons - SF Symbols
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 557:5249
+      name: Name=quote.opening.fill
+    - node_id: 557:5251
+      name: Name=quote.closing.fill
+    - node_id: 557:5253
+      name: Name=bubble
+    - node_id: 557:5255
+      name: Name=paperplane
+    - node_id: 557:5257
+      name: Name=mappin
+    - node_id: 557:5259
+      name: Name=mappin.fill
+    - node_id: 557:5262
+      name: Name=chevron.left
+    - node_id: 557:5264
+      name: Name=chevron.down
+    - node_id: 557:5266
+      name: Name=arrowshape.turn.up.right
+    - node_id: 557:5268
+      name: Name=arrow.turn.up.left
+    - node_id: 557:5270
+      name: Name=xmark
+    - node_id: 557:5272
+      name: Name=ellipsis
+    - node_id: 557:5274
+      name: Name=play.fill
+    - node_id: 557:5277
+      name: Name=pause.fill
+    - node_id: 557:5279
+      name: Name=speaker
+    - node_id: 557:5281
+      name: Name=speaker.fill
+    - node_id: 557:5283
+      name: Name=speaker.wave.2
+    - node_id: 557:5285
+      name: Name=speaker.wave.2.fill
+    - node_id: 557:5287
+      name: Name=star
+    - node_id: 557:5289
+      name: Name=star.fill.multicolor
+    - node_id: 557:5291
+      name: Name=heart
+    - node_id: 557:5293
+      name: Name=heart.fill
+    - node_id: 557:5295
+      name: Name=heart.fill.multicolor
+    - node_id: 557:5297
+      name: Name=lightbulb
+    - node_id: 557:5299
+      name: Name=translate
+    - node_id: 557:5301
+      name: Name=gearshape
+    - node_id: 557:5303
+      name: Name=printer
+    - node_id: 557:5305
+      name: Name=tray.and.arrow.down
+    - node_id: 557:5307
+      name: Name=doc.arrow.down
+    - node_id: 557:5309
+      name: Name=doc.arrow.down.fill
+    - node_id: 570:7480
+      name: Name=check
+    - node_id: 5625:14137
+      name: Name=check.2
+    - node_id: 570:7491
+      name: Name=check.fill
+    - node_id: 2073:5696
+      name: Name=LInk
+    - node_id: 2244:6102
+      name: Name=chevron.right
+    - node_id: 2378:6888
+      name: Name=List
+    - node_id: 2572:9309
+      name: Name=mic
+    - node_id: 2572:9317
+      name: Name=mic.fill
+    - node_id: 2607:10152
+      name: Name=Verified
+    - node_id: 5625:14048
+      name: Name=Edit
+    - node_id: '7386:37'
+      name: Name=copy
+    - node_id: '7386:40'
+      name: Name=Next
+    - node_id: '7386:42'
+      name: Name=previous
+    - node_id: '7386:44'
+      name: Name=Flash-Linear
+    - node_id: '7386:46'
+      name: Name=Refresh-Linear
+    - node_id: '7386:48'
+      name: Name=Maximize
+    - node_id: '7386:50'
+      name: Name=image
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  Icon24:
+    node_id: 557:5100
+    expected_component_asset_type: component_set
+    family: icon
+    component_status: ready_to_force
+    required_instance: true
+    fallback_policy: use_iconsax_candidate_or_stop
+    size: 24
+    rule:
+    - use Name variants for semantic selection
+    - if missing, source a same-style Iconsax icon and add 16/20/24 local candidates before use
+    live_name: Icon 24
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3322
+    category_page_name: 02 Icons - SF Symbols
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 325:4731
+      name: Name=quote.opening.fill
+    - node_id: 325:4733
+      name: Name=quote.closing.fill
+    - node_id: 325:4770
+      name: Name=bubble
+    - node_id: 325:4757
+      name: Name=paperplane
+    - node_id: 458:4919
+      name: Name=mappin
+    - node_id: 325:4791
+      name: Name=mappin.fill
+    - node_id: 325:4735
+      name: Name=chevron.left
+    - node_id: 2244:5859
+      name: Name=chevron.right
+    - node_id: 325:4738
+      name: Name=chevron.down
+    - node_id: 325:4762
+      name: Name=arrowshape.turn.up.right
+    - node_id: 325:4753
+      name: Name=arrow.turn.up.left
+    - node_id: 325:4760
+      name: Name=xmark
+    - node_id: 325:4783
+      name: Name=ellipsis
+    - node_id: 458:2755
+      name: Name=play.fill
+    - node_id: 6319:3957
+      name: Name=Next
+    - node_id: 6319:3961
+      name: Name=previous
+    - node_id: 458:5076
+      name: Name=pause.fill
+    - node_id: 325:4774
+      name: Name=speaker
+    - node_id: 458:4940
+      name: Name=speaker.fill
+    - node_id: 325:4778
+      name: Name=speaker.wave.2
+    - node_id: 325:4780
+      name: Name=speaker.wave.2.fill
+    - node_id: 325:4764
+      name: Name=star
+    - node_id: 325:4742
+      name: Name=star.fill.multicolor
+    - node_id: 325:4767
+      name: Name=heart
+    - node_id: 458:3339
+      name: Name=heart.fill
+    - node_id: 325:4740
+      name: Name=heart.fill.multicolor
+    - node_id: 325:4785
+      name: Name=lightbulb
+    - node_id: 2073:5633
+      name: Name=Link
+    - node_id: '5954:43'
+      name: Name=copy
+    - node_id: 2378:6640
+      name: Name=List
+    - node_id: 458:5070
+      name: Name=translate
+    - node_id: 325:4744
+      name: Name=gearshape
+    - node_id: 325:4789
+      name: Name=printer
+    - node_id: 325:4748
+      name: Name=tray.and.arrow.down
+    - node_id: 458:5086
+      name: Name=doc.arrow.down
+    - node_id: 458:5093
+      name: Name=doc.arrow.down.fill
+    - node_id: 570:7477
+      name: Name=check
+    - node_id: 5892:3916
+      name: Name=Uncheck
+    - node_id: 570:7476
+      name: Name=check.fill
+    - node_id: 2572:8771
+      name: Name=Mic
+    - node_id: 2572:8856
+      name: Name=Mic.fill
+    - node_id: 2607:9984
+      name: Name=Verified
+    - node_id: 5625:13875
+      name: Name=Edit
+    - node_id: '7227:35'
+      name: Name=Flash-Linear
+    - node_id: '7227:37'
+      name: Name=Refresh-Linear
+    - node_id: '7227:39'
+      name: Name=Maximize
+    - node_id: '7386:35'
+      name: Name=image
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  Divider:
+    node_id: 458:3953
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Divider
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3674
+    category_page_name: 01 Foundations - Dividers
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 458:3950
+      name: Weight=Thin
+    - node_id: 458:3954
+      name: Weight=Thick
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  Button:
+    node_id: 96:1115
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Button
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3359
+    category_page_name: 03 Actions - Buttons
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 96:898
+      name: Tone=Primary, Size=M, Content=Text
+    - node_id: 97:1973
+      name: Tone=Primary, Size=L, Content=Text
+    - node_id: 96:912
+      name: Tone=Primary, Size=M, Content=IconText
+    - node_id: 97:1978
+      name: Tone=Primary, Size=L, Content=IconText
+    - node_id: 96:1095
+      name: Tone=Secondary, Size=M, Content=Text
+    - node_id: 97:1981
+      name: Tone=Secondary, Size=L, Content=Text
+    - node_id: 96:1097
+      name: Tone=Secondary, Size=M, Content=IconText
+    - node_id: 97:1975
+      name: Tone=Secondary, Size=L, Content=IconText
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 按钮
+  IconButton:
+    node_id: 557:4982
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Icon Button
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3359
+    category_page_name: 03 Actions - Buttons
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 557:4981
+      name: Style=SolidIconButton
+    - node_id: 557:4986
+      name: Style=OutlinedIconButton
+    - node_id: 557:5235
+      name: Style=SendButton
+    - node_id: 557:4983
+      name: Style=FloatingIconButton
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 图标按钮
+  CountButton:
+    node_id: 629:5486
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Count Button
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3359
+    category_page_name: 03 Actions - Buttons
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 629:5358
+      name: Progress=1
+    - node_id: 629:5485
+      name: Progress=2
+    - node_id: 629:5484
+      name: Progress=3
+    - node_id: 629:5483
+      name: Progress=4
+    - node_id: 629:5481
+      name: Progress=5
+    - node_id: 629:5480
+      name: Progress=6
+    - node_id: 629:5482
+      name: Progress=7
+    - node_id: 629:5479
+      name: Progress=8
+    - node_id: 629:5477
+      name: Progress=9
+    - node_id: 629:5478
+      name: Progress=10
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 计数按钮
+  AppButton:
+    node_id: 2055:106
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: App Button
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3359
+    category_page_name: 03 Actions - Buttons
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 2028:4758
+      name: Tone=Primary, Size=S, Content=Text, State=Default
+    - node_id: 2028:4763
+      name: Tone=Primary, Size=S, Content=Text, State=Pressed
+    - node_id: 2028:4768
+      name: Tone=Primary, Size=S, Content=Text, State=Disabled
+    - node_id: 2028:4773
+      name: Tone=Primary, Size=S, Content=IconText, State=Default
+    - node_id: 2028:4778
+      name: Tone=Primary, Size=S, Content=IconText, State=Pressed
+    - node_id: 2028:4783
+      name: Tone=Primary, Size=S, Content=IconText, State=Disabled
+    - node_id: 2028:4788
+      name: Tone=Primary, Size=S, Content=IconOnly, State=Default
+    - node_id: 2028:4793
+      name: Tone=Primary, Size=S, Content=IconOnly, State=Pressed
+    - node_id: 2028:4798
+      name: Tone=Primary, Size=S, Content=IconOnly, State=Disabled
+    - node_id: 2028:4803
+      name: Tone=Primary, Size=L, Content=Text, State=Default
+    - node_id: 2028:4808
+      name: Tone=Primary, Size=L, Content=Text, State=Pressed
+    - node_id: 2028:4813
+      name: Tone=Primary, Size=L, Content=Text, State=Disabled
+    - node_id: 2028:4818
+      name: Tone=Primary, Size=L, Content=IconText, State=Default
+    - node_id: 2028:4823
+      name: Tone=Primary, Size=L, Content=IconText, State=Pressed
+    - node_id: 2028:4828
+      name: Tone=Primary, Size=L, Content=IconText, State=Disabled
+    - node_id: 2028:4833
+      name: Tone=Primary, Size=L, Content=IconOnly, State=Default
+    - node_id: 2028:4838
+      name: Tone=Primary, Size=L, Content=IconOnly, State=Pressed
+    - node_id: 2028:4843
+      name: Tone=Primary, Size=L, Content=IconOnly, State=Disabled
+    - node_id: 2028:4846
+      name: Tone=Primary, Size=XL, Content=Text, State=Default
+    - node_id: 2028:4849
+      name: Tone=Primary, Size=XL, Content=Text, State=Pressed
+    - node_id: 2028:4852
+      name: Tone=Primary, Size=XL, Content=Text, State=Disabled
+    - node_id: 2028:4857
+      name: Tone=Primary, Size=XL, Content=IconText, State=Default
+    - node_id: 2028:4862
+      name: Tone=Primary, Size=XL, Content=IconText, State=Pressed
+    - node_id: 2028:4867
+      name: Tone=Primary, Size=XL, Content=IconText, State=Disabled
+    - node_id: 2028:4872
+      name: Tone=Primary, Size=XL, Content=IconOnly, State=Default
+    - node_id: 2028:4877
+      name: Tone=Primary, Size=XL, Content=IconOnly, State=Pressed
+    - node_id: 2028:4882
+      name: Tone=Primary, Size=XL, Content=IconOnly, State=Disabled
+    - node_id: 2028:4887
+      name: Tone=Secondary, Size=S, Content=Text, State=Default
+    - node_id: 2028:4892
+      name: Tone=Secondary, Size=S, Content=Text, State=Pressed
+    - node_id: 2028:4897
+      name: Tone=Secondary, Size=S, Content=Text, State=Disabled
+    - node_id: 2028:4902
+      name: Tone=Secondary, Size=S, Content=IconText, State=Default
+    - node_id: 2028:4907
+      name: Tone=Secondary, Size=S, Content=IconText, State=Pressed
+    - node_id: 2028:4912
+      name: Tone=Secondary, Size=S, Content=IconText, State=Disabled
+    - node_id: 2028:4917
+      name: Tone=Secondary, Size=S, Content=IconOnly, State=Default
+    - node_id: 2028:4922
+      name: Tone=Secondary, Size=S, Content=IconOnly, State=Pressed
+    - node_id: 2028:4927
+      name: Tone=Secondary, Size=S, Content=IconOnly, State=Disabled
+    - node_id: 2028:4932
+      name: Tone=Secondary, Size=L, Content=Text, State=Default
+    - node_id: 2028:4937
+      name: Tone=Secondary, Size=L, Content=Text, State=Pressed
+    - node_id: 2028:4942
+      name: Tone=Secondary, Size=L, Content=Text, State=Disabled
+    - node_id: 2028:4947
+      name: Tone=Secondary, Size=L, Content=IconText, State=Default
+    - node_id: 2028:4952
+      name: Tone=Secondary, Size=L, Content=IconText, State=Pressed
+    - node_id: 2028:4957
+      name: Tone=Secondary, Size=L, Content=IconText, State=Disabled
+    - node_id: 2028:4962
+      name: Tone=Secondary, Size=L, Content=IconOnly, State=Default
+    - node_id: 2028:4967
+      name: Tone=Secondary, Size=L, Content=IconOnly, State=Pressed
+    - node_id: 2028:4972
+      name: Tone=Secondary, Size=L, Content=IconOnly, State=Disabled
+    - node_id: 2028:4975
+      name: Tone=Secondary, Size=XL, Content=Text, State=Default
+    - node_id: 2028:4978
+      name: Tone=Secondary, Size=XL, Content=Text, State=Pressed
+    - node_id: 2028:4981
+      name: Tone=Secondary, Size=XL, Content=Text, State=Disabled
+    - node_id: 2028:4986
+      name: Tone=Secondary, Size=XL, Content=IconText, State=Default
+    - node_id: 2028:4991
+      name: Tone=Secondary, Size=XL, Content=IconText, State=Pressed
+    - node_id: 2028:4996
+      name: Tone=Secondary, Size=XL, Content=IconText, State=Disabled
+    - node_id: 2028:5001
+      name: Tone=Secondary, Size=XL, Content=IconOnly, State=Default
+    - node_id: 2028:5006
+      name: Tone=Secondary, Size=XL, Content=IconOnly, State=Pressed
+    - node_id: 2028:5011
+      name: Tone=Secondary, Size=XL, Content=IconOnly, State=Disabled
+    - node_id: 2028:5016
+      name: Tone=Neutral, Size=S, Content=Text, State=Default
+    - node_id: 2028:5021
+      name: Tone=Neutral, Size=S, Content=Text, State=Pressed
+    - node_id: 2028:5026
+      name: Tone=Neutral, Size=S, Content=Text, State=Disabled
+    - node_id: 2028:5031
+      name: Tone=Neutral, Size=S, Content=IconText, State=Default
+    - node_id: 2028:5036
+      name: Tone=Neutral, Size=S, Content=IconText, State=Pressed
+    - node_id: 2028:5041
+      name: Tone=Neutral, Size=S, Content=IconText, State=Disabled
+    - node_id: 2028:5046
+      name: Tone=Neutral, Size=S, Content=IconOnly, State=Default
+    - node_id: 2028:5051
+      name: Tone=Neutral, Size=S, Content=IconOnly, State=Pressed
+    - node_id: 2028:5056
+      name: Tone=Neutral, Size=S, Content=IconOnly, State=Disabled
+    - node_id: 2028:5061
+      name: Tone=Neutral, Size=L, Content=Text, State=Default
+    - node_id: 2028:5066
+      name: Tone=Neutral, Size=L, Content=Text, State=Pressed
+    - node_id: 2028:5071
+      name: Tone=Neutral, Size=L, Content=Text, State=Disabled
+    - node_id: 2028:5076
+      name: Tone=Neutral, Size=L, Content=IconText, State=Default
+    - node_id: 2028:5081
+      name: Tone=Neutral, Size=L, Content=IconText, State=Pressed
+    - node_id: 2028:5086
+      name: Tone=Neutral, Size=L, Content=IconText, State=Disabled
+    - node_id: 2028:5091
+      name: Tone=Neutral, Size=L, Content=IconOnly, State=Default
+    - node_id: 2028:5096
+      name: Tone=Neutral, Size=L, Content=IconOnly, State=Pressed
+    - node_id: 2028:5101
+      name: Tone=Neutral, Size=L, Content=IconOnly, State=Disabled
+    - node_id: 2028:5104
+      name: Tone=Neutral, Size=XL, Content=Text, State=Default
+    - node_id: 2028:5107
+      name: Tone=Neutral, Size=XL, Content=Text, State=Pressed
+    - node_id: 2028:5110
+      name: Tone=Neutral, Size=XL, Content=Text, State=Disabled
+    - node_id: 2028:5115
+      name: Tone=Neutral, Size=XL, Content=IconText, State=Default
+    - node_id: 2028:5120
+      name: Tone=Neutral, Size=XL, Content=IconText, State=Pressed
+    - node_id: 2028:5125
+      name: Tone=Neutral, Size=XL, Content=IconText, State=Disabled
+    - node_id: 2028:5130
+      name: Tone=Neutral, Size=XL, Content=IconOnly, State=Default
+    - node_id: 2028:5135
+      name: Tone=Neutral, Size=XL, Content=IconOnly, State=Pressed
+    - node_id: 2028:5140
+      name: Tone=Neutral, Size=XL, Content=IconOnly, State=Disabled
+    - node_id: 2028:5145
+      name: Tone=Danger, Size=S, Content=Text, State=Default
+    - node_id: 2028:5150
+      name: Tone=Danger, Size=S, Content=Text, State=Pressed
+    - node_id: 2028:5155
+      name: Tone=Danger, Size=S, Content=Text, State=Disabled
+    - node_id: 2028:5160
+      name: Tone=Danger, Size=S, Content=IconText, State=Default
+    - node_id: 2028:5165
+      name: Tone=Danger, Size=S, Content=IconText, State=Pressed
+    - node_id: 2028:5170
+      name: Tone=Danger, Size=S, Content=IconText, State=Disabled
+    - node_id: 2028:5175
+      name: Tone=Danger, Size=S, Content=IconOnly, State=Default
+    - node_id: 2028:5180
+      name: Tone=Danger, Size=S, Content=IconOnly, State=Pressed
+    - node_id: 2028:5185
+      name: Tone=Danger, Size=S, Content=IconOnly, State=Disabled
+    - node_id: 2028:5190
+      name: Tone=Danger, Size=L, Content=Text, State=Default
+    - node_id: 2028:5195
+      name: Tone=Danger, Size=L, Content=Text, State=Pressed
+    - node_id: 2028:5200
+      name: Tone=Danger, Size=L, Content=Text, State=Disabled
+    - node_id: 2028:5205
+      name: Tone=Danger, Size=L, Content=IconText, State=Default
+    - node_id: 2028:5210
+      name: Tone=Danger, Size=L, Content=IconText, State=Pressed
+    - node_id: 2028:5215
+      name: Tone=Danger, Size=L, Content=IconText, State=Disabled
+    - node_id: 2028:5220
+      name: Tone=Danger, Size=L, Content=IconOnly, State=Default
+    - node_id: 2028:5225
+      name: Tone=Danger, Size=L, Content=IconOnly, State=Pressed
+    - node_id: 2028:5230
+      name: Tone=Danger, Size=L, Content=IconOnly, State=Disabled
+    - node_id: 2028:5233
+      name: Tone=Danger, Size=XL, Content=Text, State=Default
+    - node_id: 2028:5236
+      name: Tone=Danger, Size=XL, Content=Text, State=Pressed
+    - node_id: 2028:5239
+      name: Tone=Danger, Size=XL, Content=Text, State=Disabled
+    - node_id: 2028:5244
+      name: Tone=Danger, Size=XL, Content=IconText, State=Default
+    - node_id: 2028:5249
+      name: Tone=Danger, Size=XL, Content=IconText, State=Pressed
+    - node_id: 2028:5254
+      name: Tone=Danger, Size=XL, Content=IconText, State=Disabled
+    - node_id: 2028:5259
+      name: Tone=Danger, Size=XL, Content=IconOnly, State=Default
+    - node_id: 2028:5264
+      name: Tone=Danger, Size=XL, Content=IconOnly, State=Pressed
+    - node_id: 2028:5269
+      name: Tone=Danger, Size=XL, Content=IconOnly, State=Disabled
+    - node_id: 2051:82
+      name: Tone=Primary, Size=M, Content=Text, State=Default
+    - node_id: 2051:84
+      name: Tone=Primary, Size=M, Content=Text, State=Pressed
+    - node_id: 2051:86
+      name: Tone=Primary, Size=M, Content=Text, State=Disabled
+    - node_id: 2051:88
+      name: Tone=Primary, Size=M, Content=IconText, State=Default
+    - node_id: 2051:91
+      name: Tone=Primary, Size=M, Content=IconText, State=Pressed
+    - node_id: 2051:94
+      name: Tone=Primary, Size=M, Content=IconText, State=Disabled
+    - node_id: 2051:97
+      name: Tone=Primary, Size=M, Content=IconOnly, State=Default
+    - node_id: 2051:99
+      name: Tone=Primary, Size=M, Content=IconOnly, State=Pressed
+    - node_id: 2051:101
+      name: Tone=Primary, Size=M, Content=IconOnly, State=Disabled
+    - node_id: 2051:103
+      name: Tone=Secondary, Size=M, Content=Text, State=Default
+    - node_id: 2051:105
+      name: Tone=Secondary, Size=M, Content=Text, State=Pressed
+    - node_id: 2051:107
+      name: Tone=Secondary, Size=M, Content=Text, State=Disabled
+    - node_id: 2051:109
+      name: Tone=Secondary, Size=M, Content=IconText, State=Default
+    - node_id: 2051:112
+      name: Tone=Secondary, Size=M, Content=IconText, State=Pressed
+    - node_id: 2051:115
+      name: Tone=Secondary, Size=M, Content=IconText, State=Disabled
+    - node_id: 2051:118
+      name: Tone=Secondary, Size=M, Content=IconOnly, State=Default
+    - node_id: 2051:120
+      name: Tone=Secondary, Size=M, Content=IconOnly, State=Pressed
+    - node_id: 2051:122
+      name: Tone=Secondary, Size=M, Content=IconOnly, State=Disabled
+    - node_id: 2051:124
+      name: Tone=Neutral, Size=M, Content=Text, State=Default
+    - node_id: 2051:126
+      name: Tone=Neutral, Size=M, Content=Text, State=Pressed
+    - node_id: 2051:128
+      name: Tone=Neutral, Size=M, Content=Text, State=Disabled
+    - node_id: 2051:130
+      name: Tone=Neutral, Size=M, Content=IconText, State=Default
+    - node_id: 2051:133
+      name: Tone=Neutral, Size=M, Content=IconText, State=Pressed
+    - node_id: 2051:136
+      name: Tone=Neutral, Size=M, Content=IconText, State=Disabled
+    - node_id: 2051:139
+      name: Tone=Neutral, Size=M, Content=IconOnly, State=Default
+    - node_id: 2051:141
+      name: Tone=Neutral, Size=M, Content=IconOnly, State=Pressed
+    - node_id: 2051:143
+      name: Tone=Neutral, Size=M, Content=IconOnly, State=Disabled
+    - node_id: 2051:145
+      name: Tone=Danger, Size=M, Content=Text, State=Default
+    - node_id: 2051:147
+      name: Tone=Danger, Size=M, Content=Text, State=Pressed
+    - node_id: 2051:149
+      name: Tone=Danger, Size=M, Content=Text, State=Disabled
+    - node_id: 2051:151
+      name: Tone=Danger, Size=M, Content=IconText, State=Default
+    - node_id: 2051:154
+      name: Tone=Danger, Size=M, Content=IconText, State=Pressed
+    - node_id: 2051:157
+      name: Tone=Danger, Size=M, Content=IconText, State=Disabled
+    - node_id: 2051:160
+      name: Tone=Danger, Size=M, Content=IconOnly, State=Default
+    - node_id: 2051:162
+      name: Tone=Danger, Size=M, Content=IconOnly, State=Pressed
+    - node_id: 2051:164
+      name: Tone=Danger, Size=M, Content=IconOnly, State=Disabled
+    - node_id: 2422:5430
+      name: Tone=AccentOutline, Size=M, Content=IconText, State=Default
+    - node_id: 2439:4628
+      name: Tone=AccentOutline, Size=S, Content=Text, State=Default
+    - node_id: 2439:4667
+      name: Tone=AccentOutline, Size=S, Content=Text, State=Pressed
+    - node_id: 2439:4692
+      name: Tone=AccentOutline, Size=S, Content=Text, State=Disabled
+    - node_id: 2439:4706
+      name: Tone=AccentOutline, Size=S, Content=IconText, State=Default
+    - node_id: 2439:4711
+      name: Tone=AccentOutline, Size=S, Content=IconText, State=Pressed
+    - node_id: 2439:4717
+      name: Tone=AccentOutline, Size=S, Content=IconText, State=Disabled
+    - node_id: 2439:4723
+      name: Tone=AccentOutline, Size=S, Content=IconRight, State=Default
+    - node_id: 2439:4729
+      name: Tone=AccentOutline, Size=S, Content=IconRight, State=Pressed
+    - node_id: 2439:4735
+      name: Tone=AccentOutline, Size=S, Content=IconRight, State=Disabled
+    - node_id: 2439:4741
+      name: Tone=AccentOutline, Size=S, Content=IconOnly, State=Default
+    - node_id: 2439:4746
+      name: Tone=AccentOutline, Size=S, Content=IconOnly, State=Pressed
+    - node_id: 2439:4751
+      name: Tone=AccentOutline, Size=S, Content=IconOnly, State=Disabled
+    - node_id: 2439:4756
+      name: Tone=AccentOutline, Size=M, Content=Text, State=Default
+    - node_id: 2439:4759
+      name: Tone=AccentOutline, Size=M, Content=Text, State=Pressed
+    - node_id: 2439:4761
+      name: Tone=AccentOutline, Size=M, Content=Text, State=Disabled
+    - node_id: 2439:4763
+      name: Tone=AccentOutline, Size=M, Content=IconText, State=Pressed
+    - node_id: 2439:4768
+      name: Tone=AccentOutline, Size=M, Content=IconText, State=Disabled
+    - node_id: 2439:4774
+      name: Tone=AccentOutline, Size=M, Content=IconRight, State=Default
+    - node_id: 2439:4780
+      name: Tone=AccentOutline, Size=M, Content=IconRight, State=Pressed
+    - node_id: 2439:4786
+      name: Tone=AccentOutline, Size=M, Content=IconRight, State=Disabled
+    - node_id: 2439:4792
+      name: Tone=AccentOutline, Size=M, Content=IconOnly, State=Default
+    - node_id: 2439:4797
+      name: Tone=AccentOutline, Size=M, Content=IconOnly, State=Pressed
+    - node_id: 2439:4802
+      name: Tone=AccentOutline, Size=M, Content=IconOnly, State=Disabled
+    - node_id: 2439:4807
+      name: Tone=AccentOutline, Size=L, Content=Text, State=Default
+    - node_id: 2439:4810
+      name: Tone=AccentOutline, Size=L, Content=Text, State=Pressed
+    - node_id: 2439:4812
+      name: Tone=AccentOutline, Size=L, Content=Text, State=Disabled
+    - node_id: 2439:4814
+      name: Tone=AccentOutline, Size=L, Content=IconText, State=Default
+    - node_id: 2439:4819
+      name: Tone=AccentOutline, Size=L, Content=IconText, State=Pressed
+    - node_id: 2439:4825
+      name: Tone=AccentOutline, Size=L, Content=IconText, State=Disabled
+    - node_id: 2439:4831
+      name: Tone=AccentOutline, Size=L, Content=IconRight, State=Default
+    - node_id: 2439:4837
+      name: Tone=AccentOutline, Size=L, Content=IconRight, State=Pressed
+    - node_id: 2439:4843
+      name: Tone=AccentOutline, Size=L, Content=IconRight, State=Disabled
+    - node_id: 2439:4849
+      name: Tone=AccentOutline, Size=L, Content=IconOnly, State=Default
+    - node_id: 2439:4854
+      name: Tone=AccentOutline, Size=L, Content=IconOnly, State=Pressed
+    - node_id: 2439:4859
+      name: Tone=AccentOutline, Size=L, Content=IconOnly, State=Disabled
+    - node_id: 2439:4864
+      name: Tone=AccentOutline, Size=XL, Content=Text, State=Default
+    - node_id: 2439:4867
+      name: Tone=AccentOutline, Size=XL, Content=Text, State=Pressed
+    - node_id: 2439:4869
+      name: Tone=AccentOutline, Size=XL, Content=Text, State=Disabled
+    - node_id: 2439:4871
+      name: Tone=AccentOutline, Size=XL, Content=IconText, State=Default
+    - node_id: 2439:4876
+      name: Tone=AccentOutline, Size=XL, Content=IconText, State=Pressed
+    - node_id: 2439:4882
+      name: Tone=AccentOutline, Size=XL, Content=IconText, State=Disabled
+    - node_id: 2439:4888
+      name: Tone=AccentOutline, Size=XL, Content=IconRight, State=Default
+    - node_id: 2439:4894
+      name: Tone=AccentOutline, Size=XL, Content=IconRight, State=Pressed
+    - node_id: 2439:4900
+      name: Tone=AccentOutline, Size=XL, Content=IconRight, State=Disabled
+    - node_id: 2439:4906
+      name: Tone=AccentOutline, Size=XL, Content=IconOnly, State=Default
+    - node_id: 2439:4911
+      name: Tone=AccentOutline, Size=XL, Content=IconOnly, State=Pressed
+    - node_id: 2439:4916
+      name: Tone=AccentOutline, Size=XL, Content=IconOnly, State=Disabled
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  WordTokenButton:
+    node_id: 7560:3385
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Word Token Button
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3359
+    category_page_name: 03 Actions - Buttons
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7560:3379
+      name: State=Neutral
+    - node_id: 7560:3381
+      name: State=Correct
+    - node_id: 7560:3383
+      name: State=Incorrect
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  CommentInput:
+    node_id: 570:8154
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Comment Input
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 570:8126
+    category_page_name: 04 Inputs - Comment
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 570:8153
+      name: State=Expanded
+    - node_id: 570:8152
+      name: State=Default
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  ProfileTextInput:
+    node_id: 7596:9994
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Profile Text Input
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 570:8126
+    category_page_name: 04 Inputs - Comment
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7596:9986
+      name: Type=Phone, State=Empty
+    - node_id: 7596:9989
+      name: Type=Phone, State=Filled
+    - node_id: 7596:9993
+      name: Type=Nickname, State=Filled
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  VerificationDigit:
+    node_id: 7596:10011
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Verification Digit
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 570:8126
+    category_page_name: 04 Inputs - Comment
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7596:10004
+      name: State=Filled
+    - node_id: 7596:10006
+      name: State=Empty
+    - node_id: 7596:10010
+      name: State=Error
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  VerificationCodeInput:
+    node_id: 7596:10129
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Verification Code Input
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 570:8126
+    category_page_name: 04 Inputs - Comment
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7596:10061
+      name: State=Partial
+    - node_id: 7596:10088
+      name: State=Complete
+    - node_id: 7596:10115
+      name: State=Error
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  SectionTitle:
+    node_id: 94:1226
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Section Title
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 554:4020
+    category_page_name: 05 Navigation - Headers
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 区块标题
+    - 分区标题
+  ProfileIdentityHeader:
+    node_id: 7593:8302
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Profile Identity Header
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 554:4020
+    category_page_name: 05 Navigation - Headers
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7593:8271
+      name: Type=Regular
+    - node_id: 7593:8291
+      name: Type=VIP
+    - node_id: 7593:8301
+      name: Type=Editable
+    - node_id: 7598:13702
+      name: Type=Compact
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  ProfileLoginPrompt:
+    node_id: 7598:13640
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Profile Login Prompt
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 554:4020
+    category_page_name: 05 Navigation - Headers
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7598:13631
+      name: Type=Social
+    - node_id: 7598:13639
+      name: Type=Action
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  DetailActionBar:
+    node_id: 4389:11236
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Detail Action Bar
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3524
+    category_page_name: 06 Navigation - Bars
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 96:541
+      name: 喜欢=False, 收藏=False
+    - node_id: 505:3211
+      name: 喜欢=True, 收藏=False
+    - node_id: 505:3229
+      name: 喜欢=False, 收藏=True
+    - node_id: 505:3248
+      name: 喜欢=True, 收藏=True
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  BottomBar_516_3258:
+    node_id: 516:3258
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Bottom Bar
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 521:3524
+    category_page_name: 06 Navigation - Bars
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  FunctionTab_66_6081:
+    node_id: 66:6081
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Function Tab
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 554:4540
+    category_page_name: 07 Navigation - Tabs
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 66:3149
+      name: Layout=竖向
+    - node_id: 66:6080
+      name: Layout=横向
+    - node_id: 94:828
+      name: Layout=横向2
+    - node_id: 94:839
+      name: Layout=横向3
+    - node_id: 7495:3884
+      name: Layout=Illustrated
+    - node_id: 7593:8005
+      name: Layout=Profile, State=Default
+    - node_id: 7593:8023
+      name: Layout=Profile, State=Selected
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  ProfileContentTabs:
+    node_id: 7593:8064
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Profile Content Tabs
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 554:4540
+    category_page_name: 07 Navigation - Tabs
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7593:8033
+      name: Active=History
+    - node_id: 7593:8043
+      name: Active=Comments
+    - node_id: 7593:8053
+      name: Active=Likes
+    - node_id: 7593:8063
+      name: Active=Favorites
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  ImpactCard:
+    node_id: 557:4875
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Impact Card
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 521:3299
+    category_page_name: 08 Data Display - Cards
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  OpinionVotePanel:
+    node_id: 7512:4215
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Opinion Vote Panel
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3299
+    category_page_name: 08 Data Display - Cards
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7512:4161
+      name: State=Unvoted
+    - node_id: 7512:4177
+      name: State=VotedFor
+    - node_id: 7512:4195
+      name: State=VotedAgainst
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  LearningGuideCard:
+    node_id: 7579:4721
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Learning Guide Card
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3299
+    category_page_name: 08 Data Display - Cards
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7579:4673
+      name: Tone=Guide, Layout=Expanded
+    - node_id: 7579:4681
+      name: Tone=Success, Layout=Compact
+    - node_id: 7579:4691
+      name: Tone=Error, Layout=Compact
+    - node_id: 7579:4701
+      name: Tone=Success, Layout=Expanded
+    - node_id: 7579:4711
+      name: Tone=Error, Layout=Expanded
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  ProfileStatsCard:
+    node_id: 7593:8094
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Profile Stats Card
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3299
+    category_page_name: 08 Data Display - Cards
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7593:8078
+      name: Divider=Hidden
+    - node_id: 7593:8092
+      name: Divider=Visible
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  ProfileMembershipCard:
+    node_id: 7593:8202
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Profile Membership Card
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3299
+    category_page_name: 08 Data Display - Cards
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7593:8195
+      name: Membership=Regular
+    - node_id: 7593:8201
+      name: Membership=VIP
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  SettingsListCard:
+    node_id: 7596:9836
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Settings List Card
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3299
+    category_page_name: 08 Data Display - Cards
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7596:9806
+      name: Type=Preferences
+    - node_id: 7596:9835
+      name: Type=General
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  MessageCell:
+    node_id: 570:10302
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Message Cell
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3377
+    category_page_name: 09 Data Display - Cells
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 570:10153
+      name: Type=MyComment
+    - node_id: 570:10301
+      name: Type=ReplyToMe
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  Attitude:
+    node_id: 3384:4846
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Attitude
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3377
+    category_page_name: 09 Data Display - Cells
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 3384:4845
+      name: Property 1=LMAO
+    - node_id: 3384:4843
+      name: Property 1=Adore
+    - node_id: 3384:4842
+      name: Property 1=Cool
+    - node_id: 3384:4841
+      name: Property 1=Like
+    - node_id: 3384:4844
+      name: Property 1=Disgust
+    - node_id: 3384:5522
+      name: Property 1=Default
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  ChoiceOptionCell:
+    node_id: 7504:3064
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Choice Option Cell
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3377
+    category_page_name: 09 Data Display - Cells
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7504:3053
+      name: Layout=List, State=Default
+    - node_id: 7504:3058
+      name: Layout=List, State=Correct
+    - node_id: 7504:3063
+      name: Layout=List, State=Incorrect
+    - node_id: 7568:4096
+      name: Layout=Tile, State=Default
+    - node_id: 7568:4098
+      name: Layout=Tile, State=Correct
+    - node_id: 7568:4100
+      name: Layout=Tile, State=Incorrect
+    - node_id: 7585:75
+      name: Layout=Reading, State=Default
+    - node_id: 7585:78
+      name: Layout=Reading, State=Correct
+    - node_id: 7585:81
+      name: Layout=Reading, State=Incorrect
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  SettingsRow:
+    node_id: 7596:9566
+    aliases:
+    - SettingsRow_7596_9566
+    - 设置行
+    - 设置开关
+    family: settings_row
+    component_reference: references/page-recipes.md
+    use_for:
+    - settings options
+    - account options inside settings
+    - permission switch
+    historical_source_pattern:
+      source_node_id: 97:8437
+      use_policy: historical_reference_only_not_a_local_construction_fallback
+      layout:
+        mode: HORIZONTAL
+        width: 350
+        height: 70
+        padding: tokens.spacing.s20
+        item_spacing: 10
+        align: SPACE_BETWEEN
+        vertical_align: CENTER
+        parent_gap: tokens.spacing.s12
+      surface:
+        fill: tokens.colors.background.block
+        radius: tokens.radii.r20
+        stroke: none
+        shadow: none
+      typography:
+        label: tokens.typography.row_label
+        helper: tokens.typography.row_helper
+      example:
+        node_id: 97:8446
+        label: 检查更新
+        helper: v.10 已是最新版
+    do_not:
+    - position new setting rows outside the parent auto layout
+    - create a separate card for each setting row
+    - use the historical source pattern to bypass the registered SettingsRow instance
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Settings Row
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3377
+    category_page_name: 09 Data Display - Cells
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7596:9512
+      name: Type=Value, Surface=Standalone, Divider=Hidden, Height=70
+    - node_id: 7596:9515
+      name: Type=Label, Surface=Standalone, Divider=Hidden, Height=58
+    - node_id: 7596:9523
+      name: Type=ValueChevron, Surface=Grouped, Divider=Visible, Height=70
+    - node_id: 7596:9530
+      name: Type=ValueChevron, Surface=Grouped, Divider=Hidden, Height=70
+    - node_id: 7596:9540
+      name: Type=PermissionValue, Surface=Grouped, Divider=Visible, Height=80
+    - node_id: 7596:9547
+      name: Type=Disclosure, Surface=Grouped, Divider=Visible, Height=70
+    - node_id: 7596:9552
+      name: Type=Value, Surface=Grouped, Divider=Visible, Height=70
+    - node_id: 7596:9557
+      name: Type=Disclosure, Surface=Grouped, Divider=Hidden, Height=70
+    - node_id: 7596:9565
+      name: Type=PermissionSwitch, Surface=Grouped, Divider=Visible, Height=80
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  LandscapeCover:
+    node_id: 570:6200
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Landscape Cover
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 570:6196
+    category_page_name: 10 Data Display - Covers
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  SquareCover:
+    node_id: 570:6201
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Square Cover
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 570:6196
+    category_page_name: 10 Data Display - Covers
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  IPOthers:
+    node_id: 170:1927
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: IP - Others
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3670
+    category_page_name: 11 Data Display - Avatars
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 170:1926
+      name: Avatar=Character01
+    - node_id: 170:1924
+      name: Avatar=Character02
+    - node_id: 170:1925
+      name: Avatar=Character03
+    - node_id: 170:1923
+      name: Avatar=Character04
+    - node_id: 170:1922
+      name: Avatar=Character05
+    - node_id: 170:1921
+      name: Avatar=Character06
+    - node_id: 200:2671
+      name: Avatar=Character07
+    - node_id: 200:2675
+      name: Avatar=Character08
+    - node_id: 200:2677
+      name: Avatar=Character09
+    - node_id: 200:2679
+      name: Avatar=Character10
+    - node_id: 200:2681
+      name: Avatar=Character11
+    - node_id: 200:3196
+      name: Avatar=Character12
+    - node_id: 200:3216
+      name: Avatar=Character13
+    - node_id: 200:3237
+      name: Avatar=Character14
+    - node_id: 200:3257
+      name: Avatar=Character15
+    - node_id: 200:3280
+      name: Avatar=Character16
+    - node_id: 200:3292
+      name: Avatar=Character17
+    - node_id: 200:3304
+      name: Avatar=Character18
+    - node_id: 200:3316
+      name: Avatar=Character19
+    - node_id: 200:3328
+      name: Avatar=Character20
+    - node_id: 200:3340
+      name: Avatar=Character21
+    - node_id: 200:3352
+      name: Avatar=Character22
+    - node_id: 200:3364
+      name: Avatar=Character23
+    - node_id: 200:3376
+      name: Avatar=Character24
+    - node_id: 200:3388
+      name: Avatar=Character25
+    - node_id: 200:3400
+      name: Avatar=Character26
+    - node_id: 200:3412
+      name: Avatar=Character27
+    - node_id: 213:3107
+      name: Avatar=Character28
+    - node_id: 213:3143
+      name: Avatar=Character29
+    - node_id: 218:6769
+      name: Avatar=Character30
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  IPStarBaby2D:
+    node_id: 224:12087
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: IP - Star Baby 2D
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3670
+    category_page_name: 11 Data Display - Avatars
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 217:6363
+      name: Pose=01
+    - node_id: 218:7608
+      name: Pose=02
+    - node_id: 221:8500
+      name: Pose=03
+    - node_id: 224:11200
+      name: Pose=04
+    - node_id: 224:12086
+      name: Pose=05
+    - node_id: 274:3112
+      name: Pose=06
+    - node_id: 2065:4709
+      name: Pose=07
+    - node_id: 2720:22145
+      name: Pose=08
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  IPStarBaby3D:
+    node_id: 2373:5101
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: IP  - Star Baby 3D
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3670
+    category_page_name: 11 Data Display - Avatars
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 2373:4943
+      name: Pose=01, Property 2=StarBaby, Property 3=Property 38
+    - node_id: 2645:15242
+      name: Pose=01, Property 2=StarBaby, Property 3=pen
+    - node_id: 7579:4665
+      name: Pose=Teaching, Property 2=StarBaby, Property 3=Report
+    - node_id: 7579:4667
+      name: Pose=Celebrating, Property 2=StarBaby, Property 3=Report
+    - node_id: 7579:4669
+      name: Pose=Thinking, Property 2=StarBaby, Property 3=Report
+    - node_id: 7579:4671
+      name: Pose=ThinkingMirrored, Property 2=StarBaby, Property 3=Report
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  IPShare:
+    node_id: 2068:5393
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: IP  - Share
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3670
+    category_page_name: 11 Data Display - Avatars
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 2068:5394
+      name: Pose=WeChat
+    - node_id: 2068:5435
+      name: Pose=QQ
+    - node_id: 2068:5454
+      name: Pose=WeiBo
+    - node_id: 2068:5464
+      name: Pose=RedNote
+    - node_id: 2068:5488
+      name: Pose=QZone
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  AvatarChoice:
+    node_id: 7596:10138
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Avatar Choice
+    live_locator_type: COMPONENT_SET
+    locator_node_role: component_set
+    category_page_id: 521:3670
+    category_page_name: 11 Data Display - Avatars
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    live_variants:
+    - node_id: 7596:10134
+      name: State=Selected
+    - node_id: 7596:10137
+      name: State=Default
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  AvatarChoiceGrid:
+    node_id: 7596:10234
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Avatar Choice Grid
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 521:3670
+    category_page_name: 11 Data Display - Avatars
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+  EmptyPlaceholder:
+    node_id: 218:6895
+    component_status: usable_with_recipe
+    required_instance: true
+    fallback_policy: use_existing_instance_or_stop
+    construction_status: live_registered_pending_full_production_acceptance
+    live_name: Empty Placeholder
+    live_locator_type: COMPONENT
+    locator_node_role: component
+    category_page_id: 554:4194
+    category_page_name: 12 Feedback - Empty States
+    live_type_verified_at: '2026-10-29'
+    scene_index_ref: references/metadata/scene-index.yaml
+    responsive_policy_ref: task-routes.yaml#global_defaults.responsive_layout_policy
+    aliases:
+    - 空态
+    - 空状态
+patterns:
+  cold_start_age_selection:
+    source_nodes: []
+    source_status: no_active_source_registered
+    use_for:
+    - first launch age choice
+    - settings age edit sheet
+    structure:
+    - StarBaby/IP avatar header
+    - question block
+    - AgeOption rows
+    - App Button primary/disabled state
+    do_not:
+    - turn onboarding into a marketing hero
+    - use adult account/profile visual weight
+  subscription_modal:
+    source_nodes:
+    - 2756:23531
+    - 2756:23549
+    - 2756:23270
+    - 2756:23298
+    - 2379:7061
+    use_for:
+    - paid popup from home
+    - paid popup from profile
+    - paid popup from locked Plus feature
+    structure:
+    - Overlay Black40 mask
+    - Large bottom sheet
+    - PlusBadge or source Plus/IP identity
+    - plan choice area; production follows source, exploration may restructure
+    - App Button primary action
+    - weak cancel/close affordance
+    do_not:
+    - create full-page paywall for inline touchpoints
+    - make profile paid entry stronger than user identity/content history
+  profile_secondary_entry:
+    priority: low
+    use_for:
+    - 换肤
+    - 福利中心
+    acceptable_treatments:
+    - weak utility strip under UserCard
+    - inline weak entry inside profile content block
+    - grouped row with lower emphasis than history/content
+    surface:
+      fill: tokens.colors.background.card_or_block
+      radius: tokens.radii.r20
+      stroke: none
+      shadow: none
+    do_not:
+    - make secondary utilities equal in visual weight to main content
+    - insert a block that touches the content card below
+  account_action_in_settings:
+    use_for:
+    - 切换账号
+    treatment:
+    - separate from ordinary settings rows with a larger vertical gap
+    - less dangerous than logout
+    - same row structure as SettingsRow
+    do_not:
+    - merge with logout button
+    - style as a primary marketing CTA
+live_inventory:
+  verified_at: '2026-10-29'
+  component_page_count: 15
+  node_count: 599
+  family_count: 57
+  complete_node_inventory: live-inventory.yaml
+  scope: retained skill scope; excluded domain assets remain unchanged in Figma
